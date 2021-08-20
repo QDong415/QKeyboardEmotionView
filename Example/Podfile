@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'QKeyboardEmotionView_Example' do
+  pod 'QKeyboardEmotionView', :path => '../'
+
+  target 'QKeyboardEmotionView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
