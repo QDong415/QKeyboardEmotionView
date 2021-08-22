@@ -1,0 +1,6 @@
+framework module Pods_QKeyboardEmotionView_Tests {
+  umbrella header "Pods-QKeyboardEmotionView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

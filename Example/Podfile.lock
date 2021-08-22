@@ -1,0 +1,16 @@
+PODS:
+  - QKeyboardEmotionView (1.0.0)
+
+DEPENDENCIES:
+  - QKeyboardEmotionView (from `../`)
+
+EXTERNAL SOURCES:
+  QKeyboardEmotionView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  QKeyboardEmotionView: dabc0a92a1104c0625c4c5efb88989b1be1444d7
+
+PODFILE CHECKSUM: 13dff63cfe41bddaa376f87a925f7b904426baa2
+
+COCOAPODS: 1.10.1

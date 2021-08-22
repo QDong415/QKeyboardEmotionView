@@ -1,0 +1,6 @@
+framework module QKeyboardEmotionView {
+  umbrella header "QKeyboardEmotionView-umbrella.h"
+
+  export *
+  module * { export * }
+}
