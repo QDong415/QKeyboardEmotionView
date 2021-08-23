@@ -8,13 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		12582FCBFDCB8A3368069439 /* Pods_QKeyboardEmotionView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B567FD8AC65B27AA125BF0 /* Pods_QKeyboardEmotionView_Tests.framework */; };
+		360648FC26D3DD680029470C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648F626D3DD680029470C /* RootViewController.m */; };
+		360648FD26D3DD680029470C /* emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 360648F926D3DD680029470C /* emoji.plist */; };
+		360648FE26D3DD680029470C /* FaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648FA26D3DD680029470C /* FaceManager.m */; };
+		360648FF26D3DD680029470C /* QHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648FB26D3DD680029470C /* QHolderTextView.m */; };
+		3606496826D3F56F0029470C /* CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606494F26D3F56F0029470C /* CommonViewController.m */; };
+		3606496926D3F56F0029470C /* CommonCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495226D3F56F0029470C /* CommonCustomViewController.m */; };
+		3606496A26D3F56F0029470C /* DiscussViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3606495426D3F56F0029470C /* DiscussViewController.xib */; };
+		3606496B26D3F56F0029470C /* DiscussViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495626D3F56F0029470C /* DiscussViewController.m */; };
+		3606496C26D3F56F0029470C /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495826D3F56F0029470C /* SubmitViewController.m */; };
+		3606496D26D3F56F0029470C /* SubmitToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495A26D3F56F0029470C /* SubmitToolBarView.m */; };
+		3606496E26D3F56F0029470C /* CustomBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495E26D3F56F0029470C /* CustomBarView.m */; };
+		3606496F26D3F56F0029470C /* TextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495F26D3F56F0029470C /* TextFieldViewController.m */; };
+		3606497026D3F56F0029470C /* TextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3606496026D3F56F0029470C /* TextFieldViewController.xib */; };
+		3606497126D3F56F0029470C /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606496326D3F56F0029470C /* ChatViewController.m */; };
+		3606497226D3F56F0029470C /* ChatXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606496426D3F56F0029470C /* ChatXibViewController.m */; };
+		3606497326D3F56F0029470C /* ChatXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3606496526D3F56F0029470C /* ChatXibViewController.xib */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.m */; };
+		6003F59E195388D20070C39A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* AppDelegate.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,7 +37,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		D0447E1D672DB378DB61D11D /* Pods_QKeyboardEmotionView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7EC38D69F3531EF5D6DAB7 /* Pods_QKeyboardEmotionView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +53,34 @@
 /* Begin PBXFileReference section */
 		0B7EC38D69F3531EF5D6DAB7 /* Pods_QKeyboardEmotionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QKeyboardEmotionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EB5D4C86230F7FD8BE90F7 /* Pods-QKeyboardEmotionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QKeyboardEmotionView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-QKeyboardEmotionView_Tests/Pods-QKeyboardEmotionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		360648F526D3DD680029470C /* FaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceManager.h; sourceTree = "<group>"; };
+		360648F626D3DD680029470C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		360648F726D3DD680029470C /* QHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHolderTextView.h; sourceTree = "<group>"; };
+		360648F826D3DD680029470C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		360648F926D3DD680029470C /* emoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emoji.plist; sourceTree = "<group>"; };
+		360648FA26D3DD680029470C /* FaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceManager.m; sourceTree = "<group>"; };
+		360648FB26D3DD680029470C /* QHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHolderTextView.m; sourceTree = "<group>"; };
+		3606494F26D3F56F0029470C /* CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonViewController.m; sourceTree = "<group>"; };
+		3606495026D3F56F0029470C /* CommonCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCustomViewController.h; sourceTree = "<group>"; };
+		3606495126D3F56F0029470C /* CommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonViewController.h; sourceTree = "<group>"; };
+		3606495226D3F56F0029470C /* CommonCustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCustomViewController.m; sourceTree = "<group>"; };
+		3606495426D3F56F0029470C /* DiscussViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscussViewController.xib; sourceTree = "<group>"; };
+		3606495526D3F56F0029470C /* DiscussViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscussViewController.h; sourceTree = "<group>"; };
+		3606495626D3F56F0029470C /* DiscussViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscussViewController.m; sourceTree = "<group>"; };
+		3606495826D3F56F0029470C /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
+		3606495926D3F56F0029470C /* SubmitToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitToolBarView.h; sourceTree = "<group>"; };
+		3606495A26D3F56F0029470C /* SubmitToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitToolBarView.m; sourceTree = "<group>"; };
+		3606495B26D3F56F0029470C /* SubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitViewController.h; sourceTree = "<group>"; };
+		3606495D26D3F56F0029470C /* TextFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldViewController.h; sourceTree = "<group>"; };
+		3606495E26D3F56F0029470C /* CustomBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBarView.m; sourceTree = "<group>"; };
+		3606495F26D3F56F0029470C /* TextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldViewController.m; sourceTree = "<group>"; };
+		3606496026D3F56F0029470C /* TextFieldViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldViewController.xib; sourceTree = "<group>"; };
+		3606496126D3F56F0029470C /* CustomBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBarView.h; sourceTree = "<group>"; };
+		3606496326D3F56F0029470C /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		3606496426D3F56F0029470C /* ChatXibViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatXibViewController.m; sourceTree = "<group>"; };
+		3606496526D3F56F0029470C /* ChatXibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatXibViewController.xib; sourceTree = "<group>"; };
+		3606496626D3F56F0029470C /* ChatXibViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatXibViewController.h; sourceTree = "<group>"; };
+		3606496726D3F56F0029470C /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		4B86392E2BB35235057C76BD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* QKeyboardEmotionView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QKeyboardEmotionView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,10 +90,8 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* QKeyboardEmotionView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QKEYBOARDEMOTIONVIEWAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QKEYBOARDEMOTIONVIEWAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QKEYBOARDEMOTIONVIEWViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QKEYBOARDEMOTIONVIEWViewController.m; sourceTree = "<group>"; };
+		6003F59C195388D20070C39A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6003F59D195388D20070C39A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* QKeyboardEmotionView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QKeyboardEmotionView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,7 +103,6 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E3ECF2123A6F6E86595EAFF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		8003A8B2A84C58E3813E51FF /* Pods-QKeyboardEmotionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QKeyboardEmotionView_Tests.release.xcconfig"; path = "Target Support Files/Pods-QKeyboardEmotionView_Tests/Pods-QKeyboardEmotionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF5B74914F0AF2CF81A08C4E /* QKeyboardEmotionView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QKeyboardEmotionView.podspec; path = ../QKeyboardEmotionView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D8B567FD8AC65B27AA125BF0 /* Pods_QKeyboardEmotionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QKeyboardEmotionView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6EC841B431AEA41FAC6339 /* Pods-QKeyboardEmotionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QKeyboardEmotionView_Example.debug.xcconfig"; path = "Target Support Files/Pods-QKeyboardEmotionView_Example/Pods-QKeyboardEmotionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +134,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3606494E26D3F56F0029470C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3606495126D3F56F0029470C /* CommonViewController.h */,
+				3606494F26D3F56F0029470C /* CommonViewController.m */,
+				3606495026D3F56F0029470C /* CommonCustomViewController.h */,
+				3606495226D3F56F0029470C /* CommonCustomViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3606495326D3F56F0029470C /* Discuss */ = {
+			isa = PBXGroup;
+			children = (
+				3606495526D3F56F0029470C /* DiscussViewController.h */,
+				3606495626D3F56F0029470C /* DiscussViewController.m */,
+				3606495426D3F56F0029470C /* DiscussViewController.xib */,
+			);
+			path = Discuss;
+			sourceTree = "<group>";
+		};
+		3606495726D3F56F0029470C /* Submit */ = {
+			isa = PBXGroup;
+			children = (
+				3606495926D3F56F0029470C /* SubmitToolBarView.h */,
+				3606495A26D3F56F0029470C /* SubmitToolBarView.m */,
+				3606495B26D3F56F0029470C /* SubmitViewController.h */,
+				3606495826D3F56F0029470C /* SubmitViewController.m */,
+			);
+			path = Submit;
+			sourceTree = "<group>";
+		};
+		3606495C26D3F56F0029470C /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				3606496126D3F56F0029470C /* CustomBarView.h */,
+				3606495E26D3F56F0029470C /* CustomBarView.m */,
+				3606495D26D3F56F0029470C /* TextFieldViewController.h */,
+				3606495F26D3F56F0029470C /* TextFieldViewController.m */,
+				3606496026D3F56F0029470C /* TextFieldViewController.xib */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		3606496226D3F56F0029470C /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3606496726D3F56F0029470C /* ChatViewController.h */,
+				3606496326D3F56F0029470C /* ChatViewController.m */,
+				3606496626D3F56F0029470C /* ChatXibViewController.h */,
+				3606496426D3F56F0029470C /* ChatXibViewController.m */,
+				3606496526D3F56F0029470C /* ChatXibViewController.xib */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -132,11 +227,20 @@
 		6003F593195388D20070C39A /* Example for QKeyboardEmotionView */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.h */,
-				6003F59D195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.h */,
-				6003F5A6195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.m */,
+				3606494E26D3F56F0029470C /* Common */,
+				3606496226D3F56F0029470C /* Chat */,
+				3606495326D3F56F0029470C /* Discuss */,
+				3606495726D3F56F0029470C /* Submit */,
+				3606495C26D3F56F0029470C /* TextField */,
+				360648F926D3DD680029470C /* emoji.plist */,
+				360648F526D3DD680029470C /* FaceManager.h */,
+				360648FA26D3DD680029470C /* FaceManager.m */,
+				360648F726D3DD680029470C /* QHolderTextView.h */,
+				360648FB26D3DD680029470C /* QHolderTextView.m */,
+				360648F826D3DD680029470C /* RootViewController.h */,
+				360648F626D3DD680029470C /* RootViewController.m */,
+				6003F59C195388D20070C39A /* AppDelegate.h */,
+				6003F59D195388D20070C39A /* AppDelegate.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -277,8 +381,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				3606496A26D3F56F0029470C /* DiscussViewController.xib in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				3606497326D3F56F0029470C /* ChatXibViewController.xib in Resources */,
+				3606497026D3F56F0029470C /* TextFieldViewController.xib in Resources */,
+				360648FD26D3DD680029470C /* emoji.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -364,9 +471,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* QKEYBOARDEMOTIONVIEWAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* QKEYBOARDEMOTIONVIEWViewController.m in Sources */,
+				3606497126D3F56F0029470C /* ChatViewController.m in Sources */,
+				3606496F26D3F56F0029470C /* TextFieldViewController.m in Sources */,
+				6003F59E195388D20070C39A /* AppDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				3606497226D3F56F0029470C /* ChatXibViewController.m in Sources */,
+				360648FE26D3DD680029470C /* FaceManager.m in Sources */,
+				3606496926D3F56F0029470C /* CommonCustomViewController.m in Sources */,
+				3606496C26D3F56F0029470C /* SubmitViewController.m in Sources */,
+				360648FC26D3DD680029470C /* RootViewController.m in Sources */,
+				3606496D26D3F56F0029470C /* SubmitToolBarView.m in Sources */,
+				360648FF26D3DD680029470C /* QHolderTextView.m in Sources */,
+				3606496826D3F56F0029470C /* CommonViewController.m in Sources */,
+				3606496E26D3F56F0029470C /* CustomBarView.m in Sources */,
+				3606496B26D3F56F0029470C /* DiscussViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,14 +12,14 @@
 @interface QExtendBoardItemModel : NSObject
 
 /**
- *  正常显示图片
+ *  Cell图片
  */
 @property (nonatomic, strong) UIImage *normalIconImage;
 
 /**
- *  第三方按钮的标题
+ *  Cell标题
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, strong) NSString *title;
 
 /**
  *  根据正常图片和标题初始化一个Model对象

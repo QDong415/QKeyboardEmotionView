@@ -63,11 +63,13 @@ const int UIInputTextViewMaxHeight = 152;
         safeAreaInsetsRight = UIApplication.sharedApplication.windows.firstObject.safeAreaInsets.right;
     }
     
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
     // 允许发送语音
     if (!configuration.voiceButtonHidden) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, UISwitchButtonWidth, UISwitchButtonWidth)];
-        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_voice_black_normal"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_keyboard_black_normal"] forState:UIControlStateSelected];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_voice_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_keyboard_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(onVoiceSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGRect buttonFrame = button.frame;
         buttonFrame.origin = CGPointMake(horizontalPadding + safeAreaInsetsLeft, verticalPadding);
@@ -83,7 +85,7 @@ const int UIInputTextViewMaxHeight = 152;
     if (!configuration.extendButtonHidden) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, UISwitchButtonWidth, UISwitchButtonWidth)];
         button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_extend_black_normal"] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_extend_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(onExtendSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGRect buttonFrame = button.frame;
         buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - horizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
@@ -99,8 +101,8 @@ const int UIInputTextViewMaxHeight = 152;
     if (!configuration.emotionButtonHidden) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, UISwitchButtonWidth, UISwitchButtonWidth)];
         button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_emoji_black_normal"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_keyboard_black_normal"] forState:UIControlStateSelected];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_emoji_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_chat_keyboard_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(onEmotionSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGRect buttonFrame = button.frame;
         if (!configuration.extendButtonHidden) {
@@ -154,8 +156,8 @@ const int UIInputTextViewMaxHeight = 152;
     if (!configuration.voiceButtonHidden) {
         UIButton *button = [[UIButton alloc] initWithFrame:self.inputTextView.frame];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_btn"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_press_btn"] forState:UIControlStateHighlighted];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_press_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateHighlighted];
         [button setTitle:@"按住说话" forState:UIControlStateNormal];
         button.alpha = self.voiceSwitchButton.selected;
         [self addSubview:button];
@@ -382,8 +384,6 @@ const int UIInputTextViewMaxHeight = 152;
             textViewHeightShouldChangeValue = MIN(textViewHeightShouldChangeValue, UIInputTextViewMaxHeight - self.previousTextViewContentHeight);
         }
         
-        NSLog(@"contentH = %f ;textViewHeightShouldChangeValue = %f",newContentHeight,textViewHeightShouldChangeValue);
-        
         if (textViewHeightShouldChangeValue != 0.0f) {
             //textView的高度有所改变
             __weak QInputBarView *weakSelf = self;
@@ -433,7 +433,6 @@ const int UIInputTextViewMaxHeight = 152;
 
 
 - (void)dealloc {
-    NSLog(@"QInputBarView dealloc");
     _inputedText = nil;
     [_inputTextView removeObserver:self forKeyPath:@"contentSize"];
     _inputTextView.delegate = nil;

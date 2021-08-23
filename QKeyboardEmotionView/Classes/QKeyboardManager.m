@@ -207,12 +207,6 @@ typedef NS_ENUM(NSUInteger, InputState) {
         [self callBackWholeInputViewHeightDidChange:self.viewController.view.frame.size.height
          - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom reason:allBoardHide ? WholeInputViewHeightDidChangeReasonBoardViewDidHide : WholeInputViewHeightDidChangeReasonBoardViewDidShow];
         
-        //临时测试
-//        ChatViewController *vc = self.viewController;
-//        [vc resetUIEdgeInsets:self.viewController.view.frame.size.height - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom];
-//        [vc scrollToBottomAnimated:NO];
-        
-        
     } completion:^(BOOL finished) {
         if (allBoardHide) {
             self.currentInputState = InputStateNormal;
@@ -303,10 +297,6 @@ typedef NS_ENUM(NSUInteger, InputState) {
 - (void)switchToExtendBoardKeyboard {
     self.currentInputState = InputStateExtend;
     [self switchCurrentBoardView: NO];
-}
-
-- (void)dealloc {
-    NSLog(@"QKeyM dealloc");
 }
 
 

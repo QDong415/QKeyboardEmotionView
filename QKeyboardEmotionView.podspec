@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QKeyboardEmotionView'
-  s.version          = '1.0.0'
-  s.summary          = '仿微信的底部键盘表情语音条切换.'
+  s.version          = '1.0.1'
+  s.summary          = 'Emotion-Keyboard-Audio-Chat InputBarView'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+An InputBarView At bottom(or below) of ViewController. Contains EmotionBoardView,ExtendBoardView,AudioRecordView.
+you can switch between BoardViews and keyboad with animation. It also allows you to customize boardview and inputbarview.It is vert useful for CharViewController and CommentViewController   .
                        DESC
 
   s.homepage         = 'https://github.com/d19890415/QKeyboardEmotionView'
@@ -32,9 +33,10 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'QKeyboardEmotionView/Classes/**/*'
   
-   s.resource_bundles = {
-     'QKeyboardEmotionView' => ['QKeyboardEmotionView/Assets/*']
-   }
+  s.resource = ['QKeyboardEmotionView/Assets/*.*']
+#   s.resource_bundles = {
+#     'QKeyboardEmotionView' => ['QKeyboardEmotionView/Assets/*.*']
+#   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

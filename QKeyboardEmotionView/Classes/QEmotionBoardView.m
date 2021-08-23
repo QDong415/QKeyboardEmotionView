@@ -368,10 +368,10 @@ const int UISendButtonHeight = 41;
     [self addSubview:self.sendButton];
 
     _deleteButton = [[UIButton alloc] init];
-    //目前没做横屏滑动表情，所以这句代码删了
-//    self.deleteButton.qmui_automaticallyAdjustTouchHighlightedInScrollView = YES;
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     [_deleteButton setImage:self.deleteButtonImage forState:UIControlStateNormal];
-    [_deleteButton setBackgroundImage:[UIImage imageNamed:@"q_white_btn"] forState:UIControlStateNormal];
+    [_deleteButton setBackgroundImage:[UIImage imageNamed:@"q_white_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [_deleteButton addTarget:self action:@selector(didSelectDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
 //    _deleteButton.layer.cornerRadius = 6;
 //    _deleteButton.layer.masksToBounds = YES;
@@ -494,7 +494,6 @@ const int UISendButtonHeight = 41;
 }
 
 - (void)dealloc {
-    NSLog(@"QMUIEmotionView dealloc");
 }
 
 #pragma mark - Getter
@@ -519,9 +518,12 @@ const int UISendButtonHeight = 41;
 }
 
 + (void)setDefaultAppearance {
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[QEmotionBoardView class]];
+    
     QEmotionBoardView *appearance = [QEmotionBoardView appearance];
     appearance.backgroundColor = nil;
-    appearance.deleteButtonImage = [UIImage imageNamed:@"q_emotion_delete"];
+    appearance.deleteButtonImage = [UIImage imageNamed:@"q_emotion_delete" inBundle:bundle compatibleWithTraitCollection:nil];
     appearance.paddingInPage = UIEdgeInsetsMake(18, 18, 65, 18); //65是滚到底部时候的一大片空白，微信也有
     appearance.emotionSize = CGSizeMake(34, 34);
     appearance.minimumEmotionHorizontalSpacing = 16;

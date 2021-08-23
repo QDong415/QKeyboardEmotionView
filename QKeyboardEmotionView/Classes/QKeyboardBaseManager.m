@@ -129,9 +129,7 @@
 }
 
 
-
 - (void)dealloc {
-    NSLog(@"QKeyBase dealloc");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

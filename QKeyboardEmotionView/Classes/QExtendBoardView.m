@@ -40,11 +40,11 @@ const int UIPerColumItemCount = 2;
 /**
  *  第三方按钮
  */
-@property (nonatomic, weak) UIButton *shareMenuItemButton;
+@property (nonatomic, weak) UIButton *extendItemButton;
 /**
  *  第三方按钮的标题
  */
-@property (nonatomic, weak) UILabel *shareMenuItemTitleLabel;
+@property (nonatomic, weak) UILabel *extendItemTitleLabel;
 
 /**
  *  配置默认控件的方法
@@ -55,28 +55,30 @@ const int UIPerColumItemCount = 2;
 @implementation QExtendBoardCollectionCell
 
 - (void)setup {
-    if (!_shareMenuItemButton) {
-        UIButton *shareMenuItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        shareMenuItemButton.frame = CGRectMake(0, 0, UIMenuItemCellWidth, UIMenuItemCellWidth);
-        shareMenuItemButton.backgroundColor = [UIColor clearColor];
-        [self addSubview:shareMenuItemButton];
+    if (!_extendItemButton) {
+        UIButton *extendItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        extendItemButton.frame = CGRectMake(0, 0, UIMenuItemCellWidth, UIMenuItemCellWidth);
+        extendItemButton.backgroundColor = [UIColor clearColor];
+        [self addSubview:extendItemButton];
         
-        self.shareMenuItemButton = shareMenuItemButton;
+        self.extendItemButton = extendItemButton;
     }
     
-    if (!_shareMenuItemTitleLabel) {
-        UILabel *shareMenuItemTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.shareMenuItemButton.frame), UIMenuItemCellWidth, 17)];
-        shareMenuItemTitleLabel.backgroundColor = [UIColor clearColor];
-        if (@available(iOS 11.0, *)) {
-            shareMenuItemTitleLabel.textColor = [UIColor colorNamed:@"q_text_black_gray"];
-        } else {
-            shareMenuItemTitleLabel.textColor = [UIColor colorWithRed:91/255.0f green:91/255.0f blue:91/255.0f alpha:1];
-        }
-        shareMenuItemTitleLabel.font = [UIFont systemFontOfSize:15];
-        shareMenuItemTitleLabel.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:shareMenuItemTitleLabel];
+    if (!_extendItemTitleLabel) {
         
-        self.shareMenuItemTitleLabel = shareMenuItemTitleLabel;
+        UILabel *extendItemTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.extendItemButton.frame), UIMenuItemCellWidth, 17)];
+        extendItemTitleLabel.backgroundColor = [UIColor clearColor];
+        if (@available(iOS 11.0, *)) {
+            NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+            extendItemTitleLabel.textColor = [UIColor colorNamed:@"q_text_black_gray" inBundle:bundle compatibleWithTraitCollection:nil];
+        } else {
+            extendItemTitleLabel.textColor = [UIColor colorWithRed:91/255.0f green:91/255.0f blue:91/255.0f alpha:1];
+        }
+        extendItemTitleLabel.font = [UIFont systemFontOfSize:15];
+        extendItemTitleLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:extendItemTitleLabel];
+        
+        self.extendItemTitleLabel = extendItemTitleLabel;
     }
 }
 
@@ -100,19 +102,19 @@ const int UIPerColumItemCount = 2;
 /**
  *  这是背景滚动视图
  */
-@property (nonatomic, weak) UIScrollView *shareMenuScrollView;
+@property (nonatomic, weak) UIScrollView *extendScrollView;
 
 /**
  *  显示页码的视图
  */
-@property (nonatomic, weak) UIPageControl *shareMenuPageControl;
+@property (nonatomic, weak) UIPageControl *extendPageControl;
 
 /**
  *  第三方按钮点击的事件
  *
  *  @param sender 第三方按钮对象
  */
-- (void)shareMenuItemButtonClicked:(UIButton *)sender;
+- (void)extendItemButtonClicked:(UIButton *)sender;
 
 /**
  *  配置默认控件
@@ -123,7 +125,7 @@ const int UIPerColumItemCount = 2;
 
 @implementation QExtendBoardView
 
-- (void)shareMenuItemButtonClicked:(UIButton *)sender {
+- (void)extendItemButtonClicked:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(didSelectExtendBoardItem:atIndex:)]) {
         NSInteger index = sender.tag;
         if (index < self.extendBoardItems.count) {
@@ -133,10 +135,10 @@ const int UIPerColumItemCount = 2;
 }
 
 - (void)reloadItemOfIndex:(int)index withNormalIconImage:(UIImage *)image withTitle:(NSString *)title {
-    if ([self.shareMenuScrollView.subviews count] > index) {
-        QExtendBoardCollectionCell *shareMenuItemView = self.shareMenuScrollView.subviews[index];
-        [shareMenuItemView.shareMenuItemButton setImage:image forState:UIControlStateNormal];
-        shareMenuItemView.shareMenuItemTitleLabel.text = title;
+    if ([self.extendScrollView.subviews count] > index) {
+        QExtendBoardCollectionCell *extendItemView = self.extendScrollView.subviews[index];
+        [extendItemView.extendItemButton setImage:image forState:UIControlStateNormal];
+        extendItemView.extendItemTitleLabel.text = title;
     }
 }
 
@@ -146,14 +148,14 @@ const int UIPerColumItemCount = 2;
     // 每行有4个
     int perRowItemCount = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? 10 : 4;
     
-    [self.shareMenuScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.extendScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     CGFloat paddingX = 10;
     CGFloat paddingY = 10;
-    for (QExtendBoardItemModel *shareMenuItem in self.extendBoardItems) {
-        NSInteger index = [self.extendBoardItems indexOfObject:shareMenuItem];
+    for (QExtendBoardItemModel *extendItem in self.extendBoardItems) {
+        NSInteger index = [self.extendBoardItems indexOfObject:extendItem];
         NSInteger page = index / (perRowItemCount * UIPerColumItemCount);
-        CGRect shareMenuItemViewFrame = [self getFrameWithPerRowItemCount:perRowItemCount
+        CGRect extendItemViewFrame = [self getFrameWithPerRowItemCount:perRowItemCount
                                                         perColumItemCount:UIPerColumItemCount
                                                                 itemWidth:UIMenuItemCellWidth
                                                                itemHeight:UIMenuItemCellHeight
@@ -161,18 +163,18 @@ const int UIPerColumItemCount = 2;
                                                                  paddingY:paddingY
                                                                   atIndex:index
                                                                    onPage:page];
-        QExtendBoardCollectionCell *shareMenuItemView = [[QExtendBoardCollectionCell alloc] initWithFrame:shareMenuItemViewFrame];
+        QExtendBoardCollectionCell *extendItemView = [[QExtendBoardCollectionCell alloc] initWithFrame:extendItemViewFrame];
         
-        shareMenuItemView.shareMenuItemButton.tag = index;
-        [shareMenuItemView.shareMenuItemButton addTarget:self action:@selector(shareMenuItemButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [shareMenuItemView.shareMenuItemButton setImage:shareMenuItem.normalIconImage forState:UIControlStateNormal];
-        shareMenuItemView.shareMenuItemTitleLabel.text = shareMenuItem.title;
+        extendItemView.extendItemButton.tag = index;
+        [extendItemView.extendItemButton addTarget:self action:@selector(extendItemButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [extendItemView.extendItemButton setImage:extendItem.normalIconImage forState:UIControlStateNormal];
+        extendItemView.extendItemTitleLabel.text = extendItem.title;
         
-        [self.shareMenuScrollView addSubview:shareMenuItemView];
+        [self.extendScrollView addSubview:extendItemView];
     }
     
-    self.shareMenuPageControl.numberOfPages = (self.extendBoardItems.count / (perRowItemCount * 2) + (self.extendBoardItems.count % (perRowItemCount * 2) ? 1 : 0));
-    [self.shareMenuScrollView setContentSize:CGSizeMake(((self.extendBoardItems.count / (perRowItemCount * 2) + (self.extendBoardItems.count % (perRowItemCount * 2) ? 1 : 0)) * CGRectGetWidth(self.bounds)), CGRectGetHeight(self.shareMenuScrollView.bounds))];
+    self.extendPageControl.numberOfPages = (self.extendBoardItems.count / (perRowItemCount * 2) + (self.extendBoardItems.count % (perRowItemCount * 2) ? 1 : 0));
+    [self.extendScrollView setContentSize:CGSizeMake(((self.extendBoardItems.count / (perRowItemCount * 2) + (self.extendBoardItems.count % (perRowItemCount * 2) ? 1 : 0)) * CGRectGetWidth(self.bounds)), CGRectGetHeight(self.extendScrollView.bounds))];
 }
 
 /**
@@ -205,36 +207,36 @@ const int UIPerColumItemCount = 2;
 
 - (void)setup {
     
-    if (!_shareMenuScrollView) {
-        UIScrollView *shareMenuScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - UIPageControlHeight)];
-        shareMenuScrollView.delegate = self;
-        shareMenuScrollView.canCancelContentTouches = NO;
-        shareMenuScrollView.delaysContentTouches = YES;
-        shareMenuScrollView.backgroundColor = self.backgroundColor;
-        shareMenuScrollView.showsHorizontalScrollIndicator = NO;
-        shareMenuScrollView.showsVerticalScrollIndicator = NO;
-        [shareMenuScrollView setScrollsToTop:NO];
-        shareMenuScrollView.pagingEnabled = YES;
-        [self addSubview:shareMenuScrollView];
+    if (!_extendScrollView) {
+        UIScrollView *extendScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - UIPageControlHeight)];
+        extendScrollView.delegate = self;
+        extendScrollView.canCancelContentTouches = NO;
+        extendScrollView.delaysContentTouches = YES;
+        extendScrollView.backgroundColor = self.backgroundColor;
+        extendScrollView.showsHorizontalScrollIndicator = NO;
+        extendScrollView.showsVerticalScrollIndicator = NO;
+        [extendScrollView setScrollsToTop:NO];
+        extendScrollView.pagingEnabled = YES;
+        [self addSubview:extendScrollView];
         
-        self.shareMenuScrollView = shareMenuScrollView;
+        self.extendScrollView = extendScrollView;
     }
     
-    if (!_shareMenuPageControl) {
-        UIPageControl *shareMenuPageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.shareMenuScrollView.frame), CGRectGetWidth(self.bounds), UIPageControlHeight)];
-        shareMenuPageControl.backgroundColor = self.backgroundColor;
-        shareMenuPageControl.hidesForSinglePage = YES;
-        shareMenuPageControl.defersCurrentPageDisplay = YES;
-        [self addSubview:shareMenuPageControl];
+    if (!_extendPageControl) {
+        UIPageControl *extendPageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.extendScrollView.frame), CGRectGetWidth(self.bounds), UIPageControlHeight)];
+        extendPageControl.backgroundColor = self.backgroundColor;
+        extendPageControl.hidesForSinglePage = YES;
+        extendPageControl.defersCurrentPageDisplay = YES;
+        [self addSubview:extendPageControl];
         
-        self.shareMenuPageControl = shareMenuPageControl;
+        self.extendPageControl = extendPageControl;
     }
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.shareMenuScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - UIPageControlHeight);
-    self.shareMenuPageControl.frame = CGRectMake(0, CGRectGetMaxY(self.shareMenuScrollView.frame), CGRectGetWidth(self.bounds), UIPageControlHeight);
+    self.extendScrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - UIPageControlHeight);
+    self.extendPageControl.frame = CGRectMake(0, CGRectGetMaxY(self.extendScrollView.frame), CGRectGetWidth(self.bounds), UIPageControlHeight);
 }
 
 - (void)awakeFromNib {
@@ -253,9 +255,9 @@ const int UIPerColumItemCount = 2;
 
 - (void)dealloc {
     self.extendBoardItems = nil;
-//    self.shareMenuScrollView.delegate = self;
-    self.shareMenuScrollView = nil;
-    self.shareMenuPageControl = nil;
+//    self.extendScrollView.delegate = self;
+    self.extendScrollView = nil;
+    self.extendPageControl = nil;
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -271,7 +273,7 @@ const int UIPerColumItemCount = 2;
     CGFloat pageWidth = scrollView.frame.size.width;
     //根据当前的坐标与页宽计算当前页码
     NSInteger currentPage = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth)+1;
-    [self.shareMenuPageControl setCurrentPage:currentPage];
+    [self.extendPageControl setCurrentPage:currentPage];
 }
 
 @end

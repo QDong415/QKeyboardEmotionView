@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  QKeyboardEmotionView: dabc0a92a1104c0625c4c5efb88989b1be1444d7
+  QKeyboardEmotionView: cb8974dc6808edacc75e0d3b21ad9eae0274a4c6
 
 PODFILE CHECKSUM: 13dff63cfe41bddaa376f87a925f7b904426baa2
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0
