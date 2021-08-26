@@ -53,7 +53,7 @@
             QEmotion *emotion = [QEmotion emotionWithIdentifier:identifier displayName:[self findKeyByValue:identifier]];
             [emotions addObject:emotion];
         }
-        QEmotion *emotion = [QEmotion emotionWithIdentifier:@"Watermelon" displayName:@"Watermelon"];
+        QEmotion *emotion = [QEmotion emotionWithIdentifier:@"Watermelon" displayName:[self findKeyByValue:@"Watermelon"]];
         [emotions addObject:emotion];
         emotion = [QEmotion emotionWithIdentifier:@"Addoil" displayName:[self findKeyByValue:@"Addoil"]];
         [emotions addObject:emotion];
