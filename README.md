@@ -12,11 +12,11 @@
 - 朋友圈表情键盘：平时不显示底部输入栏，点击cell时候再显示输入栏；
 
 ## 功能：
-- ✅UI仿微信聊天底部输入栏，表情和键盘切换平滑自然，全程60帧
+- ✅UI仿微信聊天底部输入栏，表情和键盘切换动画平滑，全程60帧
 - ✅底部输入栏可以在需要时候再显示，平时隐藏（评论列表场景 或 发微博场景）
 - ✅表情面板+拓展面板+底部输入条 +语音条+UITextView，各个模块都不会互相import，完美解耦
 - ✅每个模块都可以自定义，都可以自由替换，也都可以拉出来当做独立的模块
-- ✅完全不存在内存泄漏，占用内存非常少
+- ✅无内存泄漏。代码清晰明确，注释量比代码都多
 - ✅兼容横屏模式，兼容黑夜模式
 - ✅兼容Swift，提供Swift Demo
 
@@ -25,6 +25,12 @@
 ![](http://qiniu.itopic.com.cn/keyboard2.gif)![](http://qiniu.itopic.com.cn/keyboard3.gif)
 
 ## Example
+
+先在终端里搜索 `pod search QKeyboardEmotionView` 
+
+如果搜索不到1.0.1版本，需要更新你电脑的pod仓库，以下是更新步骤：
+1、先 `pod repo update —verbose`  更新你本地电脑的pod仓库。然后再搜索一次试试看
+2、如果还是搜索不到，执行 `rm ~/Library/Caches/CocoaPods/search_index.json` 。再搜索就OK了
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
@@ -89,8 +95,6 @@ override func viewDidLoad() {
 /// 点击键盘右下角的按钮是否是发送，NO表示普通回车换行，YES表示回调Delegate的Send方法
 @property (nonatomic, assign) BOOL keyboardSendEnabled; // default is YES
 ```
-
-## Requirements
 
 ## Installation
 
