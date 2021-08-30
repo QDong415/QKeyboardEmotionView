@@ -77,7 +77,7 @@
     QExtendBoardView *boardView = [[QExtendBoardView alloc] init];
     boardView.delegate = self;
     if (@available(iOS 11.0, *)) {
-        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSBundle *bundle = [NSBundle bundleForClass:[QKeyboardBaseManager class]];
         boardView.backgroundColor = [UIColor colorNamed:@"q_input_extend_bg" inBundle:bundle compatibleWithTraitCollection:nil];
     } else {
         boardView.backgroundColor = [UIColor colorWithRed:(246)/255.0f green:(246)/255.0f blue:(246)/255.0f alpha:1];
@@ -124,7 +124,7 @@
     
 }
 
-#pragma mark - QUIEmotionViewDelegate
+#pragma mark - QEmotionBoardViewDelegate
 /**
  *  选中表情时的回调
  *  @param  index   被选中的表情在`emotions`里的索引

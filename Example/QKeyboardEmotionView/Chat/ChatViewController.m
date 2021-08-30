@@ -79,7 +79,7 @@
         //用自己的animations，问题就是会闪屏，尤其是tableview滚在上方时候 闪的越狠；好处是tableview在切换时候很跟手
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self scrollToBottomAnimated:NO];
-        } completion:nil];  //dqtodo，只测键盘弹出 or 只测表情弹出，还是有短暂的红
+        } completion:nil];
     } else {
         //用系统的scroll的Animated，不会闪屏，但是问题是tableview在切换时候不那么跟手
         [self scrollToBottomAnimated:YES];

@@ -18,8 +18,6 @@
 
 + (id)sharedFaceManager;
 
-@property (strong, nonatomic)NSDictionary *emojiDictionary;
-
 @property (strong, nonatomic)NSArray<QEmotion *> *emotionArray;
 
 @end

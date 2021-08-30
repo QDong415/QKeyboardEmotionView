@@ -13,6 +13,7 @@
 #import "CommonCustomViewController.h"
 #import "ChatXibViewController.h"
 #import "TextFieldViewController.h"
+#import "QKeyboardEmotionView_Example-Swift.h"
 
 @interface RootViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -47,7 +48,7 @@
 
 //返回列表每个分组section拥有cell行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return 9;
 }
 
 
@@ -96,7 +97,11 @@
             cell.textLabel.text = @"《TextField界面》";
         }
             break;
-            
+        case 8:
+        {
+            cell.textLabel.text = @"《Swift聊天界面》";
+        }
+            break;
         default:
             break;
     }
@@ -152,6 +157,12 @@
         case 7:
         {//"TextField"
             TextFieldViewController *vc = [TextFieldViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 8:
+        {//"Swift聊天界面"
+            ChatSwiftViewController *vc = [ChatSwiftViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

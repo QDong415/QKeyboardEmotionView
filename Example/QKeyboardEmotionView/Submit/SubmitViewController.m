@@ -96,7 +96,7 @@
     
 }
 
-#pragma mark - QUIEmotionViewDelegate
+#pragma mark - QEmotionBoardViewDelegate
 /**
  *  选中表情时的回调
  *  @param  index   被选中的表情在`emotions`里的索引
