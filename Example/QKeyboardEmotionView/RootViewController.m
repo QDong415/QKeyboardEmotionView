@@ -65,7 +65,7 @@
         }
             break;
         case 1:{
-            cell.textLabel.text = @"《普通界面 + 自定义textview》";
+            cell.textLabel.text = @"《普通界面 + 自定义面板》";
         }
             break;
         case 2:{
@@ -118,7 +118,7 @@
         }
             break;
         case 1:
-        {//"普通界面（自定义textview）"
+        {//"普通界面（自定义面板）"
             CommonCustomViewController *vc = [CommonCustomViewController new];
             [self.navigationController pushViewController:vc animated:YES];
         }

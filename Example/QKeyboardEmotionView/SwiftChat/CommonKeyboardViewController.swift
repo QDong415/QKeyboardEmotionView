@@ -19,17 +19,18 @@ class CommonKeyboardViewController : UIViewController {
         
         initBodyView()
         
-        // 初始化输入工具条，frame可以先这样临时设置，下面的addBottomInputBarView代码会重置输入条frame
+        // 初始化输入工具条，frame可以先这样临时设置，下面的addBottomInputBarView方法会重置输入条frame
+        // 如果你想要自定义输入条View，请参考TextFieldViewController代码
         bottomInputView = QInputBarView(frame: CGRect.init(x: 0, y: 0, width: view.frame.size.width, height: CGFloat(UIInputBarViewMinHeight)))
         bottomInputView.setup(with: inputBarViewConfiguration())
         bottomInputView.delegate = self;
         
         //keyboard管理类，用来管理键盘，各大面板的切换
         keyboardManager = QKeyboardManager(viewController: self);
-        //因为addBottomInputBarView方法会立刻触发delegate，所以这里需要先设置delegate，再addBottomInputBarView
         keyboardManager.dataSource = self;
+        //因为addBottomInputBarView方法会立刻触发delegate，所以这里需要先设置delegate，再addBottomInputBarView
         keyboardManager.delegate = self;
-        //YES表示输入框平时不显示（比如朋友圈）；NO表示平时也显示（比如聊天）
+        //将输入条View添加到ViewController；YES表示输入条平时不显示（比如朋友圈）；NO表示平时也显示（比如聊天）
         keyboardManager.addBottomInputBarView(bottomInputView, belowViewController: belowViewController())
         
         //把输入框（如果有的话）绑定给管理类

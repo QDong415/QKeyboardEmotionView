@@ -32,7 +32,7 @@
    
     _textField.delegate = self;
     
-    // 初始化输入工具条，等addBottomInputBarView代码中会重置输入条frame
+    // 初始化输入工具条，等addBottomInputBarView方法中会重置输入条frame
     _inputView = [[CustomBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,56)];
     _inputView.delegate = self;
     

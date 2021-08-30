@@ -30,7 +30,8 @@
     
     [self initBodyView];
     
-    // 初始化输入工具条，frame可以先这样临时设置，下面的addBottomInputBarView代码会重置输入条frame
+    // 初始化输入工具条，frame可以先这样临时设置，下面的addBottomInputBarView方法会重置输入条frame
+    // 如果你想要自定义输入条View，请参考TextFieldViewController代码
     _inputView = [[QInputBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,UIInputBarViewMinHeight)];
     [_inputView setupWithConfiguration:[self inputBarViewConfiguration]];
     _inputView.delegate = self;
@@ -38,8 +39,9 @@
     //keyboard管理类，用来管理键盘，各大面板的切换
     _keyboardManager = [[QKeyboardManager alloc] initWithViewController:self];
     _keyboardManager.dataSource = self;
-    _keyboardManager.delegate = self;
     //因为addBottomInputBarView方法会立刻触发delegate，所以这里需要先设置delegate
+    _keyboardManager.delegate = self;
+    //将输入条View添加到ViewController；YES表示输入条平时不显示（比如朋友圈）；NO表示平时也显示（比如聊天）
     [_keyboardManager addBottomInputBarView:_inputView belowViewController:[self belowViewController]];
     
     //把输入框（如果有的话）绑定给管理类

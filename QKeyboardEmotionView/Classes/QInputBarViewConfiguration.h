@@ -38,7 +38,6 @@
 /// 是否隐藏发送表情
 @property (nonatomic, assign) BOOL emotionButtonHidden; // default is NO
 
-
 /// 点击键盘右下角的按钮是否是发送，NO表示普通回车换行，YES表示回调Delegate的Send方法
 @property (nonatomic, assign) BOOL keyboardSendEnabled; // default is YES
 

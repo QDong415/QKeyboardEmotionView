@@ -36,7 +36,7 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"隐藏键盘" style:UIBarButtonItemStylePlain target:self action:@selector(onHideButtonSelect:)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
-    // 初始化输入工具条，等addBottomInputBarView代码中会重置输入条frame
+    // 初始化输入工具条，等addBottomInputBarView方法中会重置输入条frame
     _inputView = [[SubmitToolBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,56)];
     _inputView.delegate = self;
     
