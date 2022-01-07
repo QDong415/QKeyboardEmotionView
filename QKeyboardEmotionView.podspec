@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QKeyboardEmotionView'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Emotion-Keyboard-Audio-Chat InputBarView'
 
 # This description is used to generate tags and improve search results.

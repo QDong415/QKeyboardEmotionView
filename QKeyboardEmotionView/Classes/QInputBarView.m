@@ -133,7 +133,6 @@ const int UIInputTextViewMaxHeight = 152;
         //vc没有提供UITextView，我们自己来实现
         textView = [[UITextView alloc] initWithFrame:CGRectZero];
         textView.font = [UIFont systemFontOfSize:17];
-        textView.scrollIndicatorInsets = UIEdgeInsetsMake(10.0f, 0.0f, 10.0f, 8.0f);
         textView.returnKeyType = UIReturnKeySend;
         textView.scrollsToTop = NO;
         textView.textAlignment = NSTextAlignmentLeft;
@@ -144,13 +143,14 @@ const int UIInputTextViewMaxHeight = 152;
     textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     textView.delegate = self;
     
-    self.previousTextViewContentHeight = [self getTextViewContentHeight];
     //用kvo来监听输入文本的改变，进而改变tv高度和整个bar高度
     [textView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     [self addSubview:textView];
     textView.frame = CGRectMake(textViewFrameX + textViewHorizontalMargin, (UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2, textViewWidth, UIInputTextViewMinHeight);
     self.inputTextView = textView;
     
+    //记录初始化时候的textview高度
+    self.previousTextViewContentHeight = [self getTextViewContentHeight];
     
     // 如果是可以发送语言的，那就需要一个按钮录音的按钮，事件可以在外部添加
     if (!configuration.voiceButtonHidden) {
@@ -367,6 +367,7 @@ const int UIInputTextViewMaxHeight = 152;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
     if (object == _inputTextView && [keyPath isEqualToString:@"contentSize"]) {
+        //当输入的文本发生<折行>的时候会进入这里，这是ios系统判断的折行，<折行>包括新增文本导致的折行，也包括删除文本
         
         UITextView *textView = (UITextView *)object;
         CGFloat newContentHeight = [self getTextViewContentHeight];
