@@ -28,11 +28,11 @@
 
 先在终端里搜索 `pod search QKeyboardEmotionView` 
 
-如果搜索不到1.0.1版本，需要更新你电脑的pod仓库，以下是更新步骤：
-1、先 `pod repo update —verbose`  更新你本地电脑的pod仓库。然后再搜索一次试试看
-2、如果还是搜索不到，执行 `rm ~/Library/Caches/CocoaPods/search_index.json` 。再搜索就OK了
+如果搜索不到1.0.2版本，需要更新你电脑的pod仓库，以下是更新步骤：
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+1、先 `pod repo update`  更新你本地电脑的pod仓库。然后再搜索一次试试看
+
+2、如果还是搜索不到，执行 `rm ~/Library/Caches/CocoaPods/search_index.json` 。再搜索就OK了
 
 OC 调用方式：
 ```Objective-C
