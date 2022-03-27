@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QKeyboardEmotionView'
-  s.version          = '1.0.2'
+  s.version          = '2.0'
   s.summary          = 'Emotion-Keyboard-Audio-Chat InputBarView'
 
 # This description is used to generate tags and improve search results.
@@ -22,11 +22,11 @@ An InputBarView At bottom(or below) of ViewController. Contains EmotionBoardView
 you can switch between BoardViews and keyboad with animation. It also allows you to customize boardview and inputbarview.It is vert useful for CharViewController and CommentViewController   .
                        DESC
 
-  s.homepage         = 'https://github.com/d19890415/QKeyboardEmotionView'
+  s.homepage         = 'https://github.com/QDong415/QKeyboardEmotionView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'd19890415' => '285275534@qq.com' }
-  s.source           = { :git => 'https://github.com/d19890415/QKeyboardEmotionView.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/QDong415/QKeyboardEmotionView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
