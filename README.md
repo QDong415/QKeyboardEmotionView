@@ -11,18 +11,25 @@
 
 - 朋友圈表情键盘：平时不显示底部输入栏，点击cell时候再显示输入栏；
 
-## 功能：
+## 基础功能：
 - ✅UI仿微信聊天底部输入栏，表情和键盘切换动画平滑，全程60帧
-- ✅底部输入栏可以在需要时候再显示，平时隐藏（评论列表场景 或 发微博场景）
+- ✅底部输入栏可以在需要时候再显示，平时隐藏（评论列表场景 或 朋友圈场景 或 发微博场景）
 - ✅表情面板+拓展面板+底部输入条 +语音条+UITextView，各个模块都不会互相import，完美解耦
-- ✅每个模块都可以自定义，都可以自由替换，也都可以拉出来当做独立的模块
+- ✅每个模块都可以自定义，且都可以自由替换，也都可以拉出来当做独立的模块
 - ✅无内存泄漏。代码清晰明确，注释量比代码都多
-- ✅兼容横屏模式，兼容黑夜模式
+- ✅兼容横屏模式，兼容黑夜模式，兼容导航栏半透明或不透明
 - ✅兼容Swift，提供Swift Demo
+- ✅输入框直接显示表情图片😊，而不是[微笑]
+
+## 进阶功能：
+- ✅提供了文本"[微笑]"解析成图片的方法，并在ios15以下采用了缓存机制，加快解析速度
+- ✅提供了ios15下，刚进入聊天界面时候tableView需要滚到底部导致导航栏闪现的问题解决方案
+- ✅输入文字发生换行时候的动画和”发送“文字时候输入框动画分别采用不同的流程机制，媲美微信
+
 
 ### 效果gif图（Gif图有点卡，实际运行一点都不卡）：
-![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aad1bf722bdf4ce6bf0ea3e236902081~tplv-k3u1fbpfcp-watermark.image?)
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7a5c319c3244416da907855462511784~tplv-k3u1fbpfcp-watermark.image?)![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3354d45a735f47e0a4eb29f92da3d2be~tplv-k3u1fbpfcp-watermark.image?)
+![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard1.png?raw=true)
+![](https://raw.githubusercontent.com/QDong415/QKeyboardEmotionView/master/Example/QKeyboardEmotionView/Documentation/keyboard2.jpg?raw=true)![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard2.gif?raw=true)![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard3.gif?raw=true)
 
 ## Example
 

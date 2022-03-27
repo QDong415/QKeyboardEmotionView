@@ -2,7 +2,8 @@
 //  CommonKeyboardViewController.swift
 //  QSwift
 //
-//  Created by DongJin on 2021/8/27.
+//  Created by QDong on 2021-8-3.
+//  Copyright (c) 2021年 QDong QQ:285275534@qq.com. All rights reserved.
 //
 
 import Foundation
