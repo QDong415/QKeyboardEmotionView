@@ -28,7 +28,6 @@
         _placeHoldLabel.adjustsFontSizeToFitWidth = YES;
         _placeHoldLabel.textAlignment = NSTextAlignmentLeft;
         _placeHoldLabel.font = [UIFont systemFontOfSize:17.f];
-//        _placeHoldLabel.textColor = RGBCOLOR(199, 199, 204);//dqerror
         [self addSubview:_placeHoldLabel];
     }
     return _placeHoldLabel;
@@ -119,7 +118,7 @@
 
 - (void)commonInitialize {
     self.specialTextNum = 1;
-    self.placeHoldContainerInset = UIEdgeInsetsZero;//UIEdgeInsetsMake(4, 4, 4, 4)
+    self.placeHoldContainerInset = UIEdgeInsetsMake(4, 4, 4, 4) ;//UIEdgeInsetsZero;//
     self.font = [UIFont systemFontOfSize:17];
     self.delegate = self;
     self.layoutManager.allowsNonContiguousLayout = NO;
@@ -547,7 +546,6 @@ static void *TextViewObserverSelectedTextRange = &TextViewObserverSelectedTextRa
     self.delegate = nil;
     self.holderTextViewDelegate = nil;
     self.placeHoldLabel = nil;
-    NSLog(@"HolderTv dealloc");
     [self removeObserver:self forKeyPath:@"selectedTextRange" context:TextViewObserverSelectedTextRange];
 }
 

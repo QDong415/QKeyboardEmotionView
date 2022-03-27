@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		12582FCBFDCB8A3368069439 /* Pods_QKeyboardEmotionView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B567FD8AC65B27AA125BF0 /* Pods_QKeyboardEmotionView_Tests.framework */; };
 		360648FC26D3DD680029470C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648F626D3DD680029470C /* RootViewController.m */; };
-		360648FE26D3DD680029470C /* FaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648FA26D3DD680029470C /* FaceManager.m */; };
 		360648FF26D3DD680029470C /* QHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648FB26D3DD680029470C /* QHolderTextView.m */; };
 		3606496826D3F56F0029470C /* CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606494F26D3F56F0029470C /* CommonViewController.m */; };
 		3606496926D3F56F0029470C /* CommonCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606495226D3F56F0029470C /* CommonCustomViewController.m */; };
@@ -23,9 +22,12 @@
 		3606497126D3F56F0029470C /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606496326D3F56F0029470C /* ChatViewController.m */; };
 		3606497226D3F56F0029470C /* ChatXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3606496426D3F56F0029470C /* ChatXibViewController.m */; };
 		3606497326D3F56F0029470C /* ChatXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3606496526D3F56F0029470C /* ChatXibViewController.xib */; };
-		36282B6F26DD2B71007424DC /* EmotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36282B6C26DD2B71007424DC /* EmotionManager.swift */; };
 		36282B7026DD2B71007424DC /* ChatSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36282B6D26DD2B71007424DC /* ChatSwiftViewController.swift */; };
 		36282B7126DD2B71007424DC /* CommonKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36282B6E26DD2B71007424DC /* CommonKeyboardViewController.swift */; };
+		362E164A27F05D2700BAADDA /* ChatSwiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E164927F05D2700BAADDA /* ChatSwiftCell.swift */; };
+		36505D3427EDFAE10057019E /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36505D3227EDFAE10057019E /* ChatCell.m */; };
+		367A7E7527E8E6CE00ABFCAD /* QTestLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 367A7E7427E8E6CE00ABFCAD /* QTestLabel.m */; };
+		36A7B92627EA12DE006920BF /* SendButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A7B92527EA12DD006920BF /* SendButtonViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -55,11 +57,9 @@
 /* Begin PBXFileReference section */
 		0B7EC38D69F3531EF5D6DAB7 /* Pods_QKeyboardEmotionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QKeyboardEmotionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33EB5D4C86230F7FD8BE90F7 /* Pods-QKeyboardEmotionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QKeyboardEmotionView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-QKeyboardEmotionView_Tests/Pods-QKeyboardEmotionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		360648F526D3DD680029470C /* FaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceManager.h; sourceTree = "<group>"; };
 		360648F626D3DD680029470C /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		360648F726D3DD680029470C /* QHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHolderTextView.h; sourceTree = "<group>"; };
 		360648F826D3DD680029470C /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		360648FA26D3DD680029470C /* FaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceManager.m; sourceTree = "<group>"; };
 		360648FB26D3DD680029470C /* QHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHolderTextView.m; sourceTree = "<group>"; };
 		3606494F26D3F56F0029470C /* CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonViewController.m; sourceTree = "<group>"; };
 		3606495026D3F56F0029470C /* CommonCustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCustomViewController.h; sourceTree = "<group>"; };
@@ -82,10 +82,16 @@
 		3606496526D3F56F0029470C /* ChatXibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatXibViewController.xib; sourceTree = "<group>"; };
 		3606496626D3F56F0029470C /* ChatXibViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatXibViewController.h; sourceTree = "<group>"; };
 		3606496726D3F56F0029470C /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
-		36282B6C26DD2B71007424DC /* EmotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionManager.swift; sourceTree = "<group>"; };
 		36282B6D26DD2B71007424DC /* ChatSwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSwiftViewController.swift; sourceTree = "<group>"; };
 		36282B6E26DD2B71007424DC /* CommonKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonKeyboardViewController.swift; sourceTree = "<group>"; };
 		36282B8E26DD342C007424DC /* QKeyboardEmotionView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-Bridging-Header.h"; sourceTree = "<group>"; };
+		362E164927F05D2700BAADDA /* ChatSwiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSwiftCell.swift; sourceTree = "<group>"; };
+		36505D3127EDFAE10057019E /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		36505D3227EDFAE10057019E /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		367A7E7327E8E6CE00ABFCAD /* QTestLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QTestLabel.h; sourceTree = "<group>"; };
+		367A7E7427E8E6CE00ABFCAD /* QTestLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QTestLabel.m; sourceTree = "<group>"; };
+		36A7B92427EA12DD006920BF /* SendButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendButtonViewController.h; sourceTree = "<group>"; };
+		36A7B92527EA12DD006920BF /* SendButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendButtonViewController.m; sourceTree = "<group>"; };
 		4B86392E2BB35235057C76BD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* QKeyboardEmotionView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QKeyboardEmotionView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,11 +192,15 @@
 		3606496226D3F56F0029470C /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				36505D3127EDFAE10057019E /* ChatCell.h */,
+				36505D3227EDFAE10057019E /* ChatCell.m */,
 				3606496726D3F56F0029470C /* ChatViewController.h */,
 				3606496326D3F56F0029470C /* ChatViewController.m */,
 				3606496626D3F56F0029470C /* ChatXibViewController.h */,
 				3606496426D3F56F0029470C /* ChatXibViewController.m */,
 				3606496526D3F56F0029470C /* ChatXibViewController.xib */,
+				367A7E7327E8E6CE00ABFCAD /* QTestLabel.h */,
+				367A7E7427E8E6CE00ABFCAD /* QTestLabel.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -198,11 +208,20 @@
 		36282B6B26DD2B70007424DC /* SwiftChat */ = {
 			isa = PBXGroup;
 			children = (
-				36282B6C26DD2B71007424DC /* EmotionManager.swift */,
 				36282B6D26DD2B71007424DC /* ChatSwiftViewController.swift */,
 				36282B6E26DD2B71007424DC /* CommonKeyboardViewController.swift */,
+				362E164927F05D2700BAADDA /* ChatSwiftCell.swift */,
 			);
 			path = SwiftChat;
+			sourceTree = "<group>";
+		};
+		36A7B92327EA12DD006920BF /* SendButton */ = {
+			isa = PBXGroup;
+			children = (
+				36A7B92427EA12DD006920BF /* SendButtonViewController.h */,
+				36A7B92527EA12DD006920BF /* SendButtonViewController.m */,
+			);
+			path = SendButton;
 			sourceTree = "<group>";
 		};
 		6003F581195388D10070C39A = {
@@ -248,8 +267,7 @@
 				3606495326D3F56F0029470C /* Discuss */,
 				3606495726D3F56F0029470C /* Submit */,
 				3606495C26D3F56F0029470C /* TextField */,
-				360648F526D3DD680029470C /* FaceManager.h */,
-				360648FA26D3DD680029470C /* FaceManager.m */,
+				36A7B92327EA12DD006920BF /* SendButton */,
 				360648F726D3DD680029470C /* QHolderTextView.h */,
 				360648FB26D3DD680029470C /* QHolderTextView.m */,
 				360648F826D3DD680029470C /* RootViewController.h */,
@@ -368,8 +386,8 @@
 				ORGANIZATIONNAME = 285275534;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 727L4MHWA6;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = P73AC4F3PP;
+						ProvisioningStyle = Manual;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -493,19 +511,21 @@
 				3606497126D3F56F0029470C /* ChatViewController.m in Sources */,
 				3606496F26D3F56F0029470C /* TextFieldViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AppDelegate.m in Sources */,
+				362E164A27F05D2700BAADDA /* ChatSwiftCell.swift in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				36282B7026DD2B71007424DC /* ChatSwiftViewController.swift in Sources */,
 				3606497226D3F56F0029470C /* ChatXibViewController.m in Sources */,
-				360648FE26D3DD680029470C /* FaceManager.m in Sources */,
+				36A7B92627EA12DE006920BF /* SendButtonViewController.m in Sources */,
 				3606496926D3F56F0029470C /* CommonCustomViewController.m in Sources */,
 				3606496C26D3F56F0029470C /* SubmitViewController.m in Sources */,
-				36282B6F26DD2B71007424DC /* EmotionManager.swift in Sources */,
 				360648FC26D3DD680029470C /* RootViewController.m in Sources */,
 				36282B7126DD2B71007424DC /* CommonKeyboardViewController.swift in Sources */,
 				3606496D26D3F56F0029470C /* SubmitToolBarView.m in Sources */,
+				36505D3427EDFAE10057019E /* ChatCell.m in Sources */,
 				360648FF26D3DD680029470C /* QHolderTextView.m in Sources */,
 				3606496826D3F56F0029470C /* CommonViewController.m in Sources */,
 				3606496E26D3F56F0029470C /* CustomBarView.m in Sources */,
+				367A7E7527E8E6CE00ABFCAD /* QTestLabel.m in Sources */,
 				3606496B26D3F56F0029470C /* DiscussViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,17 +654,17 @@
 			baseConfigurationReference = DB6EC841B431AEA41FAC6339 /* Pods-QKeyboardEmotionView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 727L4MHWA6;
+				DEVELOPMENT_TEAM = P73AC4F3PP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Prefix.pch";
 				INFOPLIST_FILE = "QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq.qkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "dq-deve-profile20220323";
 				SWIFT_OBJC_BRIDGING_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -656,17 +676,17 @@
 			baseConfigurationReference = 636B0D78CE72783672EE1D59 /* Pods-QKeyboardEmotionView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 727L4MHWA6;
+				DEVELOPMENT_TEAM = P73AC4F3PP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Prefix.pch";
 				INFOPLIST_FILE = "QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq.qkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "dq-deve-profile20220323";
 				SWIFT_OBJC_BRIDGING_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;

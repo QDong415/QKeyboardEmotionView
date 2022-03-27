@@ -7,7 +7,7 @@
 
 #import "TextFieldViewController.h"
 #import "CustomBarView.h"
-#import "FaceManager.h"
+#import "QEmotionHelper.h"
 #import "QKeyboardManager.h"
 #import "QEmotionBoardView.h"
 #import "QHolderTextView.h"
@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"弹框界面";
+    self.title = @"TextField界面";
     self.view.backgroundColor = [UIColor colorWithRed:(248)/255.0f green:(248)/255.0f blue:(246)/255.0f alpha:1];
    
     _textField.delegate = self;
@@ -52,7 +52,7 @@
 //@return 点表情按钮弹出的表情面板View，且无需设置frame
 - (UIView *)keyboardManagerEmotionBoardView:(QKeyboardManager *)keyboardManager {
     QEmotionBoardView *emotionView = [[QEmotionBoardView alloc] init];
-    FaceManager *faceManager = FACEMANAGER;
+    QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
     emotionView.emotions = faceManager.emotionArray;
     emotionView.delegate = self;
     if (@available(iOS 11.0, *)) {
@@ -71,7 +71,7 @@
 
 
 #pragma mark - InputBoardDelegate
-//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘）
+//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 //Warning：这个回调方法的触发已经在animate中了，无需再在本方法里写animate
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
     
@@ -99,7 +99,7 @@
 
 #pragma mark - CustomBarViewDelegate
 //点击了系统键盘的发送按钮
-- (void)inputBarView:(CustomBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText {
+- (void)inputBarView:(CustomBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText {
 
 }
 
@@ -115,14 +115,9 @@
 #pragma mark - UITextViewDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textView {
     _inputView.emotionSwitchButton.selected = NO;
-    [_keyboardManager inputTextViewShouldBeginEditing];
     return YES;
 }
 
-
-- (void)dealloc {
-    NSLog(@"VC dealloc");
-}
 
 
 @end

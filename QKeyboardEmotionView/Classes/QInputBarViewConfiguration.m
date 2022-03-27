@@ -28,7 +28,9 @@
         configuration.textViewBackgroundColor = [UIColor whiteColor];
         configuration.recordButtonTitleColor = [UIColor darkGrayColor];
     }
+    configuration.inputBarHeightChangeAnimationDuration = 0.2;
     configuration.keyboardSendEnabled = YES;
+    
     return configuration;
 }
 

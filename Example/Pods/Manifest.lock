@@ -1,5 +1,5 @@
 PODS:
-  - QKeyboardEmotionView (1.0.0)
+  - QKeyboardEmotionView (1.0.2)
 
 DEPENDENCIES:
   - QKeyboardEmotionView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  QKeyboardEmotionView: cb8974dc6808edacc75e0d3b21ad9eae0274a4c6
+  QKeyboardEmotionView: f25447ebc8d7a9309f50992bb258351b7aaecc17
 
 PODFILE CHECKSUM: 13dff63cfe41bddaa376f87a925f7b904426baa2
 

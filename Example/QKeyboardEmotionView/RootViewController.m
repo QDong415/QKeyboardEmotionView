@@ -2,7 +2,7 @@
 //  ViewController.m
 //  QKeyBoardDemo
 //
-//  Created by DongJin on 2021/7/14.
+//  Created by QDong on 2021/7/14.
 //
 
 #import "RootViewController.h"
@@ -13,6 +13,7 @@
 #import "CommonCustomViewController.h"
 #import "ChatXibViewController.h"
 #import "TextFieldViewController.h"
+#import "SendButtonViewController.h"
 #import "QKeyboardEmotionView_Example-Swift.h"
 
 @interface RootViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -48,7 +49,7 @@
 
 //返回列表每个分组section拥有cell行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 9;
+    return 10;
 }
 
 
@@ -98,6 +99,11 @@
         }
             break;
         case 8:
+        {
+            cell.textLabel.text = @"《输入条右边是“发送”按钮》";
+        }
+            break;
+        case 9:
         {
             cell.textLabel.text = @"《Swift聊天界面》";
         }
@@ -161,6 +167,12 @@
         }
             break;
         case 8:
+        {//"输入条右边是“发送”按钮"
+            SendButtonViewController *vc = [SendButtonViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 9:
         {//"Swift聊天界面"
             ChatSwiftViewController *vc = [ChatSwiftViewController new];
             [self.navigationController pushViewController:vc animated:YES];

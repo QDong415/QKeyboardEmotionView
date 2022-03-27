@@ -7,7 +7,7 @@
 
 #import "CommonViewController.h"
 
-#import "FaceManager.h"
+#import "QEmotionHelper.h"
 #import "QEmotionBoardView.h"
 #import "QExtendBoardView.h"
 
@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
     self.title = @"通用的VC";
-    self.view.backgroundColor = [UIColor colorWithRed:(248)/255.0f green:(248)/255.0f blue:(246)/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:(237)/255.0f green:(237)/255.0f blue:(237)/255.0f alpha:1];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"隐藏键盘" style:UIBarButtonItemStylePlain target:self action:@selector(onHideButtonSelect:)];
     self.navigationItem.rightBarButtonItem = rightButton;
@@ -56,7 +56,10 @@
 #pragma mark - NeedOverride
 - (QInputBarViewConfiguration *)inputBarViewConfiguration {
     //输入条配置，子类可以重写
-    return [QInputBarViewConfiguration defaultInputBarViewConfiguration];
+    QInputBarViewConfiguration *config = [QInputBarViewConfiguration defaultInputBarViewConfiguration];
+//    config.extendButtonHidden = YES;//隐藏右侧拓展按钮
+//    config.voiceButtonHidden = YES;//隐藏左测语音按钮
+    return config;
 }
 
 - (BOOL)belowViewController {
@@ -98,7 +101,7 @@
 //@return 点表情按钮弹出的表情面板View，且无需设置frame
 - (UIView *)keyboardManagerEmotionBoardView:(QKeyboardManager *)keyboardManager {
     QEmotionBoardView *emotionView = [[QEmotionBoardView alloc] init];
-    FaceManager *faceManager = FACEMANAGER;
+    QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
     emotionView.emotions = faceManager.emotionArray;
     emotionView.delegate = self;
     if (@available(iOS 11.0, *)) {
@@ -121,7 +124,7 @@
 }
 
 #pragma mark - InputBoardDelegate
-//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘）
+//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
     
 }
@@ -133,7 +136,10 @@
  *  @param  emotion 被选中的表情对应的`QMUIEmotion`对象
  */
 - (void)emotionView:(QEmotionBoardView *)emotionView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index {
-    [_inputView insertEmotion:emotion.displayName];
+
+    QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
+    //把😊插入到输入栏
+    [_inputView insertEmotionAttributedString:[faceManager obtainAttributedStringByImageKey:emotion.displayName font:_inputView.inputTextView.font useCache:NO]];
 }
 
 // 删除按钮的点击事件回调
@@ -146,7 +152,7 @@
 
 // 发送按钮的点击事件回调
 - (void)emotionViewDidSelectSendButton:(QEmotionBoardView *)emotionView {
-    [self sendTextMessage:[_inputView textViewInputText]];
+    [self sendTextMessage:[_inputView textViewInputNormalText]];
 }
 
 #pragma mark - QExtendBoardViewDelegate
@@ -156,16 +162,10 @@
 }
 
 #pragma mark - QInputBarViewDelegate
-// 输入框将要开始编辑
-- (void)inputBarView:(QInputBarView *)inputBarView inputTextViewShouldBeginEditing:(UITextView *)messageInputTextView {
+// 输入框的高度发生了改变（因为输入框里的文字行数变化了），注意这里仅仅是TextView输入框的高度发生了变化的回调；becauseSendText：YES表示是因为调用了clearInputTextBySend去发送文本
+- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue becauseSendText:(BOOL)becauseSendText {
     //这里要告知Manager类
-    [_keyboardManager inputTextViewShouldBeginEditing];
-}
-
-// 输入框的高度发生了改变（因为输入了内容），注意这里仅仅是TextView输入框的高度发送了变化的回调
-- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue {
-    //这里要告知Manager类
-    [_keyboardManager inputTextViewHeightDidChange];
+    [_keyboardManager inputTextViewHeightDidChange:becauseSendText];
 }
 
 //在发送文本和语音之间发送改变，voiceSwitchButton.isSelected表示切换到了语音输入模式
@@ -177,8 +177,8 @@
 }
 
 //点击了系统键盘的发送按钮
-- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText {
-    [self sendTextMessage:inputText];
+- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText {
+    [self sendTextMessage:inputNormalText];
 }
 
 //点击+按钮
@@ -193,10 +193,6 @@
     } else {
         [_inputView textViewBecomeFirstResponder];
     }
-}
-
-- (void)dealloc {
-    NSLog(@"VC dealloc");
 }
 
 @end

@@ -15,5 +15,7 @@
 
 @property (nonatomic, weak) UIViewController *viewController;//当前vc
 
+//  输入栏TextView的高度发送变化的动画时长（秒）
+@property (nonatomic, assign) NSTimeInterval inputBarHeightChangeAnimationDuration; // default is 0.2
 
 @end

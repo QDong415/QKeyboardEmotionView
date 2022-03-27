@@ -7,9 +7,10 @@
 
 #import "SubmitViewController.h"
 #import "SubmitToolBarView.h"
-#import "FaceManager.h"
+#import "QEmotionHelper.h"
 #import "QEmotionBoardView.h"
 #import "QHolderTextView.h"
+#import "UITextView+QEmotion.h"
 
 @interface SubmitViewController ()<InputBoardDataSource ,InputBoardDelegate ,UITextViewDelegate , QEmotionBoardViewDelegate ,SubmitToolBarViewDelegate>
 {
@@ -30,7 +31,7 @@
     _holderTextView.backgroundColor = [UIColor whiteColor];
     _holderTextView.placeHoldString = @"说点什么吧...";
     _holderTextView.placeHoldTextColor = [UIColor grayColor];
-    _holderTextView.delegate = self;
+    _holderTextView.holderTextViewDelegate = self;
     [self.view addSubview:_holderTextView];
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"隐藏键盘" style:UIBarButtonItemStylePlain target:self action:@selector(onHideButtonSelect:)];
@@ -67,7 +68,7 @@
 //@return 点表情按钮弹出的表情面板View，且无需设置frame
 - (UIView *)keyboardManagerEmotionBoardView:(QKeyboardManager *)keyboardManager {
     QEmotionBoardView *emotionView = [[QEmotionBoardView alloc] init];
-    FaceManager *faceManager = FACEMANAGER;
+    QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
     emotionView.emotions = faceManager.emotionArray;
     emotionView.delegate = self;
     if (@available(iOS 11.0, *)) {
@@ -90,7 +91,7 @@
 }
 
 #pragma mark - InputBoardDelegate
-//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘）
+//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 //Warning：这个回调方法的触发已经在animate中了，无需再在本方法里写animate
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
     
@@ -103,24 +104,30 @@
  *  @param  emotion 被选中的表情对应的`QMUIEmotion`对象
  */
 - (void)emotionView:(QEmotionBoardView *)emotionView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index {
-//    [_holderTextView insertEmotion:emotion.displayName isDelete:NO];
+
+    QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
+    //把😊插入到输入栏
+    [_holderTextView insertEmotionAttributedString:[faceManager obtainAttributedStringByImageKey:emotion.displayName font:_holderTextView.font useCache:NO]];
 }
 
 // 删除按钮的点击事件回调
 - (void)emotionViewDidSelectDeleteButton:(QEmotionBoardView *)emotionView {
-//    [_holderTextView insertEmotion:nil isDelete:YES];
+    if (![_holderTextView deleteEmotion]){
+        //根据当前的光标，这次点击删除按钮并没有删除表情，那么就删除文字
+        [_holderTextView deleteBackward];
+    }
 }
 
 // 发送按钮的点击事件回调
 - (void)emotionViewDidSelectSendButton:(QEmotionBoardView *)emotionView {
-
+    NSLog(@"%@",[_holderTextView normalText]);
 }
 
 
 #pragma mark - SubmitToolBarViewDelegate
 
 //点击了系统键盘的发送按钮
-- (void)inputBarView:(SubmitToolBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText {
+- (void)inputBarView:(SubmitToolBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText {
 
 }
 
@@ -138,18 +145,13 @@
     }
 }
 
-#pragma mark - UITextViewDelegate
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+#pragma mark - HolderTextViewDelegate
+- (BOOL)textViewShouldBeginEditing:(QHolderTextView *)textView {
     
     _inputView.emotionSwitchButton.selected = NO;
     _inputView.extendSwitchButton.selected = NO;
     
-    [_keyboardManager inputTextViewShouldBeginEditing];
     return YES;
-}
-
-- (void)dealloc {
-    NSLog(@"VC dealloc");
 }
 
 @end

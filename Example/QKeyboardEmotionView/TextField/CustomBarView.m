@@ -28,8 +28,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
-        
+
         const int UISwitchButtonWidth = 36; // 3个按钮固定宽高
         const int horizontalPadding = 8; // 水平间隔
         const CGFloat verticalPadding = (frame.size.height - UISwitchButtonWidth )/2;// 垂直间隔

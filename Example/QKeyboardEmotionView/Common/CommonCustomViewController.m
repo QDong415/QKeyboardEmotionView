@@ -96,7 +96,7 @@
 }
 
 #pragma mark - InputBoardDelegate
-//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘）
+//整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
     
 }
@@ -121,7 +121,7 @@
 
 // 发送按钮的点击事件回调
 - (void)emotionViewDidSelectSendButton:(QEmotionBoardView *)emotionView {
-    [self sendTextMessage:[_inputView textViewInputText]];
+    [self sendTextMessage:[_inputView textViewInputNormalText]];
 }
 
 #pragma mark - QExtendBoardViewDelegate
@@ -139,16 +139,10 @@
 }
 
 #pragma mark - QInputBarViewDelegate
-// 输入框将要开始编辑
-- (void)inputBarView:(QInputBarView *)inputBarView inputTextViewShouldBeginEditing:(UITextView *)messageInputTextView {
+// 输入框的高度发生了改变（因为输入框里的文字行数变化了），注意这里仅仅是TextView输入框的高度发生了变化的回调；becauseSendText：YES表示是因为调用了clearInputTextBySend去发送文本
+- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue becauseSendText:(BOOL)becauseSendText {
     //这里要告知Manager类
-    [_keyboardManager inputTextViewShouldBeginEditing];
-}
-
-// 输入框的高度发生了改变（因为输入了内容），注意这里仅仅是TextView输入框的高度发送了变化的回调
-- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue {
-    //这里要告知Manager类
-    [_keyboardManager inputTextViewHeightDidChange];
+    [_keyboardManager inputTextViewHeightDidChange:becauseSendText];
 }
 
 //在发送文本和语音之间发送改变，voiceSwitchButton.isSelected表示切换到了语音输入模式
@@ -160,8 +154,8 @@
 }
 
 //点击了系统键盘的发送按钮
-- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText {
-    [self sendTextMessage:inputText];
+- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText {
+    [self sendTextMessage:inputNormalText];
 }
 
 //点击+按钮
@@ -176,10 +170,6 @@
     } else {
         [_inputView textViewBecomeFirstResponder];
     }
-}
-
-- (void)dealloc {
-    NSLog(@"VC dealloc");
 }
 
 @end

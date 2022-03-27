@@ -34,7 +34,7 @@ extern const int UIInputBarViewMinHeight;
 - (void)inputBarView:(QInputBarView *)inputBarView inputTextViewShouldBeginEditing:(UITextView *)inputTextView;
 
 // 输入框的高度发生了改变（因为输入了值）
-- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue;
+- (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue becauseSendText:(BOOL)becauseSendText;
 
 /**
  *  在发送文本和语音之间发送改变时，会触发这个回调函数
@@ -43,9 +43,9 @@ extern const int UIInputBarViewMinHeight;
 
 /**
  *  点击了系统键盘的发送按钮
- *  @param inputText 目标文本消息
+ *  @param inputNormalText  ："害~你好啊[微笑]"
  */
-- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText;
+- (void)inputBarView:(QInputBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText;
 
 /**
  *  点击+号按钮Action
@@ -81,14 +81,21 @@ extern const int UIInputBarViewMinHeight;
 - (void)textViewResignFirstResponder;
 
 // 获取textView的内容文本
-- (NSString *)textViewInputText;
+- (NSString *)textViewInputNormalText;
 
-// 给textView插入表情
+// 给textView插入表情图片，比如😊
+- (void)insertEmotionAttributedString:(NSAttributedString *)emotionAttributedString;
+
+// 给textView插入表情的文本，比如[微笑]
 - (void)insertEmotion:(NSString *)emotionKey;
 
 // textView删除表情
 // @return YES 表示刚才成功删除了一个表情；
 // @return NO 表示刚才没删掉表情（于是本类就什么都不操作，由外部vc实现删除操作。这样做因为vc的自定义tv可能要实现文字块删除，比如 @人名）
 - (BOOL)deleteEmotion;
+
+// 清除输入的文本，不建议你自己用inputTextView.text = nil来情况文本。因为那样的话如果输入栏的文字>1行，你调用tableView.reload再scrollToBottom会出现tableView滚动不流畅
+//之所以不流畅是因为tableView的scrollToBottom动画和onWholeInputViewHeightDidChange里的动画同时被调用
+- (NSTimeInterval)clearInputTextBySend; //@return 0：当前inputText只有一行；非0：动画时长
 
 @end

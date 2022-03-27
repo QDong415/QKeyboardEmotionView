@@ -21,14 +21,14 @@
 - ✅兼容Swift，提供Swift Demo
 
 ### 效果gif图（Gif图有点卡，实际运行一点都不卡）：
-![](http://qiniu.itopic.com.cn/keyboard1.png)
-![](http://qiniu.itopic.com.cn/keyboard2.gif)![](http://qiniu.itopic.com.cn/keyboard3.gif)
+![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aad1bf722bdf4ce6bf0ea3e236902081~tplv-k3u1fbpfcp-watermark.image?)
+![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7a5c319c3244416da907855462511784~tplv-k3u1fbpfcp-watermark.image?)![](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3354d45a735f47e0a4eb29f92da3d2be~tplv-k3u1fbpfcp-watermark.image?)
 
 ## Example
 
 先在终端里搜索 `pod search QKeyboardEmotionView` 
 
-如果搜索不到1.0.2版本，需要更新你电脑的pod仓库，以下是更新步骤：
+如果搜索不到2.0版本，需要更新你电脑的pod仓库，以下是更新步骤：
 
 1、先 `pod repo update`  更新你本地电脑的pod仓库。然后再搜索一次试试看
 

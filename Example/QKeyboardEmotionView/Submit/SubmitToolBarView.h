@@ -18,7 +18,7 @@
  *  点击了系统键盘的发送按钮
  *  @param inputText 目标文本消息
  */
-- (void)inputBarView:(SubmitToolBarView *)inputBarView onKeyboardSendClick:(NSString *)inputText;
+- (void)inputBarView:(SubmitToolBarView *)inputBarView onKeyboardSendClick:(NSString *)inputNormalText;
 
 /**
  *  点击+号按钮Action

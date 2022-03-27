@@ -7,103 +7,108 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27D06DD665661D490FCAF5CD725637B6 /* QExtendBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FF038AB8FE413F42E4DFB4A7B2FA84 /* QExtendBoardView.m */; };
-		362D695FA5BF29947D0731A7E3519681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC25532807902D1C80494B5B79F7D5A3 /* Assets.xcassets */; };
-		37178E26462A6962C019BD47FFCE93EC /* QInputBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A0D2E096E6073FB20B8B49110B2848 /* QInputBarView.m */; };
-		399CA023153D891D1B75004FF4558F7C /* QKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 514FB11233F9B1FC7594AF2548AA2F59 /* QKeyboardManager.m */; };
-		3C841CF82A963576ACB4D5B3993EC4D1 /* QInputBarViewConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A9C68F34F31505FCDAB8A10EC21679C /* QInputBarViewConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3E2AD6B1D0E0CB80BFF50E9D962242F1 /* QKeyboardEmotionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38CE3749268F6DC1AC6152C6E56752E0 /* QKeyboardEmotionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12ED0BDD6022CDCC76D8D133AE281DE1 /* QKeyboardBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C948E6478D376B2F1BA1ACBB9DFE21F /* QKeyboardBaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1361FDA5CDA8B68AE56CE57B82212076 /* QKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B79AE7CA2CC0D762B9371E23D4ADE083 /* QKeyboardManager.m */; };
+		2288D589173432AA86E6BF4D311FFAE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		38357A5A8C87EA01D0D79778ED3A13CC /* QEmotionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E58C67FDC0BD45A14BAEE2A4C764B8 /* QEmotionHelper.m */; };
 		44BF956E032C0403D5CE362B68C74B3E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		4718D9BCE7A616DE8F9C21E80250CF4A /* QInputBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = FCE86920185FB469DAEA7DDC068BEBEB /* QInputBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49CAA094783F73ADCC143CAF784D6FDE /* QEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CD995A43D4A3E16786752759117CD6 /* QEmotion.m */; };
 		4E3AB590488738684E9CD0AE3F288CBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		4F4F6A43321B27C8FEBABF2C1B62179E /* QKeyboardEmotionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC38642648C64954320B1E76D0C1841D /* QKeyboardEmotionView-dummy.m */; };
+		569CA5ACF51D0FF93910799BB7358D4D /* QKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A186D4FAF64DE1646AD4ABECE6BFFCC /* QKeyboardManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68AADAEFF870D9E562456A45D1D78BAE /* Pods-QKeyboardEmotionView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6847D41842E8357ECF0886A151F20B23 /* Pods-QKeyboardEmotionView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CD4A7705FD3B280CDF6EC0751CD40C2 /* QEmotionBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC00C163183E1779277AEFF91217AEE /* QEmotionBoardView.m */; };
 		6EEDE1334A252C1D279099A9DD3852A0 /* Pods-QKeyboardEmotionView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E0116AE65CD0B909A00D38578D36C3D /* Pods-QKeyboardEmotionView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73BA7BF80D43594338AEEB052A5367E5 /* UITextView+QEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = B1169852D25C353A81664FE35DAE03D7 /* UITextView+QEmotion.m */; };
+		7AB240FE92664EDDB338C1DDCDC267B9 /* QInputBarViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8BFF17BDF851C13AB6136CACACBCE9 /* QInputBarViewConfiguration.m */; };
+		80265B1CA8956EE327F81BA2A38B22A1 /* QEmotionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 41A2E18E5CD575DB0F0E0A713803768E /* QEmotionHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8416FC8C334DE13F27FB747BC434A5E0 /* QKeyboardEmotionView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 517C0C62A4229CF6DB6132F4E71A4D0C /* QKeyboardEmotionView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84CE8EDD98562AE29B99DD748F5489C6 /* Pods-QKeyboardEmotionView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 374163023438DB7A199CBDEA3654BAF7 /* Pods-QKeyboardEmotionView_Tests-dummy.m */; };
 		88B5A6FBD7FE26995591907A3F351927 /* Pods-QKeyboardEmotionView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FE100909F69ECFCEEF66C440B0FD1CC0 /* Pods-QKeyboardEmotionView_Example-dummy.m */; };
-		8F9B119CFC29C20D2B4D9DDA86A9341E /* QInputBarViewConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1D67AC09D1717586CB357786D4EBE8 /* QInputBarViewConfiguration.m */; };
-		982617A75BBF0EA59D1A80B5BBCD9B74 /* QInputBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = D065D9466BC7F7AB190E787DB35F5909 /* QInputBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AA4FCAFAEF3D332E2C51F6DD3F53B02A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC25532807902D1C80494B5B79F7D5A3 /* Assets.xcassets */; };
-		AE2DBBA6EACBCD0CDB61F9ACA7C7215F /* QKeyboardBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD965D62382767D56D8572DAC439B7F3 /* QKeyboardBaseManager.m */; };
-		B13D32CBA37A03B64B9305145B29D647 /* QKeyboardManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 499515A3CBF6D101E2A70812515F4413 /* QKeyboardManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B82362E1F7E52879339878EAB9762522 /* QKeyboardEmotionView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1E39FFA5C5476D468915884D2ABCB49 /* QKeyboardEmotionView.bundle */; };
-		B935353179FEAC63B54060632523F1E0 /* QEmotionBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B0D6EBCD17FEA412A1169C666E6B1 /* QEmotionBoardView.m */; };
-		CA84FF9B4FE5D1DD6B08ECD9960C4873 /* QExtendBoardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BA2F55F843E3B6A302720F132587EFB /* QExtendBoardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D5CEDEFEAE4E3D2E8173FDE0CD009B17 /* QKeyboardEmotionView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E8A73CD0DB7845739EE847D8211FC /* QKeyboardEmotionView-dummy.m */; };
-		D71DA20EB1C3EAC99316E9CE545AE537 /* QEmotionBoardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0E5938AA2F737A0E21A4BCC6254745 /* QEmotionBoardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D770046B7B623ADD181874BB0F588DD4 /* QKeyboardBaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 21BA766D1E162EFCEFAB1C3FBB0DD066 /* QKeyboardBaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DAC6EC7AFC7CDC5F7EB8C736A40B6CBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		8E9DB4338DE9799DF54448D9C03BD429 /* QInputBarViewConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 99BA9AE6C47565D55606488478C21BE1 /* QInputBarViewConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F89F40094AAA6B3C631C2C6D9BF1E2C /* QExtendBoardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29F04EF698F20E8E1BBA891B30285559 /* QExtendBoardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		913003E67932C6F9710CC01865E8C093 /* QKeyboardBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7409CDF66354B96C5AB4C4A90C93B41A /* QKeyboardBaseManager.m */; };
+		92DBA0FCDE137301513F6D4AE3AB09E2 /* QExtendBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045039A5DA6FD58FED08A168255BE739 /* QExtendBoardView.m */; };
+		B45E8FCAC48279DB9092C3CAA31D7130 /* QEmotionBoardView.h in Headers */ = {isa = PBXBuildFile; fileRef = 83AF9A01783C66740D7010DE8D188245 /* QEmotionBoardView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA15BEA0257D88A24E489D6A272FD5BA /* QEmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DF0E785C4DF76BEBCC582043C41834 /* QEmotionAttachment.m */; };
+		BB29DD7C877BCF54B214D957EA81CA55 /* QEmotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 31FAFD4DDEE4705EA097B91E7B47744D /* QEmotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE40DF32B27C71BF67261256E0D015AC /* QEmotionAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 173BBC9A6DB965DF9EE159D6EE3A9A5D /* QEmotionAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C188703D36B387E2955CD3D979658E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A762DA3452F7500989A20B9ADA109A /* Assets.xcassets */; };
+		DC8164C33621CC6838AFDFB2B18772CF /* QInputBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28565BC567D9CC11D498B46587D47354 /* QInputBarView.m */; };
+		E11FE4BFA7B2EA5F116366E2099E681A /* UITextView+QEmotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ADCEB0D02AEF9F16D827B9BC9A6FF22 /* UITextView+QEmotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		482568553FCAE65D37760B76EC01AD84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 01719F29BE9883C86DF09726E9F216E3;
-			remoteInfo = "Pods-QKeyboardEmotionView_Example";
-		};
-		55DE6E4FB59646D19D05F7B9255AA323 /* PBXContainerItemProxy */ = {
+		18506D170DA4F4B5E093CC3B1780B708 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B7B42978BD9D630306E48AC66F70D5E5;
 			remoteInfo = QKeyboardEmotionView;
 		};
-		BB02330AC84184EC3C5E3CD95F284725 /* PBXContainerItemProxy */ = {
+		2F5B8D13E2C04CF41A86827B0A8FA371 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3E1E3D033CACD99B1F855CF10D2FC910;
-			remoteInfo = "QKeyboardEmotionView-QKeyboardEmotionView";
+			remoteGlobalIDString = 01719F29BE9883C86DF09726E9F216E3;
+			remoteInfo = "Pods-QKeyboardEmotionView_Example";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04FF038AB8FE413F42E4DFB4A7B2FA84 /* QExtendBoardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QExtendBoardView.m; path = QKeyboardEmotionView/Classes/QExtendBoardView.m; sourceTree = "<group>"; };
-		0527924B80E5EA634973881FA2455087 /* QKeyboardEmotionView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QKeyboardEmotionView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		045039A5DA6FD58FED08A168255BE739 /* QExtendBoardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QExtendBoardView.m; path = QKeyboardEmotionView/Classes/QExtendBoardView.m; sourceTree = "<group>"; };
 		0B4E9C63D41755516A6C77C124B05EA4 /* Pods-QKeyboardEmotionView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QKeyboardEmotionView_Example.release.xcconfig"; sourceTree = "<group>"; };
+		0F62B85F9E478AD9A397549938F0D8A7 /* QKeyboardEmotionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QKeyboardEmotionView.release.xcconfig; sourceTree = "<group>"; };
+		173BBC9A6DB965DF9EE159D6EE3A9A5D /* QEmotionAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QEmotionAttachment.h; path = QKeyboardEmotionView/Classes/QEmotionAttachment.h; sourceTree = "<group>"; };
+		1959F5DC624CB71047B4C1A343479F85 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		1ADCEB0D02AEF9F16D827B9BC9A6FF22 /* UITextView+QEmotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+QEmotion.h"; path = "QKeyboardEmotionView/Classes/UITextView+QEmotion.h"; sourceTree = "<group>"; };
 		20E03E85D97C1EEE16F188E096C9091A /* Pods-QKeyboardEmotionView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QKeyboardEmotionView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		21278B7F4F6B26F327ECC166E3943925 /* Pods-QKeyboardEmotionView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QKeyboardEmotionView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		21BA766D1E162EFCEFAB1C3FBB0DD066 /* QKeyboardBaseManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QKeyboardBaseManager.h; path = QKeyboardEmotionView/Classes/QKeyboardBaseManager.h; sourceTree = "<group>"; };
 		245745F5B247A835403311D3A79389AF /* Pods-QKeyboardEmotionView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QKeyboardEmotionView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2A0E5938AA2F737A0E21A4BCC6254745 /* QEmotionBoardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QEmotionBoardView.h; path = QKeyboardEmotionView/Classes/QEmotionBoardView.h; sourceTree = "<group>"; };
+		28565BC567D9CC11D498B46587D47354 /* QInputBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QInputBarView.m; path = QKeyboardEmotionView/Classes/QInputBarView.m; sourceTree = "<group>"; };
+		29F04EF698F20E8E1BBA891B30285559 /* QExtendBoardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QExtendBoardView.h; path = QKeyboardEmotionView/Classes/QExtendBoardView.h; sourceTree = "<group>"; };
 		2BDCABEC7321890BA7A5B844266518F2 /* Pods-QKeyboardEmotionView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QKeyboardEmotionView_Example.modulemap"; sourceTree = "<group>"; };
-		2EFC9304C4A892567461928C53D29720 /* QKeyboardEmotionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-prefix.pch"; sourceTree = "<group>"; };
+		31FAFD4DDEE4705EA097B91E7B47744D /* QEmotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QEmotion.h; path = QKeyboardEmotionView/Classes/QEmotion.h; sourceTree = "<group>"; };
 		374163023438DB7A199CBDEA3654BAF7 /* Pods-QKeyboardEmotionView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QKeyboardEmotionView_Tests-dummy.m"; sourceTree = "<group>"; };
-		38CE3749268F6DC1AC6152C6E56752E0 /* QKeyboardEmotionView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-umbrella.h"; sourceTree = "<group>"; };
-		42A0D2E096E6073FB20B8B49110B2848 /* QInputBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QInputBarView.m; path = QKeyboardEmotionView/Classes/QInputBarView.m; sourceTree = "<group>"; };
-		499515A3CBF6D101E2A70812515F4413 /* QKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QKeyboardManager.h; path = QKeyboardEmotionView/Classes/QKeyboardManager.h; sourceTree = "<group>"; };
+		41A2E18E5CD575DB0F0E0A713803768E /* QEmotionHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QEmotionHelper.h; path = QKeyboardEmotionView/Classes/QEmotionHelper.h; sourceTree = "<group>"; };
+		4A186D4FAF64DE1646AD4ABECE6BFFCC /* QKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QKeyboardManager.h; path = QKeyboardEmotionView/Classes/QKeyboardManager.h; sourceTree = "<group>"; };
 		4E0116AE65CD0B909A00D38578D36C3D /* Pods-QKeyboardEmotionView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QKeyboardEmotionView_Example-umbrella.h"; sourceTree = "<group>"; };
-		514FB11233F9B1FC7594AF2548AA2F59 /* QKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QKeyboardManager.m; path = QKeyboardEmotionView/Classes/QKeyboardManager.m; sourceTree = "<group>"; };
-		5D0B0D6EBCD17FEA412A1169C666E6B1 /* QEmotionBoardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QEmotionBoardView.m; path = QKeyboardEmotionView/Classes/QEmotionBoardView.m; sourceTree = "<group>"; };
-		5D4E8A73CD0DB7845739EE847D8211FC /* QKeyboardEmotionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QKeyboardEmotionView-dummy.m"; sourceTree = "<group>"; };
+		517C0C62A4229CF6DB6132F4E71A4D0C /* QKeyboardEmotionView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-umbrella.h"; sourceTree = "<group>"; };
+		53CD995A43D4A3E16786752759117CD6 /* QEmotion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QEmotion.m; path = QKeyboardEmotionView/Classes/QEmotion.m; sourceTree = "<group>"; };
+		56A762DA3452F7500989A20B9ADA109A /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = QKeyboardEmotionView/Assets/Assets.xcassets; sourceTree = "<group>"; };
 		6847D41842E8357ECF0886A151F20B23 /* Pods-QKeyboardEmotionView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QKeyboardEmotionView_Tests-umbrella.h"; sourceTree = "<group>"; };
+		6C948E6478D376B2F1BA1ACBB9DFE21F /* QKeyboardBaseManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QKeyboardBaseManager.h; path = QKeyboardEmotionView/Classes/QKeyboardBaseManager.h; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73B7C54AA5700890C6E2B9A023B7CDBA /* Pods-QKeyboardEmotionView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QKeyboardEmotionView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		7A9C68F34F31505FCDAB8A10EC21679C /* QInputBarViewConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QInputBarViewConfiguration.h; path = QKeyboardEmotionView/Classes/QInputBarViewConfiguration.h; sourceTree = "<group>"; };
+		7409CDF66354B96C5AB4C4A90C93B41A /* QKeyboardBaseManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QKeyboardBaseManager.m; path = QKeyboardEmotionView/Classes/QKeyboardBaseManager.m; sourceTree = "<group>"; };
+		75DF0E785C4DF76BEBCC582043C41834 /* QEmotionAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QEmotionAttachment.m; path = QKeyboardEmotionView/Classes/QEmotionAttachment.m; sourceTree = "<group>"; };
 		7F56D9C5294825FDBDEE21561BBCEA27 /* Pods-QKeyboardEmotionView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QKeyboardEmotionView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		80257BFADDAEA8DFCBB13B9229BC2A27 /* ResourceBundle-QKeyboardEmotionView-QKeyboardEmotionView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-QKeyboardEmotionView-QKeyboardEmotionView-Info.plist"; sourceTree = "<group>"; };
+		83AF9A01783C66740D7010DE8D188245 /* QEmotionBoardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QEmotionBoardView.h; path = QKeyboardEmotionView/Classes/QEmotionBoardView.h; sourceTree = "<group>"; };
+		87E58C67FDC0BD45A14BAEE2A4C764B8 /* QEmotionHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QEmotionHelper.m; path = QKeyboardEmotionView/Classes/QEmotionHelper.m; sourceTree = "<group>"; };
 		8BAFDD2E23B9FFA4CFBB5C1139A9CD38 /* Pods_QKeyboardEmotionView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QKeyboardEmotionView_Tests.framework; path = "Pods-QKeyboardEmotionView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D6E14BA545306ECCE7944561AE1143C /* QKeyboardEmotionView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QKeyboardEmotionView.release.xcconfig; sourceTree = "<group>"; };
 		96196D9AC3FB3E46481DD22DFDE073AE /* Pods-QKeyboardEmotionView_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QKeyboardEmotionView_Tests-Info.plist"; sourceTree = "<group>"; };
-		9BA2F55F843E3B6A302720F132587EFB /* QExtendBoardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QExtendBoardView.h; path = QKeyboardEmotionView/Classes/QExtendBoardView.h; sourceTree = "<group>"; };
+		99BA9AE6C47565D55606488478C21BE1 /* QInputBarViewConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QInputBarViewConfiguration.h; path = QKeyboardEmotionView/Classes/QInputBarViewConfiguration.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A710555E90A3A1D2CF3F8AF69139EF74 /* QKeyboardEmotionView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QKeyboardEmotionView.framework; path = QKeyboardEmotionView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE123A51B79323FF1B74E635EED38D8A /* QKeyboardEmotionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QKeyboardEmotionView.debug.xcconfig; sourceTree = "<group>"; };
+		B1169852D25C353A81664FE35DAE03D7 /* UITextView+QEmotion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+QEmotion.m"; path = "QKeyboardEmotionView/Classes/UITextView+QEmotion.m"; sourceTree = "<group>"; };
 		B44EBFFDD9F606B37A0907AB7FE135C2 /* Pods-QKeyboardEmotionView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QKeyboardEmotionView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B79AE7CA2CC0D762B9371E23D4ADE083 /* QKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QKeyboardManager.m; path = QKeyboardEmotionView/Classes/QKeyboardManager.m; sourceTree = "<group>"; };
 		BACA96337171A0DE4262431CD505CC0B /* Pods-QKeyboardEmotionView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QKeyboardEmotionView_Tests.modulemap"; sourceTree = "<group>"; };
-		BD965D62382767D56D8572DAC439B7F3 /* QKeyboardBaseManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QKeyboardBaseManager.m; path = QKeyboardEmotionView/Classes/QKeyboardBaseManager.m; sourceTree = "<group>"; };
-		BF1133544B3DA7263773AE11130DC29B /* QKeyboardEmotionView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QKeyboardEmotionView.modulemap; sourceTree = "<group>"; };
-		C203278B87839A1745C84425F37D9AAC /* QKeyboardEmotionView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QKeyboardEmotionView.debug.xcconfig; sourceTree = "<group>"; };
-		D065D9466BC7F7AB190E787DB35F5909 /* QInputBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QInputBarView.h; path = QKeyboardEmotionView/Classes/QInputBarView.h; sourceTree = "<group>"; };
-		DC1D67AC09D1717586CB357786D4EBE8 /* QInputBarViewConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QInputBarViewConfiguration.m; path = QKeyboardEmotionView/Classes/QInputBarViewConfiguration.m; sourceTree = "<group>"; };
-		DC25532807902D1C80494B5B79F7D5A3 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = QKeyboardEmotionView/Assets/Assets.xcassets; sourceTree = "<group>"; };
-		DD16391ED40CF82671A6546E6A81BE1B /* QKeyboardEmotionView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QKeyboardEmotionView-Info.plist"; sourceTree = "<group>"; };
-		E1E39FFA5C5476D468915884D2ABCB49 /* QKeyboardEmotionView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = QKeyboardEmotionView.bundle; path = "QKeyboardEmotionView-QKeyboardEmotionView.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC00C163183E1779277AEFF91217AEE /* QEmotionBoardView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QEmotionBoardView.m; path = QKeyboardEmotionView/Classes/QEmotionBoardView.m; sourceTree = "<group>"; };
+		C2D09C80786C475CB95C1DAD55C57CCA /* QKeyboardEmotionView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QKeyboardEmotionView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CA8BFF17BDF851C13AB6136CACACBCE9 /* QInputBarViewConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QInputBarViewConfiguration.m; path = QKeyboardEmotionView/Classes/QInputBarViewConfiguration.m; sourceTree = "<group>"; };
+		CB9F8C53F0A41AEC1C05CC2B96F1ED18 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		CBC0A143A2F5A419372018F9CDA5C6CF /* QKeyboardEmotionView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QKeyboardEmotionView-prefix.pch"; sourceTree = "<group>"; };
+		CC38642648C64954320B1E76D0C1841D /* QKeyboardEmotionView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QKeyboardEmotionView-dummy.m"; sourceTree = "<group>"; };
+		D5A5AADA3618628DCFE5ECE9049B94AF /* QKeyboardEmotionView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QKeyboardEmotionView.modulemap; sourceTree = "<group>"; };
 		E5F6716719C607133E507D2AA42EF129 /* Pods-QKeyboardEmotionView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QKeyboardEmotionView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		ECAD4FB1737EA2CF78EEFDC9190C1EAC /* Pods_QKeyboardEmotionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QKeyboardEmotionView_Example.framework; path = "Pods-QKeyboardEmotionView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDAA8FB8E2052F5C7D74563B1C7105D /* Pods-QKeyboardEmotionView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QKeyboardEmotionView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		ED6770BFD0D6EDB9951460D77B1E3FC2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		F089EF5F62BBD493761834B9922A47F6 /* QKeyboardEmotionView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QKeyboardEmotionView-Info.plist"; sourceTree = "<group>"; };
 		F38BC573223A89EA007309C128313069 /* Pods-QKeyboardEmotionView_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QKeyboardEmotionView_Example-Info.plist"; sourceTree = "<group>"; };
-		F52AABA681C3E37242D99BBFE4E2B0DF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		FCE86920185FB469DAEA7DDC068BEBEB /* QInputBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QInputBarView.h; path = QKeyboardEmotionView/Classes/QInputBarView.h; sourceTree = "<group>"; };
 		FE100909F69ECFCEEF66C440B0FD1CC0 /* Pods-QKeyboardEmotionView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QKeyboardEmotionView_Example-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,13 +121,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3C483193F034135FD54FAB5371FBECD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		81D12A5141674453033495388AE95A6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,40 +129,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8447D11C8709B29F4685B00553F725C /* Frameworks */ = {
+		EDC8DB0F1D7B8E4D2C3D9823C1FB5646 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAC6EC7AFC7CDC5F7EB8C736A40B6CBF /* Foundation.framework in Frameworks */,
+				2288D589173432AA86E6BF4D311FFAE1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31CD844809A4EED00DAFF6289F1A1A96 /* QKeyboardEmotionView */ = {
-			isa = PBXGroup;
-			children = (
-				DC25532807902D1C80494B5B79F7D5A3 /* Assets.xcassets */,
-				2A0E5938AA2F737A0E21A4BCC6254745 /* QEmotionBoardView.h */,
-				5D0B0D6EBCD17FEA412A1169C666E6B1 /* QEmotionBoardView.m */,
-				9BA2F55F843E3B6A302720F132587EFB /* QExtendBoardView.h */,
-				04FF038AB8FE413F42E4DFB4A7B2FA84 /* QExtendBoardView.m */,
-				D065D9466BC7F7AB190E787DB35F5909 /* QInputBarView.h */,
-				42A0D2E096E6073FB20B8B49110B2848 /* QInputBarView.m */,
-				7A9C68F34F31505FCDAB8A10EC21679C /* QInputBarViewConfiguration.h */,
-				DC1D67AC09D1717586CB357786D4EBE8 /* QInputBarViewConfiguration.m */,
-				21BA766D1E162EFCEFAB1C3FBB0DD066 /* QKeyboardBaseManager.h */,
-				BD965D62382767D56D8572DAC439B7F3 /* QKeyboardBaseManager.m */,
-				499515A3CBF6D101E2A70812515F4413 /* QKeyboardManager.h */,
-				514FB11233F9B1FC7594AF2548AA2F59 /* QKeyboardManager.m */,
-				C49B2BB2C91E0258C8498CA503799E4A /* Pod */,
-				958C9DDC704D10ADFB43691FDC6D115F /* Support Files */,
-			);
-			name = QKeyboardEmotionView;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		4394735106CA0785242356728C610F16 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +155,16 @@
 				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		66585530B5BB379FAE753735ED435500 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				CB9F8C53F0A41AEC1C05CC2B96F1ED18 /* LICENSE */,
+				C2D09C80786C475CB95C1DAD55C57CCA /* QKeyboardEmotionView.podspec */,
+				1959F5DC624CB71047B4C1A343479F85 /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		6CF282033101426ECCF77E86B500EDFA /* Pods-QKeyboardEmotionView_Tests */ = {
@@ -198,28 +183,60 @@
 			path = "Target Support Files/Pods-QKeyboardEmotionView_Tests";
 			sourceTree = "<group>";
 		};
-		958C9DDC704D10ADFB43691FDC6D115F /* Support Files */ = {
+		6D504EDB511501DDEA21BA9948407DAA /* QKeyboardEmotionView */ = {
 			isa = PBXGroup;
 			children = (
-				BF1133544B3DA7263773AE11130DC29B /* QKeyboardEmotionView.modulemap */,
-				5D4E8A73CD0DB7845739EE847D8211FC /* QKeyboardEmotionView-dummy.m */,
-				DD16391ED40CF82671A6546E6A81BE1B /* QKeyboardEmotionView-Info.plist */,
-				2EFC9304C4A892567461928C53D29720 /* QKeyboardEmotionView-prefix.pch */,
-				38CE3749268F6DC1AC6152C6E56752E0 /* QKeyboardEmotionView-umbrella.h */,
-				C203278B87839A1745C84425F37D9AAC /* QKeyboardEmotionView.debug.xcconfig */,
-				8D6E14BA545306ECCE7944561AE1143C /* QKeyboardEmotionView.release.xcconfig */,
-				80257BFADDAEA8DFCBB13B9229BC2A27 /* ResourceBundle-QKeyboardEmotionView-QKeyboardEmotionView-Info.plist */,
+				56A762DA3452F7500989A20B9ADA109A /* Assets.xcassets */,
+				31FAFD4DDEE4705EA097B91E7B47744D /* QEmotion.h */,
+				53CD995A43D4A3E16786752759117CD6 /* QEmotion.m */,
+				173BBC9A6DB965DF9EE159D6EE3A9A5D /* QEmotionAttachment.h */,
+				75DF0E785C4DF76BEBCC582043C41834 /* QEmotionAttachment.m */,
+				83AF9A01783C66740D7010DE8D188245 /* QEmotionBoardView.h */,
+				BBC00C163183E1779277AEFF91217AEE /* QEmotionBoardView.m */,
+				41A2E18E5CD575DB0F0E0A713803768E /* QEmotionHelper.h */,
+				87E58C67FDC0BD45A14BAEE2A4C764B8 /* QEmotionHelper.m */,
+				29F04EF698F20E8E1BBA891B30285559 /* QExtendBoardView.h */,
+				045039A5DA6FD58FED08A168255BE739 /* QExtendBoardView.m */,
+				FCE86920185FB469DAEA7DDC068BEBEB /* QInputBarView.h */,
+				28565BC567D9CC11D498B46587D47354 /* QInputBarView.m */,
+				99BA9AE6C47565D55606488478C21BE1 /* QInputBarViewConfiguration.h */,
+				CA8BFF17BDF851C13AB6136CACACBCE9 /* QInputBarViewConfiguration.m */,
+				6C948E6478D376B2F1BA1ACBB9DFE21F /* QKeyboardBaseManager.h */,
+				7409CDF66354B96C5AB4C4A90C93B41A /* QKeyboardBaseManager.m */,
+				4A186D4FAF64DE1646AD4ABECE6BFFCC /* QKeyboardManager.h */,
+				B79AE7CA2CC0D762B9371E23D4ADE083 /* QKeyboardManager.m */,
+				1ADCEB0D02AEF9F16D827B9BC9A6FF22 /* UITextView+QEmotion.h */,
+				B1169852D25C353A81664FE35DAE03D7 /* UITextView+QEmotion.m */,
+				66585530B5BB379FAE753735ED435500 /* Pod */,
+				8F6F9CA0611F84239FD380B138257F85 /* Support Files */,
+			);
+			name = QKeyboardEmotionView;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		8F6F9CA0611F84239FD380B138257F85 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D5A5AADA3618628DCFE5ECE9049B94AF /* QKeyboardEmotionView.modulemap */,
+				CC38642648C64954320B1E76D0C1841D /* QKeyboardEmotionView-dummy.m */,
+				F089EF5F62BBD493761834B9922A47F6 /* QKeyboardEmotionView-Info.plist */,
+				CBC0A143A2F5A419372018F9CDA5C6CF /* QKeyboardEmotionView-prefix.pch */,
+				517C0C62A4229CF6DB6132F4E71A4D0C /* QKeyboardEmotionView-umbrella.h */,
+				AE123A51B79323FF1B74E635EED38D8A /* QKeyboardEmotionView.debug.xcconfig */,
+				0F62B85F9E478AD9A397549938F0D8A7 /* QKeyboardEmotionView.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/QKeyboardEmotionView";
 			sourceTree = "<group>";
 		};
-		A986246CD2CC83477DAB712A5D68687D /* Development Pods */ = {
+		919E28F5C96A13C9FBFE8714AEEE8659 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				31CD844809A4EED00DAFF6289F1A1A96 /* QKeyboardEmotionView */,
+				ECAD4FB1737EA2CF78EEFDC9190C1EAC /* Pods_QKeyboardEmotionView_Example.framework */,
+				8BAFDD2E23B9FFA4CFBB5C1139A9CD38 /* Pods_QKeyboardEmotionView_Tests.framework */,
+				A710555E90A3A1D2CF3F8AF69139EF74 /* QKeyboardEmotionView.framework */,
 			);
-			name = "Development Pods";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B933D7F634333AFDF8D888CE982E01EF /* Pods-QKeyboardEmotionView_Example */ = {
@@ -239,23 +256,21 @@
 			path = "Target Support Files/Pods-QKeyboardEmotionView_Example";
 			sourceTree = "<group>";
 		};
-		C49B2BB2C91E0258C8498CA503799E4A /* Pod */ = {
+		C2C48BD5C97929CEDAA9BD00A0A4D86F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ED6770BFD0D6EDB9951460D77B1E3FC2 /* LICENSE */,
-				0527924B80E5EA634973881FA2455087 /* QKeyboardEmotionView.podspec */,
-				F52AABA681C3E37242D99BBFE4E2B0DF /* README.md */,
+				6D504EDB511501DDEA21BA9948407DAA /* QKeyboardEmotionView */,
 			);
-			name = Pod;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				A986246CD2CC83477DAB712A5D68687D /* Development Pods */,
+				C2C48BD5C97929CEDAA9BD00A0A4D86F /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				E1C02934C5111594A2D0971E294FD19B /* Products */,
+				919E28F5C96A13C9FBFE8714AEEE8659 /* Products */,
 				4394735106CA0785242356728C610F16 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -268,20 +283,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1C02934C5111594A2D0971E294FD19B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ECAD4FB1737EA2CF78EEFDC9190C1EAC /* Pods_QKeyboardEmotionView_Example.framework */,
-				8BAFDD2E23B9FFA4CFBB5C1139A9CD38 /* Pods_QKeyboardEmotionView_Tests.framework */,
-				E1E39FFA5C5476D468915884D2ABCB49 /* QKeyboardEmotionView.bundle */,
-				A710555E90A3A1D2CF3F8AF69139EF74 /* QKeyboardEmotionView.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2932F917C822A0BC3D519B0A1C16667E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB29DD7C877BCF54B214D957EA81CA55 /* QEmotion.h in Headers */,
+				BE40DF32B27C71BF67261256E0D015AC /* QEmotionAttachment.h in Headers */,
+				B45E8FCAC48279DB9092C3CAA31D7130 /* QEmotionBoardView.h in Headers */,
+				80265B1CA8956EE327F81BA2A38B22A1 /* QEmotionHelper.h in Headers */,
+				8F89F40094AAA6B3C631C2C6D9BF1E2C /* QExtendBoardView.h in Headers */,
+				4718D9BCE7A616DE8F9C21E80250CF4A /* QInputBarView.h in Headers */,
+				8E9DB4338DE9799DF54448D9C03BD429 /* QInputBarViewConfiguration.h in Headers */,
+				12ED0BDD6022CDCC76D8D133AE281DE1 /* QKeyboardBaseManager.h in Headers */,
+				8416FC8C334DE13F27FB747BC434A5E0 /* QKeyboardEmotionView-umbrella.h in Headers */,
+				569CA5ACF51D0FF93910799BB7358D4D /* QKeyboardManager.h in Headers */,
+				E11FE4BFA7B2EA5F116366E2099E681A /* UITextView+QEmotion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2DAAF6FCB8DBA415E4D624B216AEC206 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,20 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68AADAEFF870D9E562456A45D1D78BAE /* Pods-QKeyboardEmotionView_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5A26012EAB7D3ADD2B781BFFB2E5B21 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D71DA20EB1C3EAC99316E9CE545AE537 /* QEmotionBoardView.h in Headers */,
-				CA84FF9B4FE5D1DD6B08ECD9960C4873 /* QExtendBoardView.h in Headers */,
-				982617A75BBF0EA59D1A80B5BBCD9B74 /* QInputBarView.h in Headers */,
-				3C841CF82A963576ACB4D5B3993EC4D1 /* QInputBarViewConfiguration.h in Headers */,
-				D770046B7B623ADD181874BB0F588DD4 /* QKeyboardBaseManager.h in Headers */,
-				3E2AD6B1D0E0CB80BFF50E9D962242F1 /* QKeyboardEmotionView-umbrella.h in Headers */,
-				B13D32CBA37A03B64B9305145B29D647 /* QKeyboardManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,43 +335,25 @@
 			buildRules = (
 			);
 			dependencies = (
-				9DC532B2E4C130BF45B6115F71951226 /* PBXTargetDependency */,
+				BCA38C5C9C4853A774262C9CC62F8A4A /* PBXTargetDependency */,
 			);
 			name = "Pods-QKeyboardEmotionView_Example";
 			productName = "Pods-QKeyboardEmotionView_Example";
 			productReference = ECAD4FB1737EA2CF78EEFDC9190C1EAC /* Pods_QKeyboardEmotionView_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3E1E3D033CACD99B1F855CF10D2FC910 /* QKeyboardEmotionView-QKeyboardEmotionView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 264B75816A9F6B2DD178BC023E0AE162 /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView-QKeyboardEmotionView" */;
-			buildPhases = (
-				FB9FE71E2D40CDBDB60220BCAC0D89BE /* Sources */,
-				3C483193F034135FD54FAB5371FBECD3 /* Frameworks */,
-				5FDFADB1CB8CECB97DD4BCCF7D276830 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "QKeyboardEmotionView-QKeyboardEmotionView";
-			productName = "QKeyboardEmotionView-QKeyboardEmotionView";
-			productReference = E1E39FFA5C5476D468915884D2ABCB49 /* QKeyboardEmotionView.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		B7B42978BD9D630306E48AC66F70D5E5 /* QKeyboardEmotionView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51E2755ED40D47471F1AA543C8C994A1 /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView" */;
+			buildConfigurationList = 7C31DCC535B79F9DF2FCB92A5D4EBF4E /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView" */;
 			buildPhases = (
-				C5A26012EAB7D3ADD2B781BFFB2E5B21 /* Headers */,
-				6B191361CE6E5C07E31312E8F736430B /* Sources */,
-				D8447D11C8709B29F4685B00553F725C /* Frameworks */,
-				3F12ECCE6D8F9EF8B3A00396278A8C5F /* Resources */,
+				2932F917C822A0BC3D519B0A1C16667E /* Headers */,
+				020E50E35FCDA55902BBBA7F13CECE49 /* Sources */,
+				EDC8DB0F1D7B8E4D2C3D9823C1FB5646 /* Frameworks */,
+				98FD580398F3F7C4608B3C9A7AC93B5A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6F462BB2B7165DB5546DF345F0A9BC8A /* PBXTargetDependency */,
 			);
 			name = QKeyboardEmotionView;
 			productName = QKeyboardEmotionView;
@@ -382,7 +372,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				CE3D602D521AAC62C5597F3A4947847E /* PBXTargetDependency */,
+				32D4CDB59747AC5B4FC47ADFB72CBA35 /* PBXTargetDependency */,
 			);
 			name = "Pods-QKeyboardEmotionView_Tests";
 			productName = "Pods-QKeyboardEmotionView_Tests";
@@ -407,14 +397,13 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = E1C02934C5111594A2D0971E294FD19B /* Products */;
+			productRefGroup = 919E28F5C96A13C9FBFE8714AEEE8659 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				01719F29BE9883C86DF09726E9F216E3 /* Pods-QKeyboardEmotionView_Example */,
 				CD4E8C12EA66F14DDC29B17050ED133C /* Pods-QKeyboardEmotionView_Tests */,
 				B7B42978BD9D630306E48AC66F70D5E5 /* QKeyboardEmotionView */,
-				3E1E3D033CACD99B1F855CF10D2FC910 /* QKeyboardEmotionView-QKeyboardEmotionView */,
 			);
 		};
 /* End PBXProject section */
@@ -427,20 +416,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F12ECCE6D8F9EF8B3A00396278A8C5F /* Resources */ = {
+		98FD580398F3F7C4608B3C9A7AC93B5A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4FCAFAEF3D332E2C51F6DD3F53B02A /* Assets.xcassets in Resources */,
-				B82362E1F7E52879339878EAB9762522 /* QKeyboardEmotionView.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FDFADB1CB8CECB97DD4BCCF7D276830 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				362D695FA5BF29947D0731A7E3519681 /* Assets.xcassets in Resources */,
+				C188703D36B387E2955CD3D979658E30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,25 +434,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		020E50E35FCDA55902BBBA7F13CECE49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49CAA094783F73ADCC143CAF784D6FDE /* QEmotion.m in Sources */,
+				BA15BEA0257D88A24E489D6A272FD5BA /* QEmotionAttachment.m in Sources */,
+				6CD4A7705FD3B280CDF6EC0751CD40C2 /* QEmotionBoardView.m in Sources */,
+				38357A5A8C87EA01D0D79778ED3A13CC /* QEmotionHelper.m in Sources */,
+				92DBA0FCDE137301513F6D4AE3AB09E2 /* QExtendBoardView.m in Sources */,
+				DC8164C33621CC6838AFDFB2B18772CF /* QInputBarView.m in Sources */,
+				7AB240FE92664EDDB338C1DDCDC267B9 /* QInputBarViewConfiguration.m in Sources */,
+				913003E67932C6F9710CC01865E8C093 /* QKeyboardBaseManager.m in Sources */,
+				4F4F6A43321B27C8FEBABF2C1B62179E /* QKeyboardEmotionView-dummy.m in Sources */,
+				1361FDA5CDA8B68AE56CE57B82212076 /* QKeyboardManager.m in Sources */,
+				73BA7BF80D43594338AEEB052A5367E5 /* UITextView+QEmotion.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		11C2CD231841B523DAA1173D177BE93D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				84CE8EDD98562AE29B99DD748F5489C6 /* Pods-QKeyboardEmotionView_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6B191361CE6E5C07E31312E8F736430B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B935353179FEAC63B54060632523F1E0 /* QEmotionBoardView.m in Sources */,
-				27D06DD665661D490FCAF5CD725637B6 /* QExtendBoardView.m in Sources */,
-				37178E26462A6962C019BD47FFCE93EC /* QInputBarView.m in Sources */,
-				8F9B119CFC29C20D2B4D9DDA86A9341E /* QInputBarViewConfiguration.m in Sources */,
-				AE2DBBA6EACBCD0CDB61F9ACA7C7215F /* QKeyboardBaseManager.m in Sources */,
-				D5CEDEFEAE4E3D2E8173FDE0CD009B17 /* QKeyboardEmotionView-dummy.m in Sources */,
-				399CA023153D891D1B75004FF4558F7C /* QKeyboardManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,50 +468,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB9FE71E2D40CDBDB60220BCAC0D89BE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6F462BB2B7165DB5546DF345F0A9BC8A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "QKeyboardEmotionView-QKeyboardEmotionView";
-			target = 3E1E3D033CACD99B1F855CF10D2FC910 /* QKeyboardEmotionView-QKeyboardEmotionView */;
-			targetProxy = BB02330AC84184EC3C5E3CD95F284725 /* PBXContainerItemProxy */;
-		};
-		9DC532B2E4C130BF45B6115F71951226 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = QKeyboardEmotionView;
-			target = B7B42978BD9D630306E48AC66F70D5E5 /* QKeyboardEmotionView */;
-			targetProxy = 55DE6E4FB59646D19D05F7B9255AA323 /* PBXContainerItemProxy */;
-		};
-		CE3D602D521AAC62C5597F3A4947847E /* PBXTargetDependency */ = {
+		32D4CDB59747AC5B4FC47ADFB72CBA35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-QKeyboardEmotionView_Example";
 			target = 01719F29BE9883C86DF09726E9F216E3 /* Pods-QKeyboardEmotionView_Example */;
-			targetProxy = 482568553FCAE65D37760B76EC01AD84 /* PBXContainerItemProxy */;
+			targetProxy = 2F5B8D13E2C04CF41A86827B0A8FA371 /* PBXContainerItemProxy */;
+		};
+		BCA38C5C9C4853A774262C9CC62F8A4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QKeyboardEmotionView;
+			target = B7B42978BD9D630306E48AC66F70D5E5 /* QKeyboardEmotionView */;
+			targetProxy = 18506D170DA4F4B5E093CC3B1780B708 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1B917547B0E80D09C80A1B4E69CCA216 /* Release */ = {
+		1BCC313FF26B74F4F61C945C0D0D2ACB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D6E14BA545306ECCE7944561AE1143C /* QKeyboardEmotionView.release.xcconfig */;
+			baseConfigurationReference = 0F62B85F9E478AD9A397549938F0D8A7 /* QKeyboardEmotionView.release.xcconfig */;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/QKeyboardEmotionView";
-				IBSC_MODULE = QKeyboardEmotionView;
-				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/ResourceBundle-QKeyboardEmotionView-QKeyboardEmotionView-Info.plist";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView.modulemap";
+				PRODUCT_MODULE_NAME = QKeyboardEmotionView;
 				PRODUCT_NAME = QKeyboardEmotionView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -629,36 +615,6 @@
 			};
 			name = Debug;
 		};
-		5286439F575DE80EAA7752345167DD21 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C203278B87839A1745C84425F37D9AAC /* QKeyboardEmotionView.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView.modulemap";
-				PRODUCT_MODULE_NAME = QKeyboardEmotionView;
-				PRODUCT_NAME = QKeyboardEmotionView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5B110F94553833FFC1A84BB5AF51C580 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B4E9C63D41755516A6C77C124B05EA4 /* Pods-QKeyboardEmotionView_Example.release.xcconfig */;
@@ -685,37 +641,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		68B528AA5603D6BD237D9AECBAFEE6A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D6E14BA545306ECCE7944561AE1143C /* QKeyboardEmotionView.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView.modulemap";
-				PRODUCT_MODULE_NAME = QKeyboardEmotionView;
-				PRODUCT_NAME = QKeyboardEmotionView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -755,22 +680,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		B90A5DFF73E707B6468B9C5C9F0B3EEC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C203278B87839A1745C84425F37D9AAC /* QKeyboardEmotionView.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/QKeyboardEmotionView";
-				IBSC_MODULE = QKeyboardEmotionView;
-				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/ResourceBundle-QKeyboardEmotionView-QKeyboardEmotionView-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = QKeyboardEmotionView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
 		};
 		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -834,6 +743,36 @@
 			};
 			name = Release;
 		};
+		D27F1AB74F16DE706E4E881BDA9EC955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE123A51B79323FF1B74E635EED38D8A /* QKeyboardEmotionView.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QKeyboardEmotionView/QKeyboardEmotionView.modulemap";
+				PRODUCT_MODULE_NAME = QKeyboardEmotionView;
+				PRODUCT_NAME = QKeyboardEmotionView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F90CAD46B2211E5686D8E4C326246A5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21278B7F4F6B26F327ECC166E3943925 /* Pods-QKeyboardEmotionView_Tests.debug.xcconfig */;
@@ -869,15 +808,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		264B75816A9F6B2DD178BC023E0AE162 /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView-QKeyboardEmotionView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B90A5DFF73E707B6468B9C5C9F0B3EEC /* Debug */,
-				1B917547B0E80D09C80A1B4E69CCA216 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		3CEB42E915357475C64E4B2713AEB6C1 /* Build configuration list for PBXNativeTarget "Pods-QKeyboardEmotionView_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -896,11 +826,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51E2755ED40D47471F1AA543C8C994A1 /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView" */ = {
+		7C31DCC535B79F9DF2FCB92A5D4EBF4E /* Build configuration list for PBXNativeTarget "QKeyboardEmotionView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5286439F575DE80EAA7752345167DD21 /* Debug */,
-				68B528AA5603D6BD237D9AECBAFEE6A5 /* Release */,
+				D27F1AB74F16DE706E4E881BDA9EC955 /* Debug */,
+				1BCC313FF26B74F4F61C945C0D0D2ACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

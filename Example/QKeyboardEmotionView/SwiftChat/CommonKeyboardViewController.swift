@@ -86,23 +86,17 @@ extension CommonKeyboardViewController: QInputBarViewDelegate {
         }
     }
 
-    // 输入框将要开始编辑
-    func inputBarView(_ inputBarView: QInputBarView!, inputTextViewShouldBeginEditing inputTextView: UITextView!) {
+    // 输入框的高度发生了改变（因为输入框里的文字行数变化了），注意这里仅仅是TextView输入框的高度发生了变化的回调；becauseSendText：YES表示是因为调用了clearInputTextBySend去发送文本
+    func inputBarView(_ inputBarView: QInputBarView!, inputTextView: UITextView!, heightDidChange changeValue: CGFloat, becauseSendText: Bool) {
         //这里要告知Manager类
-        keyboardManager.inputTextViewShouldBeginEditing()
-    }
-    
-    // 输入框的高度发生了改变（因为输入了内容），注意这里仅仅是TextView输入框的高度发送了变化的回调
-    func inputBarView(_ inputBarView: QInputBarView!, inputTextView: UITextView!, heightDidChange changeValue: CGFloat) {
-        //这里要告知Manager类
-        keyboardManager.inputTextViewHeightDidChange()
+        keyboardManager.inputTextViewHeightDidChange(becauseSendText)
     }
 }
 
 //整个BoardView的Delegate回调
 extension CommonKeyboardViewController: InputBoardDelegate {
     
-    //整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘）
+    //整个“输入View”的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
     func keyboardManager(_ keyboardManager: QKeyboardManager!, onWholeInputViewHeightDidChange wholeInputViewHeight: CGFloat, reason: WholeInputViewHeightDidChangeReason) {
         
     }
@@ -132,7 +126,7 @@ extension CommonKeyboardViewController: InputBoardDataSource {
     //@return 点表情按钮弹出的表情面板View，且无需设置frame
     func keyboardManagerEmotionBoardView(_ keyboardManager: QKeyboardManager!) -> UIView! {
         let emotionView = QEmotionBoardView()
-        emotionView.emotions = EmotionManager.shared.emotionArray
+        emotionView.emotions = QEmotionHelper.shared()!.emotionArray;
         emotionView.delegate = self
         if #available(iOS 11.0, *) {
             let bundle = Bundle(for: QKeyboardBaseManager.self)
@@ -161,7 +155,9 @@ extension CommonKeyboardViewController: QEmotionBoardViewDelegate {
      *  @param  emotion 被选中的表情对应的`QMUIEmotion`对象
      */
     func emotionView(_ emotionView: QEmotionBoardView!, didSelect emotion: QEmotion!, at index: Int) {
-        bottomInputView.insertEmotion(emotion.displayName)
+        let faceManager = QEmotionHelper.shared()
+        //把😊插入到输入栏
+        bottomInputView.insertEmotionAttributedString(faceManager?.obtainAttributedString(byImageKey: emotion.displayName, font: bottomInputView.inputTextView.font, useCache: false))
     }
     
     // 删除按钮的点击事件回调
@@ -174,6 +170,6 @@ extension CommonKeyboardViewController: QEmotionBoardViewDelegate {
     
     // 发送按钮的点击事件回调
     func emotionViewDidSelectSendButton(_ emotionView: QEmotionBoardView!) {
-        sendTextMessage(inputText: bottomInputView.textViewInputText())
+        sendTextMessage(inputText: bottomInputView.textViewInputNormalText())
     }
 }

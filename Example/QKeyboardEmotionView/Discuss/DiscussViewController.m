@@ -52,7 +52,7 @@
     return inputBarViewConfiguration;
 }
 
-//整个输入View的高度发生变化（整个View包含bar和表情栏或者键盘）
+//整个输入View的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
 
     UIEdgeInsets insets = UIEdgeInsetsZero;
@@ -74,9 +74,14 @@
  */
 - (void)sendTextMessage:(NSString *)inputText {
     
+    //只是演示
     [_messageArray addObject:inputText];
     
+    //清空输入框，如果是聊天界面就不要用这句
     self.inputView.inputTextView.text = nil;
+    
+    //隐藏键盘
+    [self.keyboardManager hideAllBoardView];
     
     [self.tableView reloadData];
     

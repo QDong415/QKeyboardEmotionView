@@ -3,32 +3,11 @@
 //  qmui
 //
 //  Created by QMUI Team on 16/9/6.
-//  本库修改了修复QMUI的两个BUG，1：半透明表情的Rect计算方式有问题，2：重新优化点击后的灰色背景的大小改为计算，而不是设置死
+//  作者DQ：这里的代码我是从QMUI里摘抄出来再做了删减。然后我修改了修复QMUI的两个BUG，1：半透明表情的Rect计算方式有问题，2：重新优化点击后的灰色背景的大小改为计算，而不是设置死，3：添加了顶部的一条细线
 //
 
 #import "QEmotionBoardView.h"
 
-@implementation QEmotion
-
-+ (instancetype)emotionWithIdentifier:(NSString *)identifier displayName:(NSString *)displayName {
-    QEmotion *emotion = [[self alloc] init];
-    emotion.identifier = identifier;
-    emotion.displayName = displayName;
-    return emotion;
-}
-
-- (BOOL)isEqual:(id)object {
-    if (!object) return NO;
-    if (self == object) return YES;
-    if (![object isKindOfClass:[self class]]) return NO;
-    return [self.identifier isEqualToString:((QEmotion *)object).identifier];
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"%@, identifier: %@, displayName: %@", [super description], self.identifier, self.displayName];
-}
-
-@end
 
 @class QMUIEmotionPageView;
 
@@ -40,7 +19,7 @@
 @end
 
 /// 表情面板每一页的cell，在drawRect里将所有表情绘制上去，同时自带一个末尾的删除按钮
-@interface QMUIEmotionPageView : UICollectionViewCell
+@interface QMUIEmotionPageView : UIView
 
 @property(nonatomic, weak) QEmotionBoardView<QMUIEmotionPageViewDelegate> *delegate;
 
@@ -123,7 +102,6 @@ const int UISendButtonHeight = 41;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
     if (self.deleteButton.superview == self) {
         // 删除按钮必定布局到最后一个表情的位置，且与表情上下左右居中
         self.deleteButton.frame = [self frameForDeleteButton:self.deleteButton];
@@ -376,6 +354,18 @@ const int UISendButtonHeight = 41;
 //    _deleteButton.layer.cornerRadius = 6;
 //    _deleteButton.layer.masksToBounds = YES;
     [self addSubview:_deleteButton];
+    
+    
+    //输入条的上方添加一行细线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 1 / [UIScreen mainScreen].scale)];
+    if (@available(iOS 11.0, *)) {
+        NSBundle *bundle = [NSBundle bundleForClass:[QMUIEmotionPageView class]];
+        lineView.backgroundColor = [UIColor colorNamed:@"q_border223" inBundle:bundle compatibleWithTraitCollection:nil];
+    } else {
+        lineView.backgroundColor = [UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1];
+    }
+    [self addSubview:lineView];
+    self.topLineView = lineView;
 }
 
 - (void)setEmotions:(NSArray<QEmotion *> *)emotions {
@@ -385,7 +375,6 @@ const int UISendButtonHeight = 41;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
     self.sendButton.frame = CGRectMake(CGRectGetWidth(self.frame) - self.sendButtonMargins.right - UISendButtonWidth, CGRectGetHeight(self.frame) - self.qmui_safeAreaInsets.bottom - self.sendButtonMargins.bottom - UISendButtonHeight, UISendButtonWidth, UISendButtonHeight);
 
     UIEdgeInsets paddingInPage = self.paddingInPage;
@@ -404,6 +393,8 @@ const int UISendButtonHeight = 41;
     static CGFloat spacingBetweenDeleteButtonAndSendButton = 10.0f;
     
     self.deleteButton.frame = CGRectMake(CGRectGetMinX(self.sendButton.frame) - spacingBetweenDeleteButtonAndSendButton - self.deleteButtonOffset.x -  UISendButtonWidth, self.sendButton.frame.origin.y, UISendButtonWidth, UISendButtonHeight);
+    
+    self.topLineView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), 1 / [UIScreen mainScreen].scale);
 }
 
 
@@ -491,9 +482,6 @@ const int UISendButtonHeight = 41;
 
 - (void)emotionPageViewDidLayoutEmotions:(QMUIEmotionPageView *)emotionPageView {
     [self adjustEmotionsAlpha];
-}
-
-- (void)dealloc {
 }
 
 #pragma mark - Getter
