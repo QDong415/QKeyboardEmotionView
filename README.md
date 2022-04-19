@@ -14,7 +14,7 @@
 ## 基础功能：
 - ✅UI仿微信聊天底部输入栏，表情和键盘切换动画平滑，全程60帧
 - ✅底部输入栏可以在需要时候再显示，平时隐藏（评论列表场景 或 朋友圈场景 或 发微博场景）
-- ✅表情面板+拓展面板+底部输入条 +语音条+UITextView，各个模块都不会互相import，完美解耦
+- ✅表情面板+拓展面板+底部输入条+语音条+UITextView，各个模块都不会互相import，完美解耦
 - ✅每个模块都可以自定义，且都可以自由替换，也都可以拉出来当做独立的模块
 - ✅无内存泄漏。代码清晰明确，注释量比代码都多
 - ✅兼容横屏模式，兼容黑夜模式，兼容导航栏半透明或不透明
@@ -28,8 +28,8 @@
 
 
 ### 效果gif图（Gif图有点卡，实际运行一点都不卡）：
-![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard1.png?raw=true)
-![](https://raw.githubusercontent.com/QDong415/QKeyboardEmotionView/master/Example/QKeyboardEmotionView/Documentation/keyboard2.jpg?raw=true)![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard2.gif?raw=true)![](https://github.com/QDong415/QKeyboardEmotionView/blob/master/Example/QKeyboardEmotionView/Documentation/keyboard3.gif?raw=true)
+![](https://upload-images.jianshu.io/upload_images/26002059-6161708ed9a717bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/26002059-0a737b12d3b22686.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)![](https://upload-images.jianshu.io/upload_images/26002059-5edc0185947803a3.gif?imageMogr2/auto-orient/strip)![](https://upload-images.jianshu.io/upload_images/26002059-08b4b9cbaf7bea39.gif?imageMogr2/auto-orient/strip)
 
 ## Example
 
