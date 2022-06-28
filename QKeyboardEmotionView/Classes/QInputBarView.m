@@ -7,13 +7,13 @@
 //
 
 //整个Bar的最小高度（即文字只有1行时候的整条Bar的高度）
-const int UIInputBarViewMinHeight = 56;
+const int UIInputBarViewMinHeight = 58;
 
 //Bar里面的UITextView的最小高度（即文字只有1行时候的UITextView高度）
-const int UIInputTextViewMinHeight = 38;
+const int UIInputTextViewMinHeight = 42;
 
 //Bar里面的UITextView的最大高度（即文字有超多行时候的高度）
-const int UIInputTextViewMaxHeight = 152;
+const int UIInputTextViewMaxHeight = 147;
 
 #import "QInputBarView.h"
 #import "UITextView+QEmotion.h"
@@ -60,8 +60,8 @@ const int UIInputTextViewMaxHeight = 152;
 {
     self.keyboardSendEnabled = configuration.keyboardSendEnabled;
     
-    const int UISwitchButtonWidth = 36; // 3个按钮固定宽高
-    const int horizontalPadding = 8; // 水平间隔
+    const int UISwitchButtonWidth = 40; // 3个按钮固定宽高
+    const int horizontalPadding = 6; // 水平间隔
     const CGFloat verticalPadding = (UIInputBarViewMinHeight - UISwitchButtonWidth )/2;// 垂直间隔
     CGFloat textViewFrameX = 0;// 输入框的frame.x
     CGFloat rightViewsMinX = 0;// 输入框右边的按钮的minY，为了计算textView的宽度
@@ -166,6 +166,11 @@ const int UIInputTextViewMaxHeight = 152;
         textView.scrollsToTop = NO;
         textView.textAlignment = NSTextAlignmentLeft;
         textView.layer.cornerRadius = 6.0f;
+        //top, left, bottom, right
+        textView.textContainerInset = UIEdgeInsetsMake(10.0f, 8.0f, 10.0f, 8.0f);
+        //如果我设置了left边距，换行的时候，xcode会弹出提示：requesting caretRectForPosition: while the NSTextStorage has oustanding changes . 但是实际运行没任何影响
+        //如果把left（第2、4个参数）设置为0，就不会有警告。原因不明
+        
         textView.enablesReturnKeyAutomatically = YES; // UITextView内部判断send按钮是否可以用
     }
     //本类来控制tv的frame和delegate

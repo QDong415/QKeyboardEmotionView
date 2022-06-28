@@ -78,7 +78,7 @@
     [_messageArray addObject:inputText];
     
     //清空输入框，如果是聊天界面就不要用这句
-    self.inputView.inputTextView.text = nil;
+    self.inputBarView.inputTextView.text = nil;
     
     //隐藏键盘
     [self.keyboardManager hideAllBoardView];
@@ -93,11 +93,11 @@
     CGRect rectInTableview = [self.tableView rectForRowAtIndexPath:indexPath];
 
     CGFloat kTopNavHeight = UIApplication.sharedApplication.statusBarFrame.size.height + 44;
-    if (CGRectGetMaxY(rectInTableview) < CGRectGetMinY(self.inputView.frame) - kTopNavHeight){
+    if (CGRectGetMaxY(rectInTableview) < CGRectGetMinY(self.inputBarView.frame) - kTopNavHeight){
         return;
     }
     
-    float resultY = rectInTableview.origin.y-self.tableView.contentOffset.y - kTopNavHeight + self.tableView.contentOffset.y - (CGRectGetMinY(self.inputView.frame) - rectInTableview.size.height - kTopNavHeight);
+    float resultY = rectInTableview.origin.y-self.tableView.contentOffset.y - kTopNavHeight + self.tableView.contentOffset.y - (CGRectGetMinY(self.inputBarView.frame) - rectInTableview.size.height - kTopNavHeight);
     [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, resultY) animated:YES];
 
     //无脑把indexPath这个cell滚到导航栏下的第一个
@@ -141,7 +141,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.lastSelectedIndexPath = indexPath;
-    [self.inputView.inputTextView becomeFirstResponder];
+    [self.inputBarView.inputTextView becomeFirstResponder];
 }
 
 //设置cell的高度

@@ -1,5 +1,5 @@
 //
-//  QMUIEmotionView.m
+//  QEmotionView.m
 //  qmui
 //
 //  Created by QMUI Team on 16/9/6.
@@ -9,19 +9,19 @@
 #import "QEmotionBoardView.h"
 
 
-@class QMUIEmotionPageView;
+@class UIEmotionPageView;
 
-@protocol QMUIEmotionPageViewDelegate <NSObject>
+@protocol UIEmotionPageViewDelegate <NSObject>
 
 @optional
-- (void)emotionPageView:(QMUIEmotionPageView *)emotionPageView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index;
-- (void)emotionPageViewDidLayoutEmotions:(QMUIEmotionPageView *)emotionPageView;
+- (void)emotionPageView:(UIEmotionPageView *)emotionPageView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index;
+- (void)emotionPageViewDidLayoutEmotions:(UIEmotionPageView *)emotionPageView;
 @end
 
 /// 表情面板每一页的cell，在drawRect里将所有表情绘制上去，同时自带一个末尾的删除按钮
-@interface QMUIEmotionPageView : UIView
+@interface UIEmotionPageView : UIView
 
-@property(nonatomic, weak) QEmotionBoardView<QMUIEmotionPageViewDelegate> *delegate;
+@property(nonatomic, weak) QEmotionBoardView<UIEmotionPageViewDelegate> *delegate;
 
 /// 表情被点击时盖在表情上方用于表示选中的遮罩
 @property(nonatomic, strong) UIView *emotionSelectedBackgroundView;
@@ -68,7 +68,7 @@
 
 @end
 
-@implementation QMUIEmotionPageView
+@implementation UIEmotionPageView
 
 //发送按钮，删除按钮的宽高
 const int UISendButtonWidth = 52;
@@ -225,15 +225,15 @@ const int UISendButtonHeight = 41;
 
 @end
 
-@interface QMUIEmotionVerticalScrollView : UIScrollView
-@property(nonatomic, strong) QMUIEmotionPageView *pageView;
+@interface UIEmotionVerticalScrollView : UIScrollView
+@property(nonatomic, strong) UIEmotionPageView *pageView;
 @end
 
-@implementation QMUIEmotionVerticalScrollView
+@implementation UIEmotionVerticalScrollView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _pageView = [[QMUIEmotionPageView alloc] init];
+        _pageView = [[UIEmotionPageView alloc] init];
         self.pageView.deleteButton.hidden = YES;
         [self addSubview:self.pageView];
     }
@@ -246,7 +246,7 @@ const int UISendButtonHeight = 41;
                emotionVerticalSpacing:(CGFloat)emotionVerticalSpacing
    emotionSelectedBackgroundExtension:(UIEdgeInsets)emotionSelectedBackgroundExtension
                         paddingInPage:(UIEdgeInsets)paddingInPage {
-    QMUIEmotionPageView *pageView = self.pageView;
+    UIEmotionPageView *pageView = self.pageView;
     pageView.emotions = emotions;
     pageView.padding = paddingInPage;
     CGSize contentSize = CGSizeMake(self.bounds.size.width - [self edgeInsetsGetHorizontalValue:paddingInPage], self.bounds.size.height - [self edgeInsetsGetVerticalValue:paddingInPage]);
@@ -303,9 +303,9 @@ const int UISendButtonHeight = 41;
 
 @end
 
-@interface QEmotionBoardView ()<QMUIEmotionPageViewDelegate ,UIScrollViewDelegate>
+@interface QEmotionBoardView ()<UIEmotionPageViewDelegate ,UIScrollViewDelegate>
 /// 用于展示表情面板的竖向滚动 scrollView，布局撑满整个控件
-@property(nonatomic, strong, readonly) QMUIEmotionVerticalScrollView *verticalScrollView;
+@property(nonatomic, strong, readonly) UIEmotionVerticalScrollView *verticalScrollView;
 @property(nonatomic, strong) NSMutableArray<NSArray<QEmotion *> *> *pagedEmotions;
 @property(nonatomic, assign) BOOL debug;
 @end
@@ -332,7 +332,7 @@ const int UISendButtonHeight = 41;
     
     self.pagedEmotions = [[NSMutableArray alloc] init];
     
-    _verticalScrollView = [[QMUIEmotionVerticalScrollView alloc] init];
+    _verticalScrollView = [[UIEmotionVerticalScrollView alloc] init];
     if (@available(iOS 11, *)) {
         self.verticalScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
@@ -359,7 +359,7 @@ const int UISendButtonHeight = 41;
     //输入条的上方添加一行细线
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 1 / [UIScreen mainScreen].scale)];
     if (@available(iOS 11.0, *)) {
-        NSBundle *bundle = [NSBundle bundleForClass:[QMUIEmotionPageView class]];
+        NSBundle *bundle = [NSBundle bundleForClass:[UIEmotionPageView class]];
         lineView.backgroundColor = [UIColor colorNamed:@"q_border223" inBundle:bundle compatibleWithTraitCollection:nil];
     } else {
         lineView.backgroundColor = [UIColor colorWithRed:223/255.0f green:223/255.0f blue:223/255.0f alpha:1];
@@ -471,8 +471,8 @@ const int UISendButtonHeight = 41;
     }
 }
 
-#pragma mark - <QMUIEmotionPageViewDelegate>
-- (void)emotionPageView:(QMUIEmotionPageView *)emotionPageView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index {
+#pragma mark - <UIEmotionPageViewDelegate>
+- (void)emotionPageView:(UIEmotionPageView *)emotionPageView didSelectEmotion:(QEmotion *)emotion atIndex:(NSInteger)index {
     //再回调给vc，之前QMUI官方demo里这里是用的block，为了兼容swift和代码清晰，我修改成了delegate
     if ([self.delegate respondsToSelector:@selector(emotionView:didSelectEmotion:atIndex:)]){
         NSInteger index = [self.emotions indexOfObject:emotion];
@@ -480,7 +480,7 @@ const int UISendButtonHeight = 41;
     }
 }
 
-- (void)emotionPageViewDidLayoutEmotions:(QMUIEmotionPageView *)emotionPageView {
+- (void)emotionPageViewDidLayoutEmotions:(UIEmotionPageView *)emotionPageView {
     [self adjustEmotionsAlpha];
 }
 

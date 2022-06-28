@@ -664,7 +664,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq.qkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "dq-deve-profile20220323";
+				PROVISIONING_PROFILE_SPECIFIER = "dq-develop-profile20220328";
 				SWIFT_OBJC_BRIDGING_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
@@ -686,7 +686,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dq.qkeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "dq-deve-profile20220323";
+				PROVISIONING_PROFILE_SPECIFIER = "dq-develop-profile20220328";
 				SWIFT_OBJC_BRIDGING_HEADER = "QKeyboardEmotionView/QKeyboardEmotionView-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;

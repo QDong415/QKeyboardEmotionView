@@ -32,9 +32,9 @@
     
     // 初始化输入工具条，frame可以先这样临时设置，下面的addBottomInputBarView方法会重置输入条frame
     // 如果你想要自定义输入条View，请参考TextFieldViewController代码
-    _inputView = [[QInputBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,UIInputBarViewMinHeight)];
-    [_inputView setupWithConfiguration:[self inputBarViewConfiguration]];
-    _inputView.delegate = self;
+    _inputBarView = [[QInputBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,UIInputBarViewMinHeight)];
+    [_inputBarView setupWithConfiguration:[self inputBarViewConfiguration]];
+    _inputBarView.delegate = self;
     
     //keyboard管理类，用来管理键盘，各大面板的切换
     _keyboardManager = [[QKeyboardManager alloc] initWithViewController:self];
@@ -42,10 +42,10 @@
     //因为addBottomInputBarView方法会立刻触发delegate，所以这里需要先设置delegate
     _keyboardManager.delegate = self;
     //将输入条View添加到ViewController；YES表示输入条平时不显示（比如朋友圈）；NO表示平时也显示（比如聊天）
-    [_keyboardManager addBottomInputBarView:_inputView belowViewController:[self belowViewController]];
+    [_keyboardManager addBottomInputBarView:_inputBarView belowViewController:[self belowViewController]];
     
     //把输入框（如果有的话）绑定给管理类
-    [_keyboardManager bindTextView:_inputView.inputTextView];
+    [_keyboardManager bindTextView:_inputBarView.inputTextView];
 }
 
 #pragma mark - IBAction
@@ -139,20 +139,20 @@
 
     QEmotionHelper *faceManager = [QEmotionHelper sharedEmotionHelper];
     //把😊插入到输入栏
-    [_inputView insertEmotionAttributedString:[faceManager obtainAttributedStringByImageKey:emotion.displayName font:_inputView.inputTextView.font useCache:NO]];
+    [_inputBarView insertEmotionAttributedString:[faceManager obtainAttributedStringByImageKey:emotion.displayName font:_inputBarView.inputTextView.font useCache:NO]];
 }
 
 // 删除按钮的点击事件回调
 - (void)emotionViewDidSelectDeleteButton:(QEmotionBoardView *)emotionView {
-    if (![_inputView deleteEmotion]){
+    if (![_inputBarView deleteEmotion]){
         //根据当前的光标，这次点击删除按钮并没有删除表情，那么就删除文字
-        [_inputView.inputTextView deleteBackward];
+        [_inputBarView.inputTextView deleteBackward];
     }
 }
 
 // 发送按钮的点击事件回调
 - (void)emotionViewDidSelectSendButton:(QEmotionBoardView *)emotionView {
-    [self sendTextMessage:[_inputView textViewInputNormalText]];
+    [self sendTextMessage:[_inputBarView textViewInputNormalText]];
 }
 
 #pragma mark - QExtendBoardViewDelegate
@@ -191,7 +191,7 @@
     if (emotionSwitchButton.isSelected) {
         [_keyboardManager switchToEmotionBoardKeyboard];
     } else {
-        [_inputView textViewBecomeFirstResponder];
+        [_inputBarView textViewBecomeFirstResponder];
     }
 }
 

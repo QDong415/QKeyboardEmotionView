@@ -60,7 +60,10 @@
     if (!_cacheTotalImageDictionary) {
         NSMutableDictionary<NSString *, UIImage *> *emotionImageDictionary = [[NSMutableDictionary alloc] init];
         for (QEmotion *e in _emotionArray) {
-            e.image = [UIImage imageNamed:e.identifier];
+            if (!e.image) {
+                //建议在外部AppDelegate里就设置好image，不建议走这里
+                e.image = [UIImage imageNamed:e.identifier];
+            }
             [emotionImageDictionary setObject:e.image forKey:e.displayName];
         }
         _cacheTotalImageDictionary = emotionImageDictionary;

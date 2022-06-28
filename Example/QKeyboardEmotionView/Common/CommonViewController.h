@@ -14,7 +14,7 @@
 //我是为了封装demo才把这两个变量设置为public，实际开发中, 无需对外开放
 @property(nonatomic,strong)QKeyboardManager *keyboardManager;
 
-@property(nonatomic,strong)QInputBarView *inputView;
+@property(nonatomic,strong)QInputBarView *inputBarView;
 
 @end
 

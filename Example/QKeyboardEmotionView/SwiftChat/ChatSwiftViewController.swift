@@ -127,26 +127,60 @@ class ChatSwiftViewController : CommonKeyboardViewController {
         }
     }
     
-    override func sendTextMessage(inputText :String){
-        //发送事件
-        mainArray.append(inputText)
+    /**
+     *  点击了系统键盘的发送按钮
+     *  @param inputText 目标文本消息
+     */
+    override func sendTextMessage(inputText: String) {
         
-        //请不要用inputTextView.text = nil来清空文本，具体原因看方法注释
-        //@return 0：当前inputText只有一行；非0：动画时长
-        let animationDuration: TimeInterval = bottomInputView.clearInputTextBySend()
-
-        if (animationDuration == 0){
-            //如果textView的文本只有一行，那么清空输入框的时候，不会走onWholeInputViewHeightDidChange回调，也不会重新设置tableView的contentInset。所以就无需延时reloadData
-            reloadDataAndScrollToBottom(animated: true)
-        } else {
+        //第1步：本地创建MessageModel，每个app的MessageModel格式都不一样，我这里demo就不演示了，用string代替
+        
+        //第2步：添加到array中 + reload和滚到底部
+        insertAndScrollToBottom(messageModel: inputText, true)
+        
+        //第3步，发送给服务器，我这里demo就不演示了
+    //    [self updateToRemote: inputText];
+    }
+    
+    //添加到array中 + reload和滚到底部。 needClearInputText: 是否需要清空文本框输入的内容
+     private func insertAndScrollToBottom(messageModel: String, _ needClearInputText: Bool = false) {
+         
+         //添加到array中
+         self.mainArray.append(messageModel)
+         
+         //@return 0：当前inputText只有一行；非0：动画时长
+         let animationDuration: TimeInterval = needClearInputText ? bottomInputView.clearInputTextBySend() : 0
+         
+         //reload和滚到底部
+         reloadDataAndScrollToBottom(animated: true ,animationDelay: animationDuration)
+    }
+    
+    //reloadData并滚到底部
+    private func reloadDataAndScrollToBottom(animated: Bool, animationDelay: TimeInterval) {
             
+        var resultAnimated = animated
+        if #available(iOS 13.0, *) {
+        } else {
+            //在ios12中，滚到底部再animal总是会出现最后一个Cell滚动异常，所以我干脆禁止了ios12的动画
+            resultAnimated = false
+        }
+            
+        if (animationDelay == 0){
+            //如果textView的文本只有一行，那么清空输入框的时候，不会走onWholeInputViewHeightDidChange回调，也不会重新设置tableView的contentInset。所以就无需延时reloadData
+                
+            tableView.reloadData()
+                
+            scrollToBottom(animated: resultAnimated)
+        } else {
             //textView的文本大于一行，那么清空输入框的时候，会重设tableView的contentInset（并且我还是在0.2秒的动画里重设的），如果这时候reloadData，在低性能设备上会出现tableView来回上下移动的问题
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animationDuration, execute: { [self] in
-
-                reloadDataAndScrollToBottom(animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animationDelay, execute: { [self] in
+                tableView.reloadData()
+                
+                scrollToBottom(animated: resultAnimated)
             })
         }
     }
+
     
     //注意：如果tableview布局添加了约束，那么ios系统会自己处理tableview高度与导航栏是否透明之间的关系。所以这里的insets.bottom的值需要你的布局不同，做出相对应的改动。我这里演示的是非约束的情况下的处理方式，如果你用约束，请参考ChatXibViewController
     // MARK: - NeedOverride
@@ -163,21 +197,6 @@ class ChatSwiftViewController : CommonKeyboardViewController {
                 at: .bottom,
                 animated: animated)
         }
-    }
-
-    //reloadData并滚到底部
-    private func reloadDataAndScrollToBottom(animated: Bool) {
-
-        tableView.reloadData()
-
-        var resultAnimated = animated
-        if #available(iOS 13.0, *) {
-        } else {
-            //在ios12中，滚到底部再animal总是会出现最后一个Cell滚动异常，所以我干脆禁止了ios12的动画
-            resultAnimated = false
-        }
-        // ios 13、15都是ok的
-        scrollToBottom(animated: resultAnimated)
     }
 
     private func alreadyAtBottom() -> Bool {

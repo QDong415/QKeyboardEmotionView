@@ -129,47 +129,66 @@
  */
 - (void)sendTextMessage:(NSString *)inputText {
     
-    [_messageArray addObject:inputText];
+    //第1步：本地创建MessageModel，每个app的MessageModel格式都不一样，我这里demo就不演示了，用string代替
     
-    //请不要用inputTextView.text = nil来清空文本，具体原因看方法注释
-    //@return 0：当前inputText只有一行；非0：动画时长
-    NSTimeInterval animationDuration = [self.inputView clearInputTextBySend];
-
-    if (animationDuration == 0){
-        //如果textView的文本只有一行，那么清空输入框的时候，不会走onWholeInputViewHeightDidChange回调，也不会重新设置tableView的contentInset。所以就无需延时reloadData
-        [self reloadDataAndScrollToBottomAnimated:YES];
-    } else {
-        
-        //textView的文本大于一行，那么清空输入框的时候，会重设tableView的contentInset（并且我还是在0.2秒的动画里重设的），如果这时候reloadData，在低性能设备上会出现tableView来回上下移动的问题
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(),  ^{
-            
-            [self reloadDataAndScrollToBottomAnimated:YES];
-        });
-    }
+    //第2步：添加到array中 + reload和滚到底部
+    [self insertAndScrollToBottom:inputText needClearInputText:YES];
+    
+    //第3步，发送给服务器，我这里demo就不演示了
+//    [self updateToRemote: inputText];
 }
 
 #pragma mark - Private
+
+//添加到array中 + reload和滚到底部。 needClearInputText: 是否需要清空文本框输入的内容
+- (void)insertAndScrollToBottom:(NSString *)contentModel needClearInputText:(BOOL)needClearInputText {
+    
+    //添加到array中
+    [self.messageArray addObject:contentModel];
+    
+    //@return 0：当前inputText只有一行；非0：动画时长
+    NSTimeInterval animationDuration = needClearInputText ? [self.inputBarView clearInputTextBySend] : 0;
+    
+    //reloadData并滚到底部
+    [self reloadDataAndScrollToBottomAnimated:YES animationDelay:animationDuration];
+}
+
+//reloadData并滚到底部
+- (void)reloadDataAndScrollToBottomAnimated:(BOOL)animated animationDelay:(NSTimeInterval)animationDelay {
+    
+    BOOL resultAnimated = animated;
+    if (@available(iOS 13.0, *)) {
+        // ios 13、15都是ok的
+    } else {
+        //在ios12中，滚到底部再animal总是会出现最后一个Cell滚动异常，所以我干脆禁止了ios12的动画
+        resultAnimated = NO;
+    }
+    
+    if (animationDelay == 0){
+        //如果textView的文本只有一行，那么清空输入框的时候，不会走onWholeInputViewHeightDidChange回调，也不会重新设置tableView的contentInset。所以就无需延时reloadData
+        
+        [self.tableView reloadData];
+        
+        [self scrollToBottomAnimated:resultAnimated];
+    } else {
+        
+        //textView的文本大于一行，那么清空输入框的时候，会重设tableView的contentInset（并且我还是在0.2秒的动画里重设的），如果这时候reloadData，在低性能设备上会出现tableView来回上下移动的问题
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animationDelay * NSEC_PER_SEC)), dispatch_get_main_queue(),  ^{
+            
+            [self.tableView reloadData];
+            
+            [self scrollToBottomAnimated:resultAnimated];
+        });
+    }
+    
+}
+
 //滚到底部
 - (void)scrollToBottomAnimated:(BOOL)animated {
     NSInteger rows = [self.tableView numberOfRowsInSection:0];
     if (rows > 0) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:rows - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
-}
-
-//reloadData并滚到底部
-- (void)reloadDataAndScrollToBottomAnimated:(BOOL)animated {
-    
-    [self.tableView reloadData];
-    
-    BOOL resultAnimated = animated;
-    if (@available(iOS 13.0, *)) {
-    } else {
-        //在ios12中，滚到底部再animal总是会出现最后一个Cell滚动异常，所以我干脆禁止了ios12的动画
-        resultAnimated = NO;
-    }
-    // ios 13、15都是ok的
-    [self scrollToBottomAnimated:resultAnimated];
 }
 
 - (BOOL)alreadyAtBottom {
