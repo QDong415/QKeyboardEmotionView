@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, InputState) {
     if (@available(iOS 11.0, *)) {
         //如果是x，给底部的34pt添加上背景颜色，颜色和输入条一致
         _safeAreaInsetsBottom = UIApplication.sharedApplication.windows.firstObject.safeAreaInsets.bottom;
-        if(_safeAreaInsetsBottom > 0 && !belowViewController){
+        if (_safeAreaInsetsBottom > 0 && !belowViewController) {
             //iPhoneX 且 聊天界面VC（即输入条固定在底部）就会进入这里
             //我添加了一个和输入条背景颜色一样的普通View在inputView的底部
             _belowInputBarXView = [[UIView alloc] initWithFrame:CGRectMake(0, self.viewController.view.frame.size.height - _safeAreaInsetsBottom , self.viewController.view.frame.size.width, _safeAreaInsetsBottom)];
@@ -130,6 +130,11 @@ typedef NS_ENUM(NSUInteger, InputState) {
         return;
     }
     
+    if (self.viewControllerWillDisappear) {
+        //为了解决：键盘弹出状态下vc侧滑返回，会触发Notification进而影响inputBarView.frame的bug
+        return;
+    }
+    
     //马上要弹出键盘了，先看看当前的状态是哪个BoardView，一会要把它隐藏掉
     InputState previousInputState = self.currentInputState;
     
@@ -149,27 +154,14 @@ typedef NS_ENUM(NSUInteger, InputState) {
     if (self.currentInputState == InputStateText) {
         
         CGFloat keyboardY = [self.viewController.view convertRect:keyboardRect fromView:nil].origin.y;
-                         
-        CGRect inputViewFrame = self.inputBarView.frame;
-        CGFloat inputViewFrameY = keyboardY - inputViewFrame.size.height;
-        
-        CGFloat messageViewFrameBottom = self.viewController.view.frame.size.height - inputViewFrame.size.height - self.safeAreaInsetsBottom;
-                         
-        if (inputViewFrameY > messageViewFrameBottom) {
-            inputViewFrameY = messageViewFrameBottom;
-        }
-        
-        CGRect belowInputBarXViewFrame = _belowInputBarXView.frame;
         
         [UIView animateWithDuration:duration
                               delay:0.0
                             options:animationOptions
                          animations:^{
-                                             
-            self.inputBarView.frame = CGRectMake(inputViewFrame.origin.x, inputViewFrameY, inputViewFrame.size.width, inputViewFrame.size.height);
-                             
-            self.belowInputBarXView.frame = CGRectMake(belowInputBarXViewFrame.origin.x, CGRectGetMaxY(self.inputBarView.frame), belowInputBarXViewFrame.size.width, belowInputBarXViewFrame.size.height);
             
+            [self layoutInputBarView:keyboardY boardAllHide:!showKeyboard];
+
             if (showKeyboard){
                 //键盘Notifition要willShow软键盘
                 switch (previousInputState) {
@@ -185,12 +177,14 @@ typedef NS_ENUM(NSUInteger, InputState) {
                         break;
                 }
             } else {
-                //如果是willHide软键盘，那么hideKeyboardAndSwitchToCurrentBoardView方法里就已经处理好动画了
+                //当前本来就已经是软键盘输入文本 && 是键盘Notifition要willHide软键盘
+                //进入这里的可能性：1、软键盘上的“收起键盘”按钮，2、点击左边的语音按钮，3、vc调用了tv.resignFirstResponder。 而vc调用hideAll的时候，会被hideKeyboardAndSwitchToCurrentBoardView吸收掉，并不会进入这里
+                self.currentInputState = InputStateNormal;
             }
             
             //回调给ViewController
             [self callBackWholeInputViewHeightDidChange:self.viewController.view.frame.size.height
-                              - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom reason:showKeyboard ? WholeInputViewHeightDidChangeReasonKeyboardWillShow : WholeInputViewHeightDidChangeReasonKeyboardWillHide];
+                              - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom reason:showKeyboard ? WholeInputViewHeightDidChangeReasonBoardDidShow : WholeInputViewHeightDidChangeReasonBoardDidHide];
             
         } completion:nil];
     }
@@ -199,10 +193,22 @@ typedef NS_ENUM(NSUInteger, InputState) {
 
 #pragma mark - private
 /**
- * private 切换（或者隐藏）当前面板；如果是切换，调用该方法前需要设置好currentInputState
+ * private 切换（或者隐藏）当前面板；  --------->>>>>> 如果是切换，调用该方法前需要设置好currentInputState  <<<<<<<-----------
  * @param allBoardHide yes == 隐藏所有面板，no == 显示currentInputState对应的面板（但是前提是设置好state）
  */
 - (void)hideKeyboardAndSwitchToCurrentBoardView:(BOOL)allBoardHide {
+    
+    if (allBoardHide && self.currentInputState == InputStateText) {
+        //隐藏所有面板 && 当前是软键盘，由vc调用->hideAllBoardView(YES)->进入这里
+        
+        //Q：为什么要在这里就把state设置为Normal？
+        //A：因为下面的resignFirstResponder会触发系统Notifications -> 进入onKeyboardWillShowOrHideByNotifications方法
+        //  -> if (self.currentInputState == InputStateText) -> self.layoutInputBarView ; self.callBack;
+        //
+        // 但是本方法下面已经实现了self.layoutInputBarView ; self.callBack;
+        // 所以这里把state设置为Normal就是避免再重复走上述方法，上述方法只是处理软键盘上的“收起键盘”按钮
+        self.currentInputState = InputStateNormal;
+    }
     
     //无论是显示某个面板，还是隐藏所有面板，都要先让输入框失去焦点，然后再进行切换动画
     [self.inputTextView resignFirstResponder];
@@ -254,7 +260,7 @@ typedef NS_ENUM(NSUInteger, InputState) {
   
         //回调给ViewController
         [self callBackWholeInputViewHeightDidChange:self.viewController.view.frame.size.height
-         - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom reason:allBoardHide ? WholeInputViewHeightDidChangeReasonBoardViewDidHide : WholeInputViewHeightDidChangeReasonBoardViewDidShow];
+         - self.inputBarView.frame.origin.y - self.safeAreaInsetsBottom reason:allBoardHide ? WholeInputViewHeightDidChangeReasonBoardDidHide : WholeInputViewHeightDidChangeReasonBoardDidShow];
         
     } completion:^(BOOL finished) {
         if (allBoardHide) {

@@ -38,6 +38,17 @@ class CommonKeyboardViewController : UIViewController {
         keyboardManager.bindTextView(bottomInputView.inputTextView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboardManager.viewControllerWillDisappear = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 避免手势返回的时候输入框往下掉
+        keyboardManager.viewControllerWillDisappear = true
+    }
+    
     // MARK: NeedOverride
     func inputBarViewConfiguration() -> QInputBarViewConfiguration {
         //输入条配置，子类可以重写

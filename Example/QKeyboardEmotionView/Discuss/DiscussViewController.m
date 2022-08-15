@@ -63,8 +63,10 @@
     self.tableView.contentInset = insets;
     self.tableView.scrollIndicatorInsets = insets;
 
-    if (self.lastSelectedIndexPath) {
-        [self scrollToRowAtIndexPathByOffset:self.lastSelectedIndexPath];
+    NSLog(@"reason = %d", reason);
+    
+    if (self.lastSelectedIndexPath && reason != WholeInputViewHeightDidChangeReasonBoardDidHide && reason != WholeInputViewHeightDidChangeReasonTextDidSend ) {
+        [self scrollToRowAtIndexPath:self.lastSelectedIndexPath];
     }
 }
 
@@ -89,16 +91,23 @@
 
 #pragma mark - Private
 //通过setContentOffset的方式，让tableview滚动到指定的indexpath
-- (void)scrollToRowAtIndexPathByOffset:(NSIndexPath *)indexPath{
-    CGRect rectInTableview = [self.tableView rectForRowAtIndexPath:indexPath];
-
-    CGFloat kTopNavHeight = UIApplication.sharedApplication.statusBarFrame.size.height + 44;
-    if (CGRectGetMaxY(rectInTableview) < CGRectGetMinY(self.inputBarView.frame) - kTopNavHeight){
-        return;
-    }
+- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    float resultY = rectInTableview.origin.y-self.tableView.contentOffset.y - kTopNavHeight + self.tableView.contentOffset.y - (CGRectGetMinY(self.inputBarView.frame) - rectInTableview.size.height - kTopNavHeight);
-    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, resultY) animated:YES];
+    //方式1：采用scrollToRowAtIndexPath的方式。这个方式是最好的，非常粘合inputView的frameY
+    [UIView animateWithDuration:self.keyboardManager.inputBarHeightChangeAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    } completion:nil];
+    
+    //方式2：采用setContentOffset的方式。效果不是特别好，inputView.frameY已经动画结束了，他才动
+//    CGRect rectInTableview = [self.tableView rectForRowAtIndexPath:indexPath];
+//
+//    CGFloat kTopNavHeight = UIApplication.sharedApplication.statusBarFrame.size.height + 44;
+//    if (CGRectGetMaxY(rectInTableview) < CGRectGetMinY(self.inputBarView.frame) - kTopNavHeight){
+//        return;
+//    }
+//
+//    float resultY = rectInTableview.origin.y-self.tableView.contentOffset.y - kTopNavHeight + self.tableView.contentOffset.y - (CGRectGetMinY(self.inputBarView.frame) - rectInTableview.size.height - kTopNavHeight);
+//    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, resultY) animated:YES];
 
     //无脑把indexPath这个cell滚到导航栏下的第一个
 //    [self.tableView setContentOffset:CGPointMake(self.tableView.contentOffset.x, rectintableview.origin.y-self.tableView.contentOffset.y - kTopNavHeight + self.tableView.contentOffset.y) animated:YES];

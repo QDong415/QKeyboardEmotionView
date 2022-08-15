@@ -78,7 +78,7 @@
 #pragma mark - Override
 //整个输入View的高度发生变化（整个View包含bar和表情栏或者键盘，但是不包含底部安全区高度）
 - (void)keyboardManager:(QKeyboardManager *)keyboardManager onWholeInputViewHeightDidChange:(CGFloat)wholeInputViewHeight reason:(WholeInputViewHeightDidChangeReason)reason {
-
+    
     BOOL alreadyAtBottom = self.alreadyAtBottom;
    
     UIEdgeInsets insets = UIEdgeInsetsZero;
@@ -243,7 +243,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
 }
 
 //设置cell的高度

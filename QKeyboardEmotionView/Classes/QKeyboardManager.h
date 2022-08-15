@@ -32,10 +32,8 @@ typedef NS_ENUM(NSUInteger, WholeInputViewHeightDidChangeReason) {
     WholeInputViewHeightDidChangeReasonWillAddToSuperView = 0, //因为输入条被add到vc中
     WholeInputViewHeightDidChangeReasonTextDidChange,//因为文本框输入的内容高度发生变化
     WholeInputViewHeightDidChangeReasonTextDidSend,//因为点“发送”按钮所以清空了文本框 2022-03-24与上面那条区分开
-    WholeInputViewHeightDidChangeReasonBoardViewDidShow,//显示了面板（表情面板或者拓展面板）
-    WholeInputViewHeightDidChangeReasonBoardViewDidHide,//隐藏了面板（表情面板或者拓展面板）
-    WholeInputViewHeightDidChangeReasonKeyboardWillShow,//弹出键盘
-    WholeInputViewHeightDidChangeReasonKeyboardWillHide,//隐藏键盘
+    WholeInputViewHeightDidChangeReasonBoardDidShow,//显示了 软键盘or面板（表情面板或者拓展面板）
+    WholeInputViewHeightDidChangeReasonBoardDidHide,//隐藏了 软键盘or面板（表情面板或者拓展面板）
 };
 
 @protocol InputBoardDelegate <NSObject>
@@ -54,6 +52,9 @@ typedef NS_ENUM(NSUInteger, WholeInputViewHeightDidChangeReason) {
 @property (nonatomic, weak) id<InputBoardDataSource> dataSource;
 
 @property (nonatomic, weak) id<InputBoardDelegate> delegate;
+
+//viewController是否要走viewWillDisappear；为了解决：键盘弹出状态下vc侧滑返回，会触发Notification进而影响inputBarView.frame的bug
+@property(nonatomic, assign) BOOL viewControllerWillDisappear;
 
 /**
  *  public - 添加底部输入框View

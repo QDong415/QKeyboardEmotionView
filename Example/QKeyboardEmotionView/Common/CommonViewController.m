@@ -48,6 +48,18 @@
     [_keyboardManager bindTextView:_inputBarView.inputTextView];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.keyboardManager.viewControllerWillDisappear = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // 避免手势返回的时候输入框往下掉
+    self.keyboardManager.viewControllerWillDisappear = YES;
+}
+
 #pragma mark - IBAction
 - (IBAction)onHideButtonSelect:(UIButton *)sender {
     [_keyboardManager hideAllBoardView];
