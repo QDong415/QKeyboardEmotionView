@@ -35,7 +35,7 @@
 
 先在终端里搜索 `pod search QKeyboardEmotionView` 
 
-如果搜索不到2.0版本，需要更新你电脑的pod仓库，以下是更新步骤：
+如果搜索不到`2.2`版本，需要更新你电脑的pod仓库，以下是更新步骤：
 
 1、先 `pod repo update`  更新你本地电脑的pod仓库。然后再搜索一次试试看
 
@@ -99,22 +99,50 @@ override func viewDidLoad() {
 @property (nonatomic, assign) BOOL extendButtonHidden; //是否隐藏发送多媒体 default is NO
 @property (nonatomic, assign) BOOL emotionButtonHidden; //是否隐藏发送表情 default is NO
 
-/// 点击键盘右下角的按钮是否是发送，NO表示普通回车换行，YES表示回调Delegate的Send方法
+// 点击键盘右下角的按钮是否是发送，NO表示普通回车换行，YES表示回调Delegate的Send方法
 @property (nonatomic, assign) BOOL keyboardSendEnabled; // default is YES
+
+//  输入栏TextView的高度发送变化的动画时长（秒）
+@property (nonatomic, assign) NSTimeInterval inputBarHeightChangeAnimationDuration; // default is 0.2
 ```
 
 ## Installation
-
-QKeyboardEmotionView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'QKeyboardEmotionView'
 ```
 
-## Author
+## Author：DQ  
 
 285275534, 285275534@qq.com
+
+我的其他开源库，给个Star鼓励我写更多好库：
+
+[IOS Swift项目框架模版Demo，教科书级标准。轻量、规范、易懂、易移植、解耦](https://github.com/QDong415/QSwift)
+
+[IOS 1:1完美仿微信聊天表情键盘](https://github.com/QDong415/QKeyboardEmotionView)
+
+[IOS 自定义UIAlertController，支持弹出约束XibView、弹出ViewController](https://github.com/QDong415/QUIAlertController)
+
+[IOS 封装每条Cell样式都不一致的UITableView，告别复杂的UITableViewDataSource](https://github.com/QDong415/QTableKit)
+
+[IOS 仿快手直播界面加载中，顶部的滚动条状LoadingView](https://github.com/QDong415/QStripeAnimationLayer)
+
+[IOS 基于个推+华为push的一整套完善的 IM聊天系统](https://github.com/QDong415/iTopicOCChat)
+
+[Android 朋友圈列表Feed流的最优化方案，让你的RecyclerView从49帧 -> 57帧](https://github.com/QDong415/QFeed)
+
+[Android 仿大众点评、仿小红书 下拉拖拽关闭Activity](https://github.com/QDong415/QDragClose)
+
+[Android 仿快手直播间手画礼物，手绘礼物](https://github.com/QDong415/QDrawGift)
+
+[Android 直播间聊天消息列表RecyclerView。一秒内收到几百条消息依然不卡顿](https://github.com/QDong415/QLiveMessageHelper)
+
+[Android 仿快手直播界面加载中，顶部的滚动条状LoadingView](https://github.com/QDong415/QStripeView)
+
+[Android Kotlin MVVM框架，全世界最优化的分页加载接口、最接地气的封装](https://github.com/QDong415/QKotlin)
+
+[Android 基于个推+华为push的一整套完善的android IM聊天系统](https://github.com/QDong415/iTopicChat)
 
 ## License
 
