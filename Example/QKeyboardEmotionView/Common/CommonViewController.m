@@ -207,4 +207,9 @@
     }
 }
 
+//输入文本变化
+- (void)inputBarView:(QInputBarView *)inputBarView textViewDidChange:(UITextView *)inputTextView {
+    
+}
+
 @end

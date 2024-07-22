@@ -24,10 +24,11 @@ const int UIInputTextViewMaxHeight = 147;
 {
 }
 @property (nonatomic, strong) UITextView *inputTextView;
-@property (nonatomic, strong) UIButton *voiceSwitchButton;
-@property (nonatomic, strong) UIButton *extendSwitchButton;
-@property (nonatomic, strong) UIButton *emotionSwitchButton;
-@property (nonatomic, strong) UIButton *recordButton; //按住不松录音的长条按钮
+@property (nonatomic, strong, nullable) UIButton *voiceSwitchButton;
+@property (nonatomic, strong, nullable) UIButton *emotionSwitchButton;
+@property (nonatomic, strong, nullable) UIButton *extendSwitchButton;
+@property (nonatomic, strong, nullable) UIButton *rightSendButton;
+@property (nonatomic, strong, nullable) UIButton *recordButton; //按住不松录音的长条按钮
 
 ///  输入栏TextView的高度发生变化的动画时长（秒）
 @property (nonatomic, assign) NSTimeInterval inputBarHeightChangeAnimationDuration; // default is 0.2
@@ -105,9 +106,11 @@ const int UIInputTextViewMaxHeight = 147;
         button.frame = buttonFrame;
         [self addSubview:button];
         rightViewsMinX = CGRectGetMinX(buttonFrame);
+        self.rightSendButton = button;
         rightButtonShowed = YES;
-        
-    } else if (!configuration.extendButtonHidden) {
+    }
+    
+    if (!configuration.extendButtonHidden) {
         // 允许发送多媒体消息。为什么不是先放表情按钮呢？因为布局的需要
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, UISwitchButtonWidth, UISwitchButtonWidth)];
         button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -122,7 +125,10 @@ const int UIInputTextViewMaxHeight = 147;
         self.extendSwitchButton = button;
         rightButtonShowed = YES;
         
-    } else {
+        _rightSendButton.hidden = YES;
+    }
+    
+    if (rightViewsMinX == 0) {
         rightViewsMinX = CGRectGetWidth(self.bounds) - safeAreaInsetsRight;
     }
     
@@ -152,11 +158,7 @@ const int UIInputTextViewMaxHeight = 147;
     CGFloat textViewWidth = rightViewsMinX - textViewHorizontalMargin - textViewFrameX - textViewHorizontalMargin;
 
     // 初始化输入框
-    UITextView *textView = nil;
-    if ([self.dataSource respondsToSelector:@selector(textViewForInputBarView:)]) {
-        //textView 是由vc实现的，本类只设置一下frame
-        textView = [self.dataSource textViewForInputBarView:self];
-    }
+    UITextView *textView = configuration.customTextView;
     
     if (!textView){
         //vc没有提供UITextView，我们自己来实现
@@ -272,11 +274,23 @@ const int UIInputTextViewMaxHeight = 147;
     }
 }
 
-// 右边表情\键盘切换按钮点击
+// 右边“+”切换按钮点击
 - (IBAction)onExtendSwitchButtonClick:(UIButton *)sender
 {
     sender.selected = !sender.selected;
     self.emotionSwitchButton.selected = NO;
+    
+    if (self.voiceSwitchButton.selected) {
+        //当前是按住说话的状态，需要切回输入框
+        self.voiceSwitchButton.selected = NO;
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.recordButton.alpha = !sender.selected;
+            self.inputTextView.alpha = sender.selected;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+
     if ([self.delegate respondsToSelector:@selector(inputBarView:onExtendButtonClick:)]) {
         [self.delegate inputBarView:self onExtendButtonClick:sender];
     }
@@ -377,6 +391,19 @@ const int UIInputTextViewMaxHeight = 147;
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     [textView resignFirstResponder];
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (_rightSendButton && _extendSwitchButton) {
+        //同时包含 “+” 和 “发送”按钮
+        BOOL isEmpty = [textView.text length] == 0;
+        _rightSendButton.hidden = isEmpty;
+        _extendSwitchButton.hidden = !isEmpty;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(inputBarView:textViewDidChange:)]) {
+        [self.delegate inputBarView:self textViewDidChange:self.inputTextView];
+    }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {

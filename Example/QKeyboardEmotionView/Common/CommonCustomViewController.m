@@ -13,7 +13,7 @@
 #import "QExtendBoardView.h"
 #import "QHolderTextView.h"
 
-@interface CommonCustomViewController ()<InputBoardDataSource ,InputBoardDelegate , QEmotionBoardViewDelegate ,QInputBarViewDelegate ,QExtendBoardViewDelegate, QInputBarViewDataSource>
+@interface CommonCustomViewController ()<InputBoardDataSource ,InputBoardDelegate , QEmotionBoardViewDelegate ,QInputBarViewDelegate ,QExtendBoardViewDelegate>
 {
 
 }
@@ -38,7 +38,6 @@
     // 如果你想要自定义输入条View，请参考TextFieldViewController代码
     _inputBarView = [[QInputBarView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,UIInputBarViewMinHeight)];
     [_inputBarView setupWithConfiguration:[self inputBarViewConfiguration]];
-    _inputBarView.dataSource = self;
     _inputBarView.delegate = self;
     
     //keyboard管理类，用来管理键盘，各大面板的切换
@@ -58,6 +57,11 @@
     //输入条配置，子类可以重写
     QInputBarViewConfiguration *config = [QInputBarViewConfiguration defaultInputBarViewConfiguration];
     config.voiceButtonHidden = YES;
+    
+    QHolderTextView *tv = [[QHolderTextView alloc] init];
+    tv.placeHoldString = @"自定义TextView"; //一定要注意，这里你自定义的QHolderTextView的delegate被库抢走了，所以你需要监听
+    config.customTextView = tv;
+    
     return config;
 }
 
@@ -128,14 +132,6 @@
 //点击拓展面板的cell
 - (void)didSelectExtendBoardItem:(QExtendBoardItemModel *)shareMenuItem atIndex:(NSInteger)index {
     
-}
-
-#pragma mark - QInputBarViewDataSource
-//@return 输入条上的UITextView，返回你自定义的UITextView
-- (UITextView *)textViewForInputBarView:(QInputBarView *)inputBarView {
-    QHolderTextView *tv = [[QHolderTextView alloc] init];
-    tv.placeHoldString = @"自定义TextView";
-    return tv;
 }
 
 #pragma mark - QInputBarViewDelegate

@@ -29,10 +29,13 @@
 
 @property (nonatomic, strong) UIColor *recordButtonTitleColor;//按住说话按钮的字体颜色
 
-@property (nonatomic, strong) UIButton *rightSendButton;//如果不为nil，那么替换掉右边的"+"按钮 //default is nil
+@property (nonatomic, strong, nullable) UIButton *rightSendButton;//如果不为nil，那么替换掉右边的"+"按钮 //default is nil
+
+//输入条上的你自定义的UITextView；如果这个为nil，本类会自己创建一个UITextView
+@property (nonatomic, strong, nullable) UITextView *customTextView;
 
 //语音条上的title，当voiceButtonHidden为No时候才有效
-@property (nonatomic, strong) NSString *speakButtonTitle;//default is nil。nil就显示@"按住说话"
+@property (nonatomic, strong, nullable) NSString *speakButtonTitle;//default is nil。nil就显示@"按住说话"
 
 /// 是否隐藏发送语音
 @property (nonatomic, assign) BOOL voiceButtonHidden; // default is NO
