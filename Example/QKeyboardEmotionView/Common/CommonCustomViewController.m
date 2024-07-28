@@ -141,6 +141,12 @@
     [_keyboardManager inputTextViewHeightDidChange:becauseSendText];
 }
 
+// 输入框的高度发生了改变（因为添加了回复引用View）
+- (void)inputBarView:(QInputBarView *)inputBarView heightDidChangeBecauseReply:(CGFloat)changeValue showReplyView:(BOOL)showReplyView {
+    //这里要告知Manager类
+    [_keyboardManager inputTextViewHeightDidChange:NO];
+}
+
 //在发送文本和语音之间发送改变，voiceSwitchButton.isSelected表示切换到了语音输入模式
 - (void)inputBarView:(QInputBarView *)inputBarView onVoiceSwitchButtonClick:(UIButton *)voiceSwitchButton {
     if (voiceSwitchButton.isSelected) {

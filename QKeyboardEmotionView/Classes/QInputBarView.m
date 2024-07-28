@@ -15,6 +15,12 @@ const int UIInputTextViewMinHeight = 42;
 //Bar里面的UITextView的最大高度（即文字有超多行时候的高度）
 const int UIInputTextViewMaxHeight = 147;
 
+// 最左最右的距离屏幕边缘距离
+const int UIHorizontalPadding = 6;
+
+// 两个item之间的水平间隔
+const int UIItemHorizontalSpace = 6;
+
 #import "QInputBarView.h"
 #import "UITextView+QEmotion.h"
 
@@ -29,6 +35,7 @@ const int UIInputTextViewMaxHeight = 147;
 @property (nonatomic, strong, nullable) UIButton *extendSwitchButton;
 @property (nonatomic, strong, nullable) UIButton *rightSendButton;
 @property (nonatomic, strong, nullable) UIButton *recordButton; //按住不松录音的长条按钮
+@property (nonatomic, strong, nullable) UIView *replyView; //回复View
 
 ///  输入栏TextView的高度发生变化的动画时长（秒）
 @property (nonatomic, assign) NSTimeInterval inputBarHeightChangeAnimationDuration; // default is 0.2
@@ -48,6 +55,8 @@ const int UIInputTextViewMaxHeight = 147;
 //刚才清空文本框是因为点击了”发送“按钮。加入这个全局变量是为了Delegate的heightDidChange方法可以回调特殊的返回值
 @property (nonatomic, assign) BOOL clearInputTextBySendSoon;
 
+@property (nonatomic, assign) CGFloat verticalPadding; // 垂直间隔
+
 @end
 
 @implementation QInputBarView
@@ -62,8 +71,9 @@ const int UIInputTextViewMaxHeight = 147;
     self.keyboardSendEnabled = configuration.keyboardSendEnabled;
     
     const int UISwitchButtonWidth = 40; // 3个按钮固定宽高
-    const int horizontalPadding = 6; // 水平间隔
+//    const int horizontalPadding = UIHorizontalPadding; // 水平间隔
     const CGFloat verticalPadding = (UIInputBarViewMinHeight - UISwitchButtonWidth )/2;// 垂直间隔
+    self.verticalPadding = verticalPadding;
     CGFloat textViewFrameX = 0;// 输入框的frame.x
     CGFloat rightViewsMinX = 0;// 输入框右边的按钮的minY，为了计算textView的宽度
     const CGFloat textViewHorizontalMargin = 8; //输入框的左右margin
@@ -83,13 +93,13 @@ const int UIInputTextViewMaxHeight = 147;
         [button setBackgroundImage:[UIImage imageNamed:@"q_chat_keyboard_black_normal" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateSelected];
         [button addTarget:self action:@selector(onVoiceSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGRect buttonFrame = button.frame;
-        buttonFrame.origin = CGPointMake(horizontalPadding + safeAreaInsetsLeft, verticalPadding);
+        buttonFrame.origin = CGPointMake(UIHorizontalPadding + safeAreaInsetsLeft, verticalPadding);
         button.frame = buttonFrame;
         [self addSubview:button];
         self.voiceSwitchButton = button;
         textViewFrameX = CGRectGetMaxX(button.frame);
     } else {
-        //如果没有左边的语音按钮，输入条太贴左边了，+8提高一些marginLeft
+        //如果没有左边的语音按钮，输入条太贴左边了，+8提高一些marginLeft，这个8和textViewHorizontalMargin同时存在
         textViewFrameX = safeAreaInsetsLeft + 8;
     }
     
@@ -102,7 +112,7 @@ const int UIInputTextViewMaxHeight = 147;
         button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         
         CGRect buttonFrame = button.frame;
-        buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - horizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
+        buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - UIHorizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
         button.frame = buttonFrame;
         [self addSubview:button];
         rightViewsMinX = CGRectGetMinX(buttonFrame);
@@ -118,7 +128,7 @@ const int UIInputTextViewMaxHeight = 147;
         [button addTarget:self action:@selector(onExtendSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         
         CGRect buttonFrame = button.frame;
-        buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - horizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
+        buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - UIHorizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
         button.frame = buttonFrame;
         [self addSubview:button];
         rightViewsMinX = CGRectGetMinX(buttonFrame);
@@ -141,9 +151,9 @@ const int UIInputTextViewMaxHeight = 147;
         [button addTarget:self action:@selector(onEmotionSwitchButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         CGRect buttonFrame = button.frame;
         if (rightButtonShowed) {
-            buttonFrame.origin = CGPointMake(rightViewsMinX - CGRectGetWidth(buttonFrame) - horizontalPadding, verticalPadding);
+            buttonFrame.origin = CGPointMake(rightViewsMinX - CGRectGetWidth(buttonFrame) - UIItemHorizontalSpace, verticalPadding);
         } else {
-            buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - horizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
+            buttonFrame.origin = CGPointMake(CGRectGetWidth(self.bounds) - UIHorizontalPadding - CGRectGetWidth(buttonFrame) - safeAreaInsetsRight, verticalPadding);
         }
         button.frame = buttonFrame;
         [self addSubview:button];
@@ -359,6 +369,83 @@ const int UIInputTextViewMaxHeight = 147;
     return currentIsOneLine ? 0 : _inputBarHeightChangeAnimationWhenSendDuration;
 }
 
+//在输入框的上方显示“回复View”请提前设置好frame
+- (void)showReplyView:(UIView *)replyView marginTop:(CGFloat)marginTop marginBottom:(CGFloat)marginBottom {
+    CGFloat beforeReplyViewTotalHeight = 0; //现在的replyView的总高度（加上marginTopBottom）
+    if (self.replyView) {
+        CGFloat inputViewShouldOriginY = (UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2;
+        beforeReplyViewTotalHeight = _inputTextView.frame.origin.y - inputViewShouldOriginY;
+        [self.replyView removeFromSuperview];
+    }
+    replyView.frame = CGRectMake(UIHorizontalPadding, marginTop, self.frame.size.width - UIHorizontalPadding - UIHorizontalPadding, replyView.frame.size.height);
+    self.replyView = replyView;
+    [self addSubview:replyView];
+    
+    CGFloat replyViewTotalHeight = CGRectGetMaxY(replyView.frame) + marginBottom;
+    if (replyViewTotalHeight == beforeReplyViewTotalHeight) {
+        return; //跟之前的ReplyView高度一样
+    }
+    
+    [UIView animateWithDuration:_inputBarHeightChangeAnimationDuration animations:^{
+        
+        CGFloat itemsOriginY = replyViewTotalHeight + self.verticalPadding;
+        [self originYMoveTo:itemsOriginY view:self.voiceSwitchButton];
+        [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
+        [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
+        [self originYMoveTo:itemsOriginY view:self.rightSendButton];
+        [self originYMoveTo:(UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2 + replyViewTotalHeight view:self.inputTextView];
+        
+        CGFloat replyViewTotalHeightDiff = replyViewTotalHeight - beforeReplyViewTotalHeight;
+        
+        CGRect inputViewFrame = self.frame;
+        self.frame = CGRectMake(inputViewFrame.origin.x,
+                                    inputViewFrame.origin.y - replyViewTotalHeightDiff,
+                                    inputViewFrame.size.width,
+                                    inputViewFrame.size.height + replyViewTotalHeightDiff);
+        
+        //回调给QKeyboardManager
+        if ([self.delegate respondsToSelector:@selector(inputBarView:heightDidChangeBecauseReply:showReplyView:)]) {
+            [self.delegate inputBarView:self heightDidChangeBecauseReply:replyViewTotalHeightDiff showReplyView:YES];
+        }
+
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void)hideReplyView {
+    if (self.replyView) {
+        [self.replyView removeFromSuperview];
+        self.replyView = nil;
+        
+        CGFloat inputViewShouldOriginY = (UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2;
+        CGFloat replyViewTotalHeight = _inputTextView.frame.origin.y - inputViewShouldOriginY;
+
+        [UIView animateWithDuration:_inputBarHeightChangeAnimationDuration animations:^{
+            
+            CGFloat itemsOriginY = self.verticalPadding;
+            [self originYMoveTo:itemsOriginY view:self.voiceSwitchButton];
+            [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
+            [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
+            [self originYMoveTo:itemsOriginY view:self.rightSendButton];
+            [self originYMoveTo:inputViewShouldOriginY view:self.inputTextView];
+            
+            CGRect inputViewFrame = self.frame;
+            self.frame = CGRectMake(inputViewFrame.origin.x,
+                                        inputViewFrame.origin.y + replyViewTotalHeight,
+                                        inputViewFrame.size.width,
+                                        inputViewFrame.size.height - replyViewTotalHeight);
+            
+            
+            //回调给QKeyboardManager
+            if ([self.delegate respondsToSelector:@selector(inputBarView:heightDidChangeBecauseReply:showReplyView:)]) {
+                [self.delegate inputBarView:self heightDidChangeBecauseReply:-replyViewTotalHeight showReplyView:YES];
+            }
+        } completion:^(BOOL finished) {
+        }];
+    }
+}
+
+
 #pragma mark - Private
 /**
  *  获取某个UITextView对象的content高度
@@ -367,6 +454,12 @@ const int UIInputTextViewMaxHeight = 147;
 - (CGFloat)getTextViewContentHeight
 {
     return ceilf([_inputTextView sizeThatFits:_inputTextView.frame.size].height);
+}
+
+- (void)originYMoveTo:(CGFloat)moveToY view:(UIView *)view {
+    if (view) {
+        view.frame = CGRectMake(view.frame.origin.x, moveToY, view.frame.size.width, view.frame.size.height);
+    }
 }
 
 #pragma mark - UITextViewDelegate

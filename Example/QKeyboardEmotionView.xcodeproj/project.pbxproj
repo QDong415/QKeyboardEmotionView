@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043AEB4D2C56435E00BB556E /* InputBarReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AEB4C2C56435E00BB556E /* InputBarReplyView.m */; };
 		04E9F6752C4BD0D600D361F6 /* ChatSendButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9F6732C4BD0D600D361F6 /* ChatSendButtonViewController.m */; };
 		12582FCBFDCB8A3368069439 /* Pods_QKeyboardEmotionView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8B567FD8AC65B27AA125BF0 /* Pods_QKeyboardEmotionView_Tests.framework */; };
 		360648FC26D3DD680029470C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360648F626D3DD680029470C /* RootViewController.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043AEB4B2C56435E00BB556E /* InputBarReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBarReplyView.h; sourceTree = "<group>"; };
+		043AEB4C2C56435E00BB556E /* InputBarReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputBarReplyView.m; sourceTree = "<group>"; };
 		04E9F6732C4BD0D600D361F6 /* ChatSendButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatSendButtonViewController.m; sourceTree = "<group>"; };
 		04E9F6742C4BD0D600D361F6 /* ChatSendButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatSendButtonViewController.h; sourceTree = "<group>"; };
 		0B7EC38D69F3531EF5D6DAB7 /* Pods_QKeyboardEmotionView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QKeyboardEmotionView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +209,8 @@
 				04E9F6732C4BD0D600D361F6 /* ChatSendButtonViewController.m */,
 				367A7E7327E8E6CE00ABFCAD /* QTestLabel.h */,
 				367A7E7427E8E6CE00ABFCAD /* QTestLabel.m */,
+				043AEB4B2C56435E00BB556E /* InputBarReplyView.h */,
+				043AEB4C2C56435E00BB556E /* InputBarReplyView.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043AEB4D2C56435E00BB556E /* InputBarReplyView.m in Sources */,
 				3606497126D3F56F0029470C /* ChatViewController.m in Sources */,
 				3606496F26D3F56F0029470C /* TextFieldViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AppDelegate.m in Sources */,

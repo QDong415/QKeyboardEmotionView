@@ -30,6 +30,10 @@ extern const int UIInputBarViewMinHeight;
 // 输入框的高度发生了改变（因为输入了值）
 - (void)inputBarView:(QInputBarView *)inputBarView inputTextView:(UITextView *)inputTextView heightDidChange:(CGFloat)changeValue becauseSendText:(BOOL)becauseSendText;
 
+// 输入框的高度发生了改变（因为添加了回复引用View）
+- (void)inputBarView:(QInputBarView *)inputBarView heightDidChangeBecauseReply:(CGFloat)changeValue showReplyView:(BOOL)showReplyView;
+
+
 /**
  *  在发送文本和语音之间发送改变时，会触发这个回调函数
  */
@@ -89,5 +93,10 @@ extern const int UIInputBarViewMinHeight;
 // 清除输入的文本，不建议你自己用inputTextView.text = nil来情况文本。因为那样的话如果输入栏的文字>1行，你调用tableView.reload再scrollToBottom会出现tableView滚动不流畅
 //之所以不流畅是因为tableView的scrollToBottom动画和onWholeInputViewHeightDidChange里的动画同时被调用
 - (NSTimeInterval)clearInputTextBySend; //@return 0：当前inputText只有一行；非0：动画时长
+
+//在输入框的上方显示“回复View”
+- (void)showReplyView:(UIView *)replyView marginTop:(CGFloat)marginTop marginBottom:(CGFloat)marginBottom;
+
+- (void)hideReplyView;
 
 @end

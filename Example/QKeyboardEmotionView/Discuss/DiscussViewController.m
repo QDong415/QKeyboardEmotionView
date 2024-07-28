@@ -63,8 +63,6 @@
     self.tableView.contentInset = insets;
     self.tableView.scrollIndicatorInsets = insets;
 
-    NSLog(@"reason = %d", reason);
-    
     if (self.lastSelectedIndexPath && reason != WholeInputViewHeightDidChangeReasonBoardDidHide && reason != WholeInputViewHeightDidChangeReasonTextDidSend ) {
         [self scrollToRowAtIndexPath:self.lastSelectedIndexPath];
     }

@@ -10,6 +10,7 @@
 #import "ChatViewController.h"
 #import "ChatCell.h"
 #import "QEmotionHelper.h"
+#import "InputBarReplyView.h"
 
 @interface ChatViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -207,6 +208,10 @@
     }
 }
 
+- (IBAction)onInputBarReplyViewDelteButtonClick:(id)sender {
+    [self.inputBarView hideReplyView];
+}
+
 #pragma mark - UITableViewDataSource
 //返回列表分组数，默认为1
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -242,8 +247,11 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    InputBarReplyView *replyView = [[InputBarReplyView alloc] initWithFrame:CGRectMake(0, 0, 300, 80)];
+    replyView.backgroundColor = [UIColor orangeColor];
+    [replyView.deleteButton addTarget:self action:@selector(onInputBarReplyViewDelteButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.inputBarView showReplyView:replyView marginTop:8 marginBottom:8];
 }
 
 //设置cell的高度

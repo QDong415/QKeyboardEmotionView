@@ -103,6 +103,13 @@ extension CommonKeyboardViewController: QInputBarViewDelegate {
         //这里要告知Manager类
         keyboardManager.inputTextViewHeightDidChange(becauseSendText)
     }
+    
+    
+    // 输入框的高度发生了改变（因为添加了回复引用View）
+    func inputBarView(_ inputBarView: QInputBarView!, heightDidChangeBecauseReply changeValue: CGFloat, showReplyView: Bool) {
+        //这里要告知Manager类
+        keyboardManager.inputTextViewHeightDidChange(false)
+    }
 }
 
 //整个BoardView的Delegate回调
