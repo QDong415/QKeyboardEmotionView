@@ -1,9 +1,9 @@
 {
   "name": "QKeyboardEmotionView",
-  "version": "1.0.2",
+  "version": "2.2",
   "summary": "Emotion-Keyboard-Audio-Chat InputBarView",
   "description": "An InputBarView At bottom(or below) of ViewController. Contains EmotionBoardView,ExtendBoardView,AudioRecordView.\nyou can switch between BoardViews and keyboad with animation. It also allows you to customize boardview and inputbarview.It is vert useful for CharViewController and CommentViewController   .",
-  "homepage": "https://github.com/d19890415/QKeyboardEmotionView",
+  "homepage": "https://github.com/QDong415/QKeyboardEmotionView",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,11 @@
     "d19890415": "285275534@qq.com"
   },
   "source": {
-    "git": "https://github.com/d19890415/QKeyboardEmotionView.git",
-    "tag": "1.0.2"
+    "git": "https://github.com/QDong415/QKeyboardEmotionView.git",
+    "tag": "2.2"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "11.0"
   },
   "source_files": "QKeyboardEmotionView/Classes/**/*",
   "resources": [

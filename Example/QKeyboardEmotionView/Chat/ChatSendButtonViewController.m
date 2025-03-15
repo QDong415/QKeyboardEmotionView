@@ -25,6 +25,10 @@
 
 }
 
+- (IBAction)chatInputOrderClick:(UITapGestureRecognizer *)tap {
+    NSLog(@"chatInputOrderClick");
+}
+
 #pragma mark - Override
 - (QInputBarViewConfiguration *)inputBarViewConfiguration {
     //输入条配置，子类可以重写
@@ -38,12 +42,29 @@
     [sendButton addTarget:self action:@selector(onSendButtonSelect:) forControlEvents:UIControlEventTouchUpInside];
     config.rightSendButton = sendButton;
     
+    
+    //demo：输入栏里添加东西
+    UIImageView *chatInputOrderImageView = [UIImageView new];
+    chatInputOrderImageView.contentMode = UIViewContentModeCenter;
+    chatInputOrderImageView.image = [UIImage imageNamed:@"chat_input_order"];
+    [chatInputOrderImageView setUserInteractionEnabled: YES];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chatInputOrderClick:)];
+    [chatInputOrderImageView addGestureRecognizer:tapGesture];
+    CGFloat imageSize = 32;
+    chatInputOrderImageView.frame = CGRectMake(0, 0, imageSize, imageSize);
+    config.inputInsetRightView = chatInputOrderImageView;
+    
     return config;
+}
+
+//输入文本变化
+- (void)inputBarView:(QInputBarView *)inputBarView textViewDidChange:(UITextView *)inputTextView {
+    NSLog(@"子类 输入文本变化");
 }
 
 //点击了“发送”按钮
 - (IBAction)onSendButtonSelect:(UIButton *)sender {
-
+//    [self sendTextMessage]
 }
 
 

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 YiChe. All rights reserved.
 //
 
-#import "QHolderTextView.h"
+#import "QCustomTextView.h"
 
-@interface QHolderTextView()<UITextViewDelegate>
+@interface QCustomTextView()<UITextViewDelegate>
 @property (nonatomic, strong) UILabel *placeHoldLabel;
 @property (nonatomic, strong) NSMutableDictionary *defaultAttributes;
 @property (nonatomic, assign) NSUInteger specialTextNum;//记录特殊文本的索引值
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation QHolderTextView
+@implementation QCustomTextView
 
 - (UILabel *)placeHoldLabel {
     if (!_placeHoldLabel) {

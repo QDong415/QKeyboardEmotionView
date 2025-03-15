@@ -44,7 +44,12 @@
     //将输入条View添加到ViewController；YES表示输入条平时不显示（比如朋友圈）；NO表示平时也显示（比如聊天）
     [_keyboardManager addBottomInputBarView:_inputBarView belowViewController:[self belowViewController]];
     
-    //把输入框（如果有的话）绑定给管理类
+    if ([_inputBarView.inputTextView isKindOfClass:[QPlaceHolderTextView class]]) {
+        QPlaceHolderTextView *placeHolderTextView = (QPlaceHolderTextView *)_inputBarView.inputTextView;
+        placeHolderTextView.placeholder = @"说点什么吧";
+    }
+    
+    //把输入框（如果有的话）绑定给管理类（重要!）
     [_keyboardManager bindTextView:_inputBarView.inputTextView];
 }
 

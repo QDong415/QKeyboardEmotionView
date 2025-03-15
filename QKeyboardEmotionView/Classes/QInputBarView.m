@@ -30,6 +30,9 @@ const int UIItemHorizontalSpace = 6;
 {
 }
 @property (nonatomic, strong) UITextView *inputTextView;
+@property (nonatomic, strong, nullable) UIView *centerContentView; //和输入栏一行时候frame一致的的布局，为了放一些中间子View
+@property (nonatomic, strong, nullable) UIView *inputInsetRightView; // 输入栏右侧的子View
+
 @property (nonatomic, strong, nullable) UIButton *voiceSwitchButton;
 @property (nonatomic, strong, nullable) UIButton *emotionSwitchButton;
 @property (nonatomic, strong, nullable) UIButton *extendSwitchButton;
@@ -168,11 +171,11 @@ const int UIItemHorizontalSpace = 6;
     CGFloat textViewWidth = rightViewsMinX - textViewHorizontalMargin - textViewFrameX - textViewHorizontalMargin;
 
     // 初始化输入框
-    UITextView *textView = configuration.customTextView;
+    UITextView *textView = configuration.customTextView ;
     
     if (!textView){
         //vc没有提供UITextView，我们自己来实现
-        textView = [[UITextView alloc] initWithFrame:CGRectZero];
+        textView = [[QPlaceHolderTextView alloc] initWithFrame:CGRectZero];
         textView.font = [UIFont systemFontOfSize:17.5];
         textView.returnKeyType = UIReturnKeySend;
         textView.scrollsToTop = NO;
@@ -194,6 +197,24 @@ const int UIItemHorizontalSpace = 6;
     [self addSubview:textView];
     textView.frame = CGRectMake(textViewFrameX + textViewHorizontalMargin, (UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2, textViewWidth, UIInputTextViewMinHeight);
     self.inputTextView = textView;
+    
+    if (configuration.centerContentView) {
+        //和输入栏一行时候frame一致的的布局，为了放一些中间子View
+        self.centerContentView = configuration.centerContentView;
+        self.centerContentView.frame = textView.frame;
+//        self.centerContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self addSubview:self.centerContentView];
+    }
+
+    if (configuration.inputInsetRightView) {
+        //和输入栏一行时候frame一致的的布局，为了放一些中间子View
+        self.inputInsetRightView = configuration.inputInsetRightView;
+        CGFloat rightInsetWidth = configuration.inputInsetRightView.frame.size.width;
+        CGFloat rightInsetHeight = configuration.inputInsetRightView.frame.size.height;
+        self.inputInsetRightView.frame = CGRectMake(CGRectGetMaxX(textView.frame) - rightInsetWidth - 6, CGRectGetMinY(textView.frame) + (textView.frame.size.height - rightInsetHeight)/2, rightInsetWidth, rightInsetHeight);
+//        self.inputInsetRightView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        [self addSubview:self.inputInsetRightView];
+    }
     
     //记录初始化时候的textview高度
     self.previousTextViewContentHeight = [self getTextViewContentHeight];
@@ -237,9 +258,11 @@ const int UIItemHorizontalSpace = 6;
     if (sender.selected) {
         self.inputedText = self.inputTextView.text;
         self.inputTextView.text = nil;
+        [self textViewDidChange:self.inputTextView];
         [self.inputTextView resignFirstResponder];
     } else {
         self.inputTextView.text = self.inputedText;
+        [self textViewDidChange:self.inputTextView];
         self.inputedText = nil;
         [self.inputTextView becomeFirstResponder];
     }
@@ -360,7 +383,9 @@ const int UIItemHorizontalSpace = 6;
     self.clearInputTextBySendSoon = YES;
     
     //清空输入栏，如果当前输入栏里的文字行数>1会立即触发KVO
-    self.inputTextView.text = nil;
+    self.inputTextView.text = nil; //用代码设置text，只会触发shouldChangeTextInRange，不会触发textViewDidChange
+    
+    [self textViewDidChange:self.inputTextView];
     
     //等走完KVO和KVO里的的delegate，再关掉
     self.clearInputTextBySendSoon = NO;
@@ -393,6 +418,9 @@ const int UIItemHorizontalSpace = 6;
         [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
         [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
         [self originYMoveTo:itemsOriginY view:self.rightSendButton];
+        [self originYMoveTo:itemsOriginY view:self.recordButton];
+        [self originYMoveTo:itemsOriginY view:self.centerContentView];
+        [self originYMoveTo:itemsOriginY view:self.inputInsetRightView];
         [self originYMoveTo:(UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2 + replyViewTotalHeight view:self.inputTextView];
         
         CGFloat replyViewTotalHeightDiff = replyViewTotalHeight - beforeReplyViewTotalHeight;
@@ -427,6 +455,10 @@ const int UIItemHorizontalSpace = 6;
             [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
             [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
             [self originYMoveTo:itemsOriginY view:self.rightSendButton];
+            [self originYMoveTo:itemsOriginY view:self.recordButton];
+            [self originYMoveTo:itemsOriginY view:self.centerContentView];
+            [self originYMoveTo:itemsOriginY view:self.inputInsetRightView];
+            
             [self originYMoveTo:inputViewShouldOriginY view:self.inputTextView];
             
             CGRect inputViewFrame = self.frame;
@@ -490,8 +522,13 @@ const int UIItemHorizontalSpace = 6;
     if (_rightSendButton && _extendSwitchButton) {
         //同时包含 “+” 和 “发送”按钮
         BOOL isEmpty = [textView.text length] == 0;
-        _rightSendButton.hidden = isEmpty;
-        _extendSwitchButton.hidden = !isEmpty;
+        if (_rightSendButton.hidden != isEmpty) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(inputBarView:rightSendButtonWillSwitch:)]) {
+                [self.delegate inputBarView:self rightSendButtonWillSwitch:!isEmpty];
+            }
+            _rightSendButton.hidden = isEmpty;
+            _extendSwitchButton.hidden = !isEmpty;
+        }
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(inputBarView:textViewDidChange:)]) {

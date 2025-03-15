@@ -10,12 +10,12 @@
 #import "QEmotionHelper.h"
 #import "QKeyboardManager.h"
 #import "QEmotionBoardView.h"
-#import "QHolderTextView.h"
+#import "QCustomTextView.h"
 
 @interface TextFieldViewController ()<InputBoardDataSource , QEmotionBoardViewDelegate,CustomBarViewDelegate ,UITextFieldDelegate>
 {
     CustomBarView *_inputView;
-    QHolderTextView *_holderTextView;
+    QCustomTextView *_holderTextView;
 }
 
 @property(nonatomic,strong)IBOutlet UITextField *textField;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QInputBarViewConfiguration.h"
+#import "QPlaceHolderTextView.h"
 
 //整个Bar的最小高度（即文字只有1行时候的高度）
 extern const int UIInputBarViewMinHeight;
@@ -54,6 +55,9 @@ extern const int UIInputBarViewMinHeight;
  *  发送第三方表情
  */
 - (void)inputBarView:(QInputBarView *)inputBarView onEmotionButtonClick:(UIButton *)emotionSwitchButton;
+
+//如果右侧是“发送按钮”，那么发送按钮将要显示\隐藏的时候触发
+- (void)inputBarView:(QInputBarView *)inputBarView rightSendButtonWillSwitch:(BOOL)buttonWillAppear;
 
 @end
 

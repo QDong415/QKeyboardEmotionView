@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QKeyboardEmotionView'
-  s.version          = '2.2'
+  s.version          = '3.0'
   s.summary          = 'Emotion-Keyboard-Audio-Chat InputBarView'
 
 # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ you can switch between BoardViews and keyboad with animation. It also allows you
   s.source           = { :git => 'https://github.com/QDong415/QKeyboardEmotionView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'QKeyboardEmotionView/Classes/**/*'
   

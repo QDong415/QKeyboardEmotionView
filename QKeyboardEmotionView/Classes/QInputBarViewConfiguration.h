@@ -31,6 +31,12 @@
 
 @property (nonatomic, strong, nullable) UIButton *rightSendButton;//如果不为nil，那么替换掉右边的"+"按钮 //default is nil
 
+// 和输入栏一行时候frame一致的的布局，为了放一些中间子View
+@property (nonatomic, strong, nullable) UIView *centerContentView;
+
+// 输入栏右侧的子View
+@property (nonatomic, strong, nullable) UIView *inputInsetRightView;
+
 //输入条上的你自定义的UITextView；如果这个为nil，本类会自己创建一个UITextView
 @property (nonatomic, strong, nullable) UITextView *customTextView;
 

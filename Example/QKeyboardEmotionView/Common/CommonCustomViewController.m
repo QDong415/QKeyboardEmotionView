@@ -11,7 +11,8 @@
 #import "QInputBarView.h"
 #import "QEmotionBoardView.h"
 #import "QExtendBoardView.h"
-#import "QHolderTextView.h"
+#import "QCustomTextView.h"
+#import "QPlaceHolderTextView.h"
 
 @interface CommonCustomViewController ()<InputBoardDataSource ,InputBoardDelegate , QEmotionBoardViewDelegate ,QInputBarViewDelegate ,QExtendBoardViewDelegate>
 {
@@ -58,8 +59,9 @@
     QInputBarViewConfiguration *config = [QInputBarViewConfiguration defaultInputBarViewConfiguration];
     config.voiceButtonHidden = YES;
     
-    QHolderTextView *tv = [[QHolderTextView alloc] init];
-    tv.placeHoldString = @"自定义TextView"; //一定要注意，这里你自定义的QHolderTextView的delegate被库抢走了，所以你需要监听
+    QPlaceHolderTextView *tv = [[QPlaceHolderTextView alloc] init];
+    tv.font = [UIFont systemFontOfSize: 17];
+    tv.placeholder = @"自定义TextView2"; //一定要注意，这里你自定义的QHolderTextView的delegate被库抢走了，所以你需要监听
     config.customTextView = tv;
     
     return config;

@@ -9,13 +9,13 @@
 #import "SubmitToolBarView.h"
 #import "QEmotionHelper.h"
 #import "QEmotionBoardView.h"
-#import "QHolderTextView.h"
+#import "QCustomTextView.h"
 #import "UITextView+QEmotion.h"
 
 @interface SubmitViewController ()<InputBoardDataSource ,InputBoardDelegate ,UITextViewDelegate , QEmotionBoardViewDelegate ,SubmitToolBarViewDelegate>
 {
     SubmitToolBarView *_inputView;
-    QHolderTextView *_holderTextView;
+    QCustomTextView *_holderTextView;
 }
 @end
 
@@ -27,7 +27,7 @@
     self.title = @"发布朋友圈界面";
     self.view.backgroundColor = [UIColor colorWithRed:(248)/255.0f green:(248)/255.0f blue:(246)/255.0f alpha:1];
     
-    _holderTextView = [[QHolderTextView alloc]initWithFrame:CGRectMake(0, self.navigationController.navigationBar.translucent ? (UIApplication.sharedApplication.statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height) : 0, self.view.frame.size.width, 150)];
+    _holderTextView = [[QCustomTextView alloc]initWithFrame:CGRectMake(0, self.navigationController.navigationBar.translucent ? (UIApplication.sharedApplication.statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height) : 0, self.view.frame.size.width, 150)];
     _holderTextView.backgroundColor = [UIColor whiteColor];
     _holderTextView.placeHoldString = @"说点什么吧...";
     _holderTextView.placeHoldTextColor = [UIColor grayColor];
@@ -146,7 +146,7 @@
 }
 
 #pragma mark - HolderTextViewDelegate
-- (BOOL)textViewShouldBeginEditing:(QHolderTextView *)textView {
+- (BOOL)textViewShouldBeginEditing:(QCustomTextView *)textView {
     
     _inputView.emotionSwitchButton.selected = NO;
     _inputView.extendSwitchButton.selected = NO;

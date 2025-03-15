@@ -19,6 +19,7 @@
 #import "QInputBarViewConfiguration.h"
 #import "QKeyboardBaseManager.h"
 #import "QKeyboardManager.h"
+#import "QPlaceHolderTextView.h"
 #import "UITextView+QEmotion.h"
 
 FOUNDATION_EXPORT double QKeyboardEmotionViewVersionNumber;

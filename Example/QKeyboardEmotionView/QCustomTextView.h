@@ -12,7 +12,7 @@
 #define SPECIAL_TEXT_NUM   @"specialTextNum"
 
 
-@class QHolderTextView;
+@class QCustomTextView;
 
 @protocol HolderTextViewDelegate <NSObject>
 
@@ -21,33 +21,33 @@
  *  HolderTextView输入了done的回调
  *  一般在self.textView.returnKeyType = UIReturnKeyDone;时执行该回调
  */
-- (void)holderTextViewEnterDone:(QHolderTextView *)textView;
+- (void)holderTextViewEnterDone:(QCustomTextView *)textView;
 
 // 用户输入了@
-- (BOOL)holderTextViewEnterAt:(QHolderTextView *)textView;
+- (BOOL)holderTextViewEnterAt:(QCustomTextView *)textView;
 
 /**
  *  HolderTextView自动改变高度
  */
-- (void)holderTextView:(QHolderTextView *)textView heightChanged:(CGRect)frame;
+- (void)holderTextView:(QCustomTextView *)textView heightChanged:(CGRect)frame;
 
-- (BOOL)textViewShouldBeginEditing:(QHolderTextView *)textView;
-- (BOOL)textViewShouldEndEditing:(QHolderTextView *)textView;
+- (BOOL)textViewShouldBeginEditing:(QCustomTextView *)textView;
+- (BOOL)textViewShouldEndEditing:(QCustomTextView *)textView;
 
-- (void)textViewDidBeginEditing:(QHolderTextView *)textView;
-- (void)textViewDidEndEditing:(QHolderTextView *)textView;
+- (void)textViewDidBeginEditing:(QCustomTextView *)textView;
+- (void)textViewDidEndEditing:(QCustomTextView *)textView;
 
-- (BOOL)textView:(QHolderTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
-- (void)textViewDidChange:(QHolderTextView *)textView;
+- (BOOL)textView:(QCustomTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+- (void)textViewDidChange:(QCustomTextView *)textView;
 
-- (void)textViewDidChangeSelection:(QHolderTextView *)textView;
+- (void)textViewDidChangeSelection:(QCustomTextView *)textView;
 
-- (BOOL)textView:(QHolderTextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
-- (BOOL)textView:(QHolderTextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
+- (BOOL)textView:(QCustomTextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
+- (BOOL)textView:(QCustomTextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0);
 
 @end
 
-@interface QHolderTextView : UITextView
+@interface QCustomTextView : UITextView
 
 @property (nonatomic, weak) id<HolderTextViewDelegate> holderTextViewDelegate;
 @property (nonatomic, copy, setter=setPlaceHoldString:)   NSString *placeHoldString;

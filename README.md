@@ -35,7 +35,7 @@
 
 先在终端里搜索 `pod search QKeyboardEmotionView` 
 
-如果搜索不到`2.2`版本，需要更新你电脑的pod仓库，以下是更新步骤：
+如果搜索不到`3.0`版本，需要更新你电脑的pod仓库，以下是更新步骤：
 
 1、先 `pod repo update`  更新你本地电脑的pod仓库。然后再搜索一次试试看
 
