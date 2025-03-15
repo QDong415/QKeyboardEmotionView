@@ -60,6 +60,7 @@ const UIEdgeInsets kSystemTextViewFixTextInsets = {0, 5, 0, 5};
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText {
+    [super setAttributedText:attributedText];
     [self handleTextChanged:self];
 }
 
@@ -151,7 +152,6 @@ const UIEdgeInsets kSystemTextViewFixTextInsets = {0, 5, 0, 5};
     } else {
         result = [super sizeThatFits:size];
     }
-//    result.height = MIN(result.height, self.maximumHeight);
     return result;
 }
 
