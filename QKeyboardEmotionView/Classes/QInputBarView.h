@@ -66,7 +66,7 @@ extern const int UIInputBarViewMinHeight;
 
 @property (nonatomic, strong, readonly) UITextView *inputTextView;
 
-@property (nonatomic, strong, readonly) UIButton *recordButton;
+@property (nonatomic, strong, readonly) UIView *recordCenterView;
 
 @property (nonatomic, weak) id <QInputBarViewDelegate> delegate;
 

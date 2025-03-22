@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) UIColor *recordButtonTitleColor;//按住说话按钮的字体颜色
 
+@property (nonatomic, strong, nullable) UIView *recordCenterView;//中间的按住说话按钮，不传的话，默认会创建一个UIButton
+
 @property (nonatomic, strong, nullable) UIButton *rightSendButton;//如果不为nil，那么替换掉右边的"+"按钮 //default is nil
 
 // 和输入栏一行时候frame一致的的布局，为了放一些中间子View

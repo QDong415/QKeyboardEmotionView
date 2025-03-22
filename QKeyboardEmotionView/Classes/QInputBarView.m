@@ -37,7 +37,7 @@ const int UIItemHorizontalSpace = 6;
 @property (nonatomic, strong, nullable) UIButton *emotionSwitchButton;
 @property (nonatomic, strong, nullable) UIButton *extendSwitchButton;
 @property (nonatomic, strong, nullable) UIButton *rightSendButton;
-@property (nonatomic, strong, nullable) UIButton *recordButton; //按住不松录音的长条按钮
+@property (nonatomic, strong, nullable) UIView *recordCenterView; //按住不松录音的长条按钮
 @property (nonatomic, strong, nullable) UIView *replyView; //回复View
 
 ///  输入栏TextView的高度发生变化的动画时长（秒）
@@ -221,21 +221,26 @@ const int UIItemHorizontalSpace = 6;
     
     // 如果是可以发送语言的，那就需要一个按钮录音的按钮，事件可以在外部添加
     if (!configuration.voiceButtonHidden) {
-        UIButton *button = [[UIButton alloc] initWithFrame:self.inputTextView.frame];
-        button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_press_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateHighlighted];
-        [button setTitle:configuration.speakButtonTitle?:@"按住说话" forState:UIControlStateNormal];
-        button.alpha = self.voiceSwitchButton.selected;
-        [self addSubview:button];
-        self.recordButton = button;
+        if (configuration.recordCenterView) {
+            //外部自定义“按住说话”UIView
+            self.recordCenterView = configuration.recordCenterView;
+        } else {
+            UIButton *button = [[UIButton alloc] initWithFrame:self.inputTextView.frame];
+            button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+            [button setBackgroundImage:[UIImage imageNamed:@"q_white_input_press_btn" inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateHighlighted];
+            [button setTitle:configuration.speakButtonTitle?:@"按住说话" forState:UIControlStateNormal];
+            [button setTitleColor:configuration.recordButtonTitleColor forState:UIControlStateNormal];
+            self.recordCenterView = button;
+        }
+        self.recordCenterView.alpha = self.voiceSwitchButton.selected;
+        [self addSubview:self.recordCenterView];
     }
     
     //各种颜色
     self.backgroundColor = configuration.inputBarBackgroundColor;
     _inputTextView.textColor = configuration.textColor;
     _inputTextView.backgroundColor = configuration.textViewBackgroundColor;
-    [self.recordButton setTitleColor:configuration.recordButtonTitleColor forState:UIControlStateNormal];
 
     //两个动画时长
     self.inputBarHeightChangeAnimationDuration = configuration.inputBarHeightChangeAnimationDuration == 0 ? 0.2 : configuration.inputBarHeightChangeAnimationDuration;
@@ -268,7 +273,7 @@ const int UIItemHorizontalSpace = 6;
     }
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.recordButton.alpha = sender.selected;
+        self.recordCenterView.alpha = sender.selected;
         self.inputTextView.alpha = !sender.selected;
     } completion:^(BOOL finished) {
         
@@ -288,14 +293,14 @@ const int UIItemHorizontalSpace = 6;
     
     if (!sender.selected) {
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.recordButton.alpha = sender.selected;
+            self.recordCenterView.alpha = sender.selected;
             self.inputTextView.alpha = !sender.selected;
         } completion:^(BOOL finished) {
             
         }];
     } else {
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.recordButton.alpha = !sender.selected;
+            self.recordCenterView.alpha = !sender.selected;
             self.inputTextView.alpha = sender.selected;
         } completion:^(BOOL finished) {
             
@@ -317,7 +322,7 @@ const int UIItemHorizontalSpace = 6;
         //当前是按住说话的状态，需要切回输入框
         self.voiceSwitchButton.selected = NO;
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.recordButton.alpha = !sender.selected;
+            self.recordCenterView.alpha = !sender.selected;
             self.inputTextView.alpha = sender.selected;
         } completion:^(BOOL finished) {
             
@@ -418,7 +423,7 @@ const int UIItemHorizontalSpace = 6;
         [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
         [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
         [self originYMoveTo:itemsOriginY view:self.rightSendButton];
-        [self originYMoveTo:itemsOriginY view:self.recordButton];
+        [self originYMoveTo:itemsOriginY view:self.recordCenterView];
         [self originYMoveTo:itemsOriginY view:self.centerContentView];
         [self originYMoveTo:itemsOriginY view:self.inputInsetRightView];
         [self originYMoveTo:(UIInputBarViewMinHeight - UIInputTextViewMinHeight)/2 + replyViewTotalHeight view:self.inputTextView];
@@ -455,7 +460,7 @@ const int UIItemHorizontalSpace = 6;
             [self originYMoveTo:itemsOriginY view:self.emotionSwitchButton];
             [self originYMoveTo:itemsOriginY view:self.extendSwitchButton];
             [self originYMoveTo:itemsOriginY view:self.rightSendButton];
-            [self originYMoveTo:itemsOriginY view:self.recordButton];
+            [self originYMoveTo:itemsOriginY view:self.recordCenterView];
             [self originYMoveTo:itemsOriginY view:self.centerContentView];
             [self originYMoveTo:itemsOriginY view:self.inputInsetRightView];
             
@@ -628,7 +633,7 @@ const int UIItemHorizontalSpace = 6;
     _voiceSwitchButton = nil;
     _extendSwitchButton = nil;
     _emotionSwitchButton = nil;
-    _recordButton = nil;
+    _recordCenterView = nil;
 }
 
 
